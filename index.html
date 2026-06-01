@@ -622,15 +622,57 @@ body{
 <!-- ====================================================
      HERO EMOTIONAL HOOK — above gallery
 ==================================================== -->
-<div style="background:#002B69;padding:13px 16px 12px;text-align:center">
-  <p style="font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(252,98,13,.85);margin-bottom:5px">Sound Familiar?</p>
-  <h2 style="font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;color:#fff;line-height:1.2;margin:0">&ldquo;I Have Tried Everything. Nothing Worked.&rdquo;</h2>
-  <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:9px">
-    <div style="flex:1;height:1px;background:rgba(252,98,13,.3)"></div>
-    <span style="font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.06em;white-space:nowrap">Until now.</span>
-    <div style="flex:1;height:1px;background:rgba(252,98,13,.3)"></div>
+<style>
+.hero-hook{background:#002B69;padding:16px 20px 14px;text-align:center;overflow:hidden;position:relative}
+.hero-eyebrow{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(252,98,13,.85);margin-bottom:8px;opacity:0;animation:heFadeUp .5s ease .2s forwards}
+.hero-headline{font-family:'Nunito',sans-serif;font-size:20px;font-weight:900;color:#fff;line-height:1.25;margin:0;overflow:hidden;display:block}
+.hero-word{display:inline-block;opacity:0;transform:translateY(28px);animation:heWord .5s cubic-bezier(.22,1,.36,1) forwards}
+.hero-divider{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;opacity:0;animation:heFadeUp .5s ease 1.4s forwards}
+.hero-line{flex:1;height:1px;background:rgba(252,98,13,.3);transform:scaleX(0);transform-origin:center;animation:heLine .6s ease 1.5s forwards}
+.hero-until{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.06em;white-space:nowrap}
+/* cursor blink on last word */
+.hero-cursor{display:inline-block;width:2px;height:1em;background:var(--orange);margin-left:2px;vertical-align:middle;animation:heBlink .8s ease 1.8s 4 forwards}
+@keyframes heFadeUp{to{opacity:1;transform:none}}
+@keyframes heWord{to{opacity:1;transform:none}}
+@keyframes heLine{to{transform:scaleX(1)}}
+@keyframes heBlink{0%,100%{opacity:1}50%{opacity:0}}
+</style>
+
+<div class="hero-hook" id="heroHook">
+  <p class="hero-eyebrow">Sound Familiar?</p>
+  <h2 class="hero-headline" id="heroHeadline" aria-label="I Have Tried Everything. Nothing Worked."></h2>
+  <div class="hero-divider">
+    <div class="hero-line"></div>
+    <span class="hero-until">Until now.</span>
+    <div class="hero-line"></div>
   </div>
 </div>
+
+<script>
+(function(){
+  var words = [
+    {text:'“I Have Tried', delay:400},
+    {text:'Everything.', delay:620},
+    {text:'Nothing', delay:860},
+    {text:'Worked.”', delay:1080, cursor:true}
+  ];
+  var headline = document.getElementById('heroHeadline');
+  if(!headline) return;
+  words.forEach(function(w,i){
+    var span = document.createElement('span');
+    span.className = 'hero-word';
+    span.style.animationDelay = w.delay + 'ms';
+    span.textContent = w.text;
+    if(i < words.length-1) span.style.marginRight = '6px';
+    headline.appendChild(span);
+    if(w.cursor){
+      var cur = document.createElement('span');
+      cur.className = 'hero-cursor';
+      headline.appendChild(cur);
+    }
+  });
+})();
+</script>
 
 <!-- ====================================================
      2. PRODUCT GALLERY
