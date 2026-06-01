@@ -62,6 +62,11 @@ body{
 .hero-eye{font-size:8.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(252,98,13,.85);margin-bottom:5px}
 .hero-hl{font-family:var(--disp);font-size:17px;font-weight:900;color:#fff;line-height:1.2;margin:0;overflow:hidden}
 .hero-word{display:inline-block;opacity:0;transform:translateY(26px);animation:heW .5s cubic-bezier(.22,1,.36,1) forwards}
+.hero-word.pulse{animation:heW .5s cubic-bezier(.22,1,.36,1) forwards, hePulse 2.2s ease 1.8s infinite}
+@keyframes hePulse{
+  0%,100%{font-weight:900;color:#fff}
+  45%,55%{font-weight:400;color:rgba(255,255,255,.55)}
+}
 .hero-div{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;opacity:0;animation:heFU .5s ease 1.4s forwards}
 .hero-ln{flex:1;height:1px;background:rgba(252,98,13,.3);transform:scaleX(0);transform-origin:center;animation:heLn .6s ease 1.5s forwards}
 .hero-un{font-size:10.5px;color:rgba(255,255,255,.5);letter-spacing:.06em;white-space:nowrap}
@@ -496,56 +501,53 @@ body{
 
 <!-- HOW TO ENJOY — real website images (animated carousel) -->
 <style>
-/* How To Enjoy carousel */
+/* ── HOW TO ENJOY carousel ── */
+.hte-outer{overflow:hidden;border-radius:13px;border:1px solid var(--bd);background:#fff}
 .hte-track{
   display:flex;
-  width:calc(300% + 24px);
-  gap:8px;
-  transition:transform .42s cubic-bezier(.25,.46,.45,.94);
+  /* 3 slides × 100% each, gap handled via margin */
+  width:300%;
+  transition:transform .45s cubic-bezier(.25,.46,.45,.94);
   will-change:transform;
 }
 .hte-slide{
-  width:calc((100% - 24px) / 3);
+  width:33.3333%;
   flex-shrink:0;
-  border-radius:12px;
   overflow:hidden;
-  border:1px solid var(--bd);
-  background:#fff;
 }
-.hte-img{
-  width:100%;
-  aspect-ratio:4/5;
-  object-fit:cover;
-  display:block;
-}
-.hte-body{
-  padding:11px 12px 13px;
-}
+.hte-img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.hte-body{padding:13px 14px 15px}
 .hte-num{
   display:inline-flex;align-items:center;justify-content:center;
-  width:22px;height:22px;border-radius:50%;
+  width:24px;height:24px;border-radius:50%;
   background:var(--o);color:#fff;
   font-family:var(--disp);font-size:11px;font-weight:900;
-  margin-bottom:6px;
+  margin-bottom:7px;
 }
 .hte-title{
-  font-family:var(--disp);font-size:12px;font-weight:800;
-  text-transform:uppercase;letter-spacing:.06em;
-  color:var(--ink);display:block;margin-bottom:4px;
+  font-family:var(--disp);font-size:13.5px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.07em;
+  color:var(--ink);display:block;margin-bottom:5px;
 }
-.hte-text{font-size:11px;color:var(--g);line-height:1.5;margin:0}
-/* active slide highlight */
-.hte-slide.hte-active{
-  border-color:var(--o);
-  box-shadow:0 0 0 1.5px var(--o);
+.hte-text{font-size:12px;color:var(--g);line-height:1.55;margin:0}
+/* progress bar at bottom */
+.hte-progress{
+  height:3px;background:var(--bd);overflow:hidden;
 }
-.hte-dots{display:flex;justify-content:center;gap:5px;margin-top:12px}
+.hte-progress-fill{
+  height:100%;background:var(--o);
+  width:33.33%;
+  transition:width .45s ease, margin-left .45s ease;
+  border-radius:0 2px 2px 0;
+}
+/* dots */
+.hte-dots{display:flex;justify-content:center;align-items:center;gap:6px;padding:10px 0}
 .hte-dot{
   width:6px;height:6px;border-radius:50%;
   background:var(--bd);cursor:pointer;
-  transition:background .2s,width .2s;
+  transition:background .25s,width .25s;
 }
-.hte-dot.on{background:var(--o);width:16px;border-radius:3px}
+.hte-dot.on{background:var(--o);width:18px;border-radius:3px}
 </style>
 
 <div class="howto rv">
@@ -553,7 +555,7 @@ body{
   <h2 class="sec-h2">How To Enjoy Vivi</h2>
 
   <!-- Outer clip window — shows exactly one card + peek of next -->
-  <div style="overflow:hidden;margin:0 -2px" id="hteOuter">
+  <div class="hte-outer" id="hteOuter">
     <div class="hte-track" id="hteTrack">
 
       <!-- Card 1: Pour It -->
@@ -587,12 +589,13 @@ body{
       </div>
 
     </div>
-  </div>
-
-  <div class="hte-dots">
-    <div class="hte-dot on" onclick="htGo(0)"></div>
-    <div class="hte-dot" onclick="htGo(1)"></div>
-    <div class="hte-dot" onclick="htGo(2)"></div>
+    <!-- progress bar -->
+    <div class="hte-progress"><div class="hte-progress-fill" id="hteBar"></div></div>
+    <div class="hte-dots">
+      <div class="hte-dot on" onclick="htGo(0)"></div>
+      <div class="hte-dot" onclick="htGo(1)"></div>
+      <div class="hte-dot" onclick="htGo(2)"></div>
+    </div>
   </div>
 </div>
 
@@ -918,47 +921,54 @@ setTimeout(function(){showSp();setInterval(showSp,7200);},3500);
 
 
 
-// HOW TO ENJOY — card carousel with auto-advance
+// HOW TO ENJOY — full-width slide carousel
 var htIdx = 0;
 var htTotal = 3;
-var htAutoTimer;
+var htAuto;
 
 function htGo(n) {
-  htIdx = n;
-  // Card width = (container width - 2 * 8px gap) / 3 + 8px gap
+  htIdx = (n + htTotal) % htTotal;
+  // Track is 300% wide; each slide = 100% of outer = 33.33% of track
+  // Translate = n * (100/3)% of track = n * outer.offsetWidth px
   var outer = document.getElementById('hteOuter');
-  if (!outer) return;
-  var cardW = (outer.offsetWidth - 16) / 3;
-  var offset = n * (cardW + 8);
-  document.getElementById('hteTrack').style.transform = 'translateX(-' + offset + 'px)';
+  var track = document.getElementById('hteTrack');
+  if (!outer || !track) return;
+  var pct = htIdx * (100 / 3);
+  track.style.transform = 'translateX(-' + pct + '%)';
   // Dots
-  document.querySelectorAll('.hte-dot').forEach(function(d, i) { d.classList.toggle('on', i === n); });
-  // Active card highlight
-  for (var i = 0; i < htTotal; i++) {
-    var card = document.getElementById('hteCard' + i);
-    if (card) card.classList.toggle('hte-active', i === n);
-  }
-  // Reset auto-timer
-  clearInterval(htAutoTimer);
-  htAutoTimer = setInterval(function() { htGo((htIdx + 1) % htTotal); }, 3200);
-}
-
-// Touch swipe on how to enjoy
-var htTx = 0;
-var hteTrack = document.getElementById('hteTrack');
-if (hteTrack) {
-  hteTrack.addEventListener('touchstart', function(e) { htTx = e.touches[0].clientX; clearInterval(htAutoTimer); }, {passive: true});
-  hteTrack.addEventListener('touchend', function(e) {
-    var diff = htTx - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 30) htGo((htIdx + (diff > 0 ? 1 : -1) + htTotal) % htTotal);
+  document.querySelectorAll('.hte-dot').forEach(function(d, i) {
+    d.classList.toggle('on', i === htIdx);
   });
+  // Progress bar
+  var bar = document.getElementById('hteBar');
+  if (bar) {
+    bar.style.width = '33.33%';
+    bar.style.marginLeft = (htIdx * 33.33) + '%';
+  }
+  // Restart auto
+  clearInterval(htAuto);
+  htAuto = setInterval(function() { htGo(htIdx + 1); }, 3400);
 }
 
-// Start auto-advance after page loads
+// Touch/swipe
+var htTx = 0;
+(function() {
+  var t = document.getElementById('hteTrack');
+  if (!t) return;
+  t.addEventListener('touchstart', function(e) {
+    htTx = e.touches[0].clientX;
+    clearInterval(htAuto);
+  }, {passive: true});
+  t.addEventListener('touchend', function(e) {
+    var diff = htTx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 30) htGo(htIdx + (diff > 0 ? 1 : -1));
+  });
+})();
+
+// Kick off after preloader
 setTimeout(function() {
   htGo(0);
-  htAutoTimer = setInterval(function() { htGo((htIdx + 1) % htTotal); }, 3200);
-}, 2500);
+}, 2600);
 
 // PHOTO LIGHTBOX
 
