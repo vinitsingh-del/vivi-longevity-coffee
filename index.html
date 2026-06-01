@@ -194,11 +194,11 @@ body{
 .qbtn{width:40px;height:42px;border:none;background:none;font-size:18px;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center}
 .qnum{width:34px;text-align:center;font-size:14px;font-weight:600}
 .atc-total{margin-left:auto;font-size:15px;font-weight:700;color:var(--ink)}
-.btnatc{width:100%;height:52px;background:var(--n);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:.03em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:9px;position:relative;overflow:hidden;transition:background .15s,transform .1s}
+.btnatc{width:100%;height:52px;background:var(--o);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:.03em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:9px;position:relative;overflow:hidden;transition:background .15s,transform .1s}
 .btnatc:active{transform:scale(.985)}
 .btnatc::after{content:'';position:absolute;top:0;left:-80%;width:55%;height:100%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.2) 50%,transparent 60%);animation:shim 3.2s ease 2s infinite}
 @keyframes shim{0%{left:-80%}100%{left:130%}}
-.btnatc.ok{background:var(--gr)}
+.btnatc.ok{background:#16A34A}
 .btnsec{width:100%;height:46px;background:transparent;color:var(--n);border:1.5px solid var(--n);border-radius:12px;font-family:var(--sans);font-size:13.5px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:7px}
 .sub-nudge{display:flex;align-items:center;justify-content:center;gap:5px;font-size:11.5px;color:var(--g);padding-bottom:5px}
 .sub-nudge svg{width:12px;height:12px;stroke:var(--gr);stroke-width:2;fill:none}
@@ -221,7 +221,7 @@ body{
 .story-eye{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--o);margin-bottom:6px;display:block}
 .story-h2{font-family:var(--disp);font-size:21px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:6px}
 .story-sub{font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.5;margin-bottom:18px}
-/* Ingredient cards — image-forward */
+/* Ingredient cards - image-forward */
 .icards{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
 .icard{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.05);overflow:hidden}
 .icard-icon{width:56px;flex-shrink:0;background:rgba(252,98,13,.12);display:flex;align-items:center;justify-content:center;padding:14px 0;align-self:stretch}
@@ -323,13 +323,13 @@ body{
 .fdisc{font-size:9.5px;color:rgba(255,255,255,.2);line-height:1.6;margin-top:9px}
 
 /* ── STICKY ATC glassmorphism ── */
-/* ── STICKY ATC — Glassmorphism, compact, fully rounded ── */
+/* ── STICKY ATC - Glassmorphism, compact, fully rounded ── */
 .satc{
   position:fixed;bottom:0;left:50%;
   transform:translateX(-50%) translateY(110%);
   width:calc(100% - 24px);
   max-width:400px;
-  /* glass card — floats above page, not edge-to-edge */
+  /* glass card - floats above page, not edge-to-edge */
   background:rgba(0,27,74,.78);
   backdrop-filter:blur(24px) saturate(200%);
   -webkit-backdrop-filter:blur(24px) saturate(200%);
@@ -390,7 +390,7 @@ body{
 }
 .sqnum{width:22px;text-align:center;font-size:11px;font-weight:700;color:#fff}
 
-/* CTA button — compact, fully rounded pill */
+/* CTA button - compact, fully rounded pill */
 .satc-btn{
   width:100%;
   height:38px;
@@ -540,6 +540,53 @@ body{
   <div class="urg-row"><svg class="uico" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg><div class="sbar-wrap"><div class="sbar-lbl">Only <strong>9 units</strong> left</div><div class="sbar"><div class="sbar-fill"></div></div></div></div>
 </div>
 
+<!-- MINI REVIEW SWIPER — below viewer pill -->
+<style>
+.mrev-wrap{overflow:hidden;padding:0 0 4px;margin:0 0 10px}
+.mrev-track{
+  display:flex;gap:10px;
+  animation:mrevScroll 22s linear infinite;
+  will-change:transform;
+  white-space:nowrap;
+}
+.mrev-track:hover{animation-play-state:paused}
+@keyframes mrevScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+.mrev-card{
+  flex-shrink:0;width:220px;
+  background:#fff;
+  border:1px solid var(--bd);
+  border-radius:12px;
+  padding:12px 13px;
+  white-space:normal;
+  display:inline-flex;
+  flex-direction:column;
+  gap:6px;
+}
+.mrev-stars{display:flex;gap:1px}
+.mrev-text{font-size:11.5px;color:#333;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mrev-author{font-size:10.5px;font-weight:700;color:var(--g)}
+</style>
+
+<div class="mrev-wrap rv">
+  <div class="mrev-track">
+    <!-- Set 1 -->
+    <div class="mrev-card"><div class="mrev-stars"><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="mrev-text">"Tastes amazing, no jitters, no crash. Started a subscription on the spot."</p><span class="mrev-author">Dani R. · Verified</span></div>
+    <div class="mrev-card"><div class="mrev-stars"><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="mrev-text">"Tested my NAD levels before and after 4 months. Went up 35%."</p><span class="mrev-author">Anonymous · Verified</span></div>
+    <div class="mrev-card"><div class="mrev-stars"><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="mrev-text">"I feel really amazing energy with no crash, less brain fog day to day."</p><span class="mrev-author">Dylan K. · Verified</span></div>
+    <div class="mrev-card"><div class="mrev-stars"><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="mrev-text">"VIVI is my favourite new morning ritual. 3 weeks in, huge difference."</p><span class="mrev-author">Lindsay G. · Verified</span></div>
+    <div class="mrev-card"><div class="mrev-stars"><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="mrev-text">"Loving my Vivi! Such a good flavor. Kudos."</p><span class="mrev-author">Tomas L. · Verified</span></div>
+    <!-- Set 2 (duplicate for seamless loop) -->
+    <div class="mrev-card"><div class="mrev-stars"><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="mrev-text">"Tastes amazing, no jitters, no crash. Started a subscription on the spot."</p><span class="mrev-author">Dani R. · Verified</span></div>
+    <div class="mrev-card"><div class="mrev-stars"><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="mrev-text">"Tested my NAD levels before and after 4 months. Went up 35%."</p><span class="mrev-author">Anonymous · Verified</span></div>
+    <div class="mrev-card"><div class="mrev-stars"><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="mrev-text">"I feel really amazing energy with no crash, less brain fog day to day."</p><span class="mrev-author">Dylan K. · Verified</span></div>
+    <div class="mrev-card"><div class="mrev-stars"><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="mrev-text">"VIVI is my favourite new morning ritual. 3 weeks in, huge difference."</p><span class="mrev-author">Lindsay G. · Verified</span></div>
+    <div class="mrev-card"><div class="mrev-stars"><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:10px;height:10px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="mrev-text">"Loving my Vivi! Such a good flavor. Kudos."</p><span class="mrev-author">Tomas L. · Verified</span></div>
+  </div>
+</div>
+
 <!-- 6. BENEFITS -->
 <div class="bstrip rv">
   <div class="bpill"><svg class="bico" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span class="btxt">All-Day Energy</span></div>
@@ -552,9 +599,9 @@ body{
 <div class="packs rv">
   <span class="sec-lbl">Select Your Pack</span>
   <div class="popts" id="popts">
-    <div class="popt" data-price="79" data-per="$2.63/serving" onclick="selPack(this)"><div class="prad"><div class="prad-dot"></div></div><div class="pi"><span class="pname">1 Bag &mdash; 30 Servings</span><span class="psub">One-time purchase</span></div><div class="pprice"><span class="ppnow">$79.00</span><span class="ppwas">$109.00</span></div></div>
-    <div class="popt sel" data-price="145" data-per="$2.42/serving &mdash; save extra $8" onclick="selPack(this)"><span class="pbadge pbp">Best Value</span><div class="prad"><div class="prad-dot"></div></div><div class="pi"><span class="pname">2 Bags &mdash; 60 Servings</span><span class="psub">Save extra $8 &middot; $2.42/serving</span></div><div class="pprice"><span class="ppnow">$145.00</span><span class="ppwas">$218.00</span></div></div>
-    <div class="popt" data-price="199" data-per="$2.21/serving &mdash; biggest saving" onclick="selPack(this)"><span class="pbadge pbn">Most Popular</span><div class="prad"><div class="prad-dot"></div></div><div class="pi"><span class="pname">3 Bags &mdash; 90 Servings</span><span class="psub">Best saving &middot; $2.21/serving</span></div><div class="pprice"><span class="ppnow">$199.00</span><span class="ppwas">$327.00</span></div></div>
+    <div class="popt" data-price="79" data-per="$2.63/serving" onclick="selPack(this)"><div class="prad"><div class="prad-dot"></div></div><div class="pi"><span class="pname">1 Bag · 30 Servings</span><span class="psub">One-time purchase</span></div><div class="pprice"><span class="ppnow">$79.00</span><span class="ppwas">$109.00</span></div></div>
+    <div class="popt sel" data-price="145" data-per="$2.42/serving · save extra $8" onclick="selPack(this)"><span class="pbadge pbp">Best Value</span><div class="prad"><div class="prad-dot"></div></div><div class="pi"><span class="pname">2 Bags · 60 Servings</span><span class="psub">Save extra $8 &middot; $2.42/serving</span></div><div class="pprice"><span class="ppnow">$145.00</span><span class="ppwas">$218.00</span></div></div>
+    <div class="popt" data-price="199" data-per="$2.21/serving · biggest saving" onclick="selPack(this)"><span class="pbadge pbn">Most Popular</span><div class="prad"><div class="prad-dot"></div></div><div class="pi"><span class="pname">3 Bags · 90 Servings</span><span class="psub">Best saving &middot; $2.21/serving</span></div><div class="pprice"><span class="ppnow">$199.00</span><span class="ppwas">$327.00</span></div></div>
   </div>
 </div>
 
@@ -563,22 +610,22 @@ body{
   <span class="sec-lbl">Apply a Coupon</span>
   <div class="coup-row">
     <div class="cchip" onclick="copyCoup('VIVI10',this)"><div><span class="ccode">VIVI10</span><span class="cdesc">Save 10%</span></div><span class="ccopy">TAP</span></div>
-    <div class="cchip" onclick="copyCoup('FIRST20',this)"><div><span class="ccode">FIRST20</span><span class="cdesc">New customer &mdash; 20% off</span></div><span class="ccopy">TAP</span></div>
+    <div class="cchip" onclick="copyCoup('FIRST20',this)"><div><span class="ccode">FIRST20</span><span class="cdesc">New customer, 20% off</span></div><span class="ccopy">TAP</span></div>
   </div>
 </div>
 
-<!-- EMOTIONAL — full bleed image with overlay -->
+<!-- EMOTIONAL - full bleed image with overlay -->
 <div class="emo-wrap rv">
   <img class="emo-img" src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/12bd350d-de26-48da-bb07-6640e83e4ca4&width=800" alt="Vivi lifestyle" onerror="this.style.background='#002B69'">
   <div class="emo-overlay"></div>
   <div class="emo-content">
     <p class="emo-eye2">Sound Familiar?</p>
-    <div class="emo-t">If you&rsquo;ve tried everything&nbsp;&mdash; this is why.</div>
+    <div class="emo-t">If you&rsquo;ve tried everything&nbsp;- this is why.</div>
     <p class="emo-b">Vivi lives in the ritual you already keep. Same cup. Upgraded.</p>
   </div>
 </div>
 
-<!-- HOW TO ENJOY — real website images (animated carousel) -->
+<!-- HOW TO ENJOY - real website images (animated carousel) -->
 <style>
 /* ── HOW TO ENJOY carousel ── */
 .hte-outer{overflow:hidden;border-radius:13px;border:1px solid var(--bd);background:#fff}
@@ -633,7 +680,7 @@ body{
   <span class="sec-eye">Instructions</span>
   <h2 class="sec-h2">How To Enjoy Vivi</h2>
 
-  <!-- Outer clip window — shows exactly one card + peek of next -->
+  <!-- Outer clip window - shows exactly one card + peek of next -->
   <div class="hte-outer" id="hteOuter">
     <div class="hte-track" id="hteTrack">
 
@@ -687,10 +734,10 @@ body{
   </div>
   <button class="btnatc" id="atcbtn" onclick="addToCart()">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-    <span id="atcbtnlbl">Add to Cart &mdash; $145.00</span>
+    <span id="atcbtnlbl">Add to Cart - $145.00</span>
   </button>
-  <button class="btnsec" onclick="addToCart()">Try Vivi Today &mdash; $79.00 One-Time <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-  <div class="sub-nudge"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Subscribe &amp; Save 15% &mdash; Ships Every 30 Days</div>
+  <button class="btnsec" onclick="addToCart()">Try Vivi Today $79.00 One-Time <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+  <div class="sub-nudge"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Subscribe &amp; Save 15%, ships every 30 days</div>
 </div>
 
 <!-- 11. TRUST BADGES -->
@@ -702,7 +749,7 @@ body{
 </div>
 <div class="pay-row"><span class="pbadge2">VISA</span><span class="pbadge2">MASTERCARD</span><span class="pbadge2">AMEX</span><span class="pbadge2">SHOP PAY</span><span class="pbadge2">GOOGLE PAY</span></div>
 
-<!-- 12. INGREDIENT STORY — full bleed image + compact cards -->
+<!-- 12. INGREDIENT STORY - full bleed image + compact cards -->
 <div class="story rv">
   <img class="story-hero-img" src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/8d6c3de9-9aaa-48d6-b63f-ec01138e71b8&width=800" alt="Vivi ingredients" onerror="this.style.display='none'">
   <div class="story-content">
@@ -738,7 +785,7 @@ body{
   </div>
 </div>
 
-<!-- 15. CROSS-SELL — image-forward -->
+<!-- 15. CROSS-SELL - image-forward -->
 <div class="xsell rv">
   <div class="sec-hdr">
     <span class="sec-eye">Complete Your Ritual</span>
@@ -814,7 +861,7 @@ body{
   </div>
 </div>
 
-<!-- 13. REVIEWS — auto-scrolling real UGC strip + review cards -->
+<!-- 13. REVIEWS - auto-scrolling real UGC strip + review cards -->
 <style>
 /* Photo scroll strip */
 .photo-strip-wrap{
@@ -900,7 +947,7 @@ body{
     <div class="rvcard">
       <div class="rvtop"><span class="rvname">Dani R.</span><span class="rvdate">03/02/2026</span></div>
       <div class="rvstars"><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
-      <p class="rvbody">&ldquo;Tastes amazing &mdash; no jitters, no crash. I completed my workout feeling great and had balanced energy all day. Started a subscription on the spot.&rdquo;</p>
+      <p class="rvbody">&ldquo;Tastes amazing - no jitters, no crash. I completed my workout feeling great and had balanced energy all day. Started a subscription on the spot.&rdquo;</p>
       <span class="rvver"><svg viewBox="0 0 24 24" style="width:10px;height:10px;stroke:#16A34A;stroke-width:2.5;fill:none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span>
     </div>
     <div class="rvcard">
@@ -923,9 +970,9 @@ body{
     </div>
   </div>
   <div style="padding:18px 16px 4px">
-    <button class="btnatc" style="background:#002B69" onclick="addToCart()">
+    <button class="btnatc" style="background:var(--o)" onclick="addToCart()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      Try Vivi Today &mdash; $79.00
+      Try Vivi Today $79.00
     </button>
   </div>
 </div>
@@ -936,25 +983,25 @@ body{
     <div class="faqit"><button class="faqbtn" onclick="tfaq(this)">Is Vivi safe to drink daily?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faqbody">Yes. Physician formulated, third-party tested. Consult your doctor if you have underlying conditions.</div></div>
     <div class="faqit"><button class="faqbtn" onclick="tfaq(this)">What&rsquo;s inside Vivi?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faqbody">Premium Arabica + NR 330mg + Collagen 5g + Rutin 50mg. No fillers, no additives.</div></div>
     <div class="faqit"><button class="faqbtn" onclick="tfaq(this)">When will I see results?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faqbody">Cleaner energy within the first week. Full benefits in 4&ndash;8 weeks of daily use.</div></div>
-    <div class="faqit"><button class="faqbtn" onclick="tfaq(this)">How is it different from NAD+ capsules?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faqbody">Capsules work &mdash; but people forget. Vivi is in a habit you already have every morning.</div></div>
+    <div class="faqit"><button class="faqbtn" onclick="tfaq(this)">How is it different from NAD+ capsules?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faqbody">Capsules work - but people forget. Vivi is in a habit you already have every morning.</div></div>
     <div class="faqit"><button class="faqbtn" onclick="tfaq(this)">What&rsquo;s the return policy?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faqbody">30-day risk-free trial. Full refund even on opened bags. No questions asked.</div></div>
   </div>
 </div>
 
-<!-- 16. GUARANTEE — full bleed image + overlay -->
+<!-- 16. GUARANTEE - full bleed image + overlay -->
 <div class="guar rv">
   <img class="guar-img" src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/667d90ed-538b-4257-8096-018bf931cb92&width=800" alt="Vivi guarantee" onerror="this.style.display='none'">
   <div class="guar-content">
     <span class="guar-eye">30 Day Risk Free Trial</span>
     <svg class="gu-sh" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     <h2 class="gu-t">Risk-Free.<br>Every Time.</h2>
-    <p class="gu-b">Drink Vivi for 30 days. If it&rsquo;s not right &mdash; full refund, no questions.</p>
+    <p class="gu-b">Drink Vivi for 30 days. If it&rsquo;s not right - full refund, no questions.</p>
     <div class="gu-list">
       <div class="gu-item"><svg class="gu-ico" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Full refund, even on opened bags</div>
       <div class="gu-item"><svg class="gu-ico" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Cancel subscription anytime</div>
       <div class="gu-item"><svg class="gu-ico" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Free 3-day shipping always</div>
     </div>
-    <button class="btnatc" onclick="addToCart()" style="background:#FC620D"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Try Vivi Today &mdash; $79.00</button>
+    <button class="btnatc" onclick="addToCart()" style="background:#FC620D"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Try Vivi Today $79.00</button>
   </div>
 </div>
 
@@ -970,7 +1017,7 @@ body{
 </footer>
 
 <!-- 17. STICKY ATC -->
-<!-- 17. STICKY ATC — glass pill card -->
+<!-- 17. STICKY ATC - glass pill card -->
 <div class="satc" id="satc">
   <!-- Row: thumb · name+price · qty -->
   <div class="satc-row">
@@ -979,7 +1026,7 @@ body{
     </div>
     <div class="satc-info">
       <span class="satc-name">Longevity Coffee+</span>
-      <span class="satc-price" id="satcprice">$145.00 &mdash; Best Value</span>
+      <span class="satc-price" id="satcprice">$145.00 · Best Value</span>
     </div>
     <div class="satc-qty">
       <button class="sqbtn" onclick="chQty(-1)" aria-label="Decrease">
@@ -998,7 +1045,7 @@ body{
       <line x1="3" y1="6" x2="21" y2="6"/>
       <path d="M16 10a4 4 0 0 1-8 0"/>
     </svg>
-    <span id="satcbtnlbl">Add to Cart &mdash; $145.00</span>
+    <span id="satcbtnlbl">Add to Cart - $145.00</span>
   </button>
 </div>
 
@@ -1054,17 +1101,17 @@ function selPack(el){
 // QTY
 var qty=1;
 function chQty(d){qty=Math.max(1,qty+d);document.getElementById('qnum').textContent=qty;document.getElementById('sqnum').textContent=qty;updateAll();}
-function updateAll(){var t=(packPrice*qty).toFixed(0);var tot='$'+t+'.00';document.getElementById('atctot').textContent=tot;document.getElementById('atcbtnlbl').textContent='Add to Cart — '+tot;document.getElementById('satcprice').textContent=tot+' — '+packLabel;document.getElementById('satcbtnlbl').textContent='Add to Cart — '+tot;}
+function updateAll(){var t=(packPrice*qty).toFixed(0);var tot='$'+t+'.00';document.getElementById('atctot').textContent=tot;document.getElementById('atcbtnlbl').textContent='Add to Cart - '+tot;document.getElementById('satcprice').textContent=tot+' - '+packLabel;document.getElementById('satcbtnlbl').textContent='Add to Cart - '+tot;}
 
 // ATC
 var cartN=0;
 function addToCart(){
   cartN++;
   document.getElementById('cpip').textContent=cartN;
-  // Main ATC button — green confirm
+  // Main ATC button - green confirm
   var btn=document.getElementById('atcbtn');
   if(btn){btn.classList.add('ok');document.getElementById('atcbtnlbl').textContent='✓ Added!';}
-  // Sticky ATC button — also flash
+  // Sticky ATC button - also flash
   var sbtn=document.getElementById('satcbtn');
   var slbl=document.getElementById('satcbtnlbl');
   if(sbtn&&slbl){var prevBg=sbtn.style.background;sbtn.style.background='#16A34A';slbl.textContent='✓ Added!';}
@@ -1103,7 +1150,7 @@ setTimeout(function(){showSp();setInterval(showSp,7200);},3500);
 
 
 
-// HOW TO ENJOY — full-width slide carousel
+// HOW TO ENJOY - full-width slide carousel
 var htIdx = 0;
 var htTotal = 3;
 var htAuto;
