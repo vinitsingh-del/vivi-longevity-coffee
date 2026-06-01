@@ -475,32 +475,46 @@ body{
 .fdisc{font-size:10px;color:rgba(255,255,255,.2);line-height:1.6;margin-top:10px}
 
 /* ─── 17. STICKY ATC ─── */
+/* ── STICKY ATC — Glassmorphism ── */
 .satc{
   position:fixed;bottom:0;left:50%;
-  transform:translateX(-50%) translateY(100%);
+  transform:translateX(-50%) translateY(110%);
   width:100%;max-width:430px;
-  background:rgba(255,255,255,.97);backdrop-filter:blur(12px);
-  border-top:1px solid var(--border);
-  padding:11px 16px 20px;
+  /* glassmorphism: semi-transparent navy + heavy blur */
+  background:rgba(0,32,80,.72);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  /* orange glow line on top */
+  border-top:1.5px solid rgba(252,98,13,.55);
+  box-shadow:0 -4px 24px rgba(0,0,0,.22), 0 -1px 0 rgba(252,98,13,.18);
+  padding:10px 14px 18px;
   z-index:400;
-  transition:transform .35s cubic-bezier(.22,1,.36,1);
+  transition:transform .38s cubic-bezier(.22,1,.36,1);
 }
 .satc.show{transform:translateX(-50%) translateY(0)}
-.satc-row{display:flex;align-items:center;gap:10px;margin-bottom:9px}
-.satc-thumb{width:40px;height:40px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--bg)}
+.satc-row{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+/* thumb */
+.satc-thumb{width:36px;height:36px;border-radius:8px;overflow:hidden;flex-shrink:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15)}
 .satc-thumb img{width:100%;height:100%;object-fit:cover}
+/* info */
 .satc-info{flex:1;min-width:0}
-.satc-name{font-size:12.5px;font-weight:700;color:var(--ink);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.satc-price{font-size:12px;color:var(--gray);display:block}
-.satc-qty{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:8px;overflow:hidden}
-.sqbtn{width:32px;height:32px;border:none;background:none;font-size:16px;cursor:pointer;color:var(--ink)}
-.sqnum{width:28px;text-align:center;font-size:14px;font-weight:600}
+.satc-name{font-size:11.5px;font-weight:700;color:#fff;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.satc-price{font-size:11px;color:rgba(255,255,255,.55);display:block}
+/* qty controls — glass style */
+.satc-qty{display:flex;align-items:center;border:1px solid rgba(255,255,255,.2);border-radius:8px;overflow:hidden;background:rgba(255,255,255,.08)}
+.sqbtn{width:29px;height:29px;border:none;background:none;font-size:15px;cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center}
+.sqnum{width:25px;text-align:center;font-size:13px;font-weight:700;color:#fff}
+/* CTA button — 10% smaller, navy solid inside glass card */
 .satc-btn{
-  width:100%;height:50px;
-  background:var(--navy);color:#fff;border:none;border-radius:var(--r);
-  font-family:var(--sans);font-size:15px;font-weight:700;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:7px;
+  width:100%;height:45px;
+  background:var(--navy);color:#fff;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:10px;
+  font-family:var(--sans);font-size:13.5px;font-weight:700;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:6px;
   position:relative;overflow:hidden;
+  letter-spacing:.02em;
 }
 .satc-btn::after{
   content:'';position:absolute;top:0;left:-80%;width:55%;height:100%;
