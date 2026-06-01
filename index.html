@@ -58,14 +58,14 @@ body{
 .cpip{position:absolute;top:-1px;right:-1px;width:14px;height:14px;border-radius:50%;background:var(--o);color:#fff;font-size:7px;font-weight:800;display:flex;align-items:center;justify-content:center}
 
 /* ── HERO HOOK ── */
-.hero-hook{background:var(--n);padding:11px 16px 10px;text-align:center;overflow:hidden}
+.hero-hook{background:var(--n);padding:11px 16px 10px;text-align:center;overflow:hidden;contain:layout}
 .hero-eye{font-size:8.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(252,98,13,.85);margin-bottom:5px}
-.hero-hl{font-family:var(--disp);font-size:17px;font-weight:900;color:#fff;line-height:1.2;margin:0;overflow:hidden}
+.hero-hl{font-family:var(--disp);font-size:17px;font-weight:900;color:#fff;line-height:1.2;margin:0;overflow:hidden;will-change:auto}
 .hero-word{display:inline-block;opacity:0;transform:translateY(26px);animation:heW .5s cubic-bezier(.22,1,.36,1) forwards}
-.hero-word.pulse{animation:heW .5s cubic-bezier(.22,1,.36,1) forwards, hePulse 2.2s ease 1.8s infinite}
+.hero-word.pulse{animation:heW .5s cubic-bezier(.22,1,.36,1) forwards, hePulse 2.4s ease 1.8s infinite}
 @keyframes hePulse{
-  0%,100%{font-weight:900;color:#fff}
-  45%,55%{font-weight:400;color:rgba(255,255,255,.55)}
+  0%,100%{opacity:1;text-shadow:none}
+  45%,55%{opacity:.45;text-shadow:none}
 }
 .hero-div{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;opacity:0;animation:heFU .5s ease 1.4s forwards}
 .hero-ln{flex:1;height:1px;background:rgba(252,98,13,.3);transform:scaleX(0);transform-origin:center;animation:heLn .6s ease 1.5s forwards}
