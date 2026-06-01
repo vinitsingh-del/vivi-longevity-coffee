@@ -494,53 +494,105 @@ body{
   </div>
 </div>
 
-<!-- HOW TO ENJOY — real website images (swipeable) -->
+<!-- HOW TO ENJOY — real website images (animated carousel) -->
+<style>
+/* How To Enjoy carousel */
+.hte-track{
+  display:flex;
+  width:calc(300% + 24px);
+  gap:8px;
+  transition:transform .42s cubic-bezier(.25,.46,.45,.94);
+  will-change:transform;
+}
+.hte-slide{
+  width:calc((100% - 24px) / 3);
+  flex-shrink:0;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--bd);
+  background:#fff;
+}
+.hte-img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  display:block;
+}
+.hte-body{
+  padding:11px 12px 13px;
+}
+.hte-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:50%;
+  background:var(--o);color:#fff;
+  font-family:var(--disp);font-size:11px;font-weight:900;
+  margin-bottom:6px;
+}
+.hte-title{
+  font-family:var(--disp);font-size:12px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em;
+  color:var(--ink);display:block;margin-bottom:4px;
+}
+.hte-text{font-size:11px;color:var(--g);line-height:1.5;margin:0}
+/* active slide highlight */
+.hte-slide.hte-active{
+  border-color:var(--o);
+  box-shadow:0 0 0 1.5px var(--o);
+}
+.hte-dots{display:flex;justify-content:center;gap:5px;margin-top:12px}
+.hte-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--bd);cursor:pointer;
+  transition:background .2s,width .2s;
+}
+.hte-dot.on{background:var(--o);width:16px;border-radius:3px}
+</style>
+
 <div class="howto rv">
   <span class="sec-eye">Instructions</span>
   <h2 class="sec-h2">How To Enjoy Vivi</h2>
-  <div style="position:relative;overflow:hidden;border-radius:13px;border:1px solid var(--bd)" id="howtoWrap">
-    <div style="display:flex;width:100%;transition:transform .38s cubic-bezier(.25,.46,.45,.94)" id="howtoSlides">
 
-      <div style="min-width:100%;flex-shrink:0">
-        <div style="position:relative">
-          <img src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/12bd350d-de26-48da-bb07-6640e83e4ca4?width=820" alt="Pour Vivi into your mug" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" loading="lazy">
-          <div style="position:absolute;top:12px;left:12px;width:30px;height:30px;border-radius:50%;background:#FC620D;color:#fff;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.25)">1</div>
-        </div>
-        <div style="padding:14px 16px;background:#fff">
-          <p style="font-family:'Nunito',sans-serif;font-size:13.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#1C1C1C;margin-bottom:4px">Pour It</p>
-          <p style="font-size:12.5px;color:#7B7B7B;line-height:1.55;margin:0">Tear open a stick of Vivi and pour directly into your favourite mug.</p>
+  <!-- Outer clip window — shows exactly one card + peek of next -->
+  <div style="overflow:hidden;margin:0 -2px" id="hteOuter">
+    <div class="hte-track" id="hteTrack">
+
+      <!-- Card 1: Pour It -->
+      <div class="hte-slide hte-active" id="hteCard0">
+        <img class="hte-img" src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/12bd350d-de26-48da-bb07-6640e83e4ca4?width=820" alt="Pour Vivi into your mug" loading="lazy">
+        <div class="hte-body">
+          <div class="hte-num">1</div>
+          <span class="hte-title">Pour It</span>
+          <p class="hte-text">Tear open a stick of Vivi and pour directly into your favourite mug.</p>
         </div>
       </div>
 
-      <div style="min-width:100%;flex-shrink:0">
-        <div style="position:relative">
-          <img src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/8d6c3de9-9aaa-48d6-b63f-ec01138e71b8?width=820" alt="Mix Vivi with hot water or milk" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" loading="lazy">
-          <div style="position:absolute;top:12px;left:12px;width:30px;height:30px;border-radius:50%;background:#FC620D;color:#fff;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.25)">2</div>
-        </div>
-        <div style="padding:14px 16px;background:#fff">
-          <p style="font-family:'Nunito',sans-serif;font-size:13.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#1C1C1C;margin-bottom:4px">Mix It</p>
-          <p style="font-size:12.5px;color:#7B7B7B;line-height:1.55;margin:0"><strong>Black Coffee:</strong> Add 5&ndash;7 oz hot water &nbsp;&middot;&nbsp; <strong>Latte:</strong> Add 4&ndash;6 oz steamed milk</p>
+      <!-- Card 2: Mix It -->
+      <div class="hte-slide" id="hteCard1">
+        <img class="hte-img" src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/8d6c3de9-9aaa-48d6-b63f-ec01138e71b8?width=820" alt="Mix Vivi" loading="lazy">
+        <div class="hte-body">
+          <div class="hte-num">2</div>
+          <span class="hte-title">Mix It</span>
+          <p class="hte-text"><strong>Black:</strong> 5&ndash;7 oz hot water &nbsp;&middot;&nbsp; <strong>Latte:</strong> 4&ndash;6 oz steamed milk</p>
         </div>
       </div>
 
-      <div style="min-width:100%;flex-shrink:0">
-        <div style="position:relative">
-          <img src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/da662245-4ffa-43f8-8518-39f2642e984d?width=820" alt="Finish and enjoy Vivi" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" loading="lazy">
-          <div style="position:absolute;top:12px;left:12px;width:30px;height:30px;border-radius:50%;background:#FC620D;color:#fff;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.25)">3</div>
-        </div>
-        <div style="padding:14px 16px;background:#fff">
-          <p style="font-family:'Nunito',sans-serif;font-size:13.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#1C1C1C;margin-bottom:4px">Finish It</p>
-          <p style="font-size:12.5px;color:#7B7B7B;line-height:1.55;margin:0">Stir and sip. <em>Iced: dissolve in cold milk, add ice.</em></p>
+      <!-- Card 3: Finish It -->
+      <div class="hte-slide" id="hteCard2">
+        <img class="hte-img" src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/da662245-4ffa-43f8-8518-39f2642e984d?width=820" alt="Finish Vivi" loading="lazy">
+        <div class="hte-body">
+          <div class="hte-num">3</div>
+          <span class="hte-title">Finish It</span>
+          <p class="hte-text">Stir and sip. <em>Iced: cold milk + ice.</em></p>
         </div>
       </div>
 
     </div>
-    <!-- nav dots -->
-    <div style="display:flex;justify-content:center;gap:6px;padding:12px 0;background:#fff;border-top:1px solid var(--bd)">
-      <div class="sdot on" onclick="howtoGo(0)"></div>
-      <div class="sdot" onclick="howtoGo(1)"></div>
-      <div class="sdot" onclick="howtoGo(2)"></div>
-    </div>
+  </div>
+
+  <div class="hte-dots">
+    <div class="hte-dot on" onclick="htGo(0)"></div>
+    <div class="hte-dot" onclick="htGo(1)"></div>
+    <div class="hte-dot" onclick="htGo(2)"></div>
   </div>
 </div>
 
@@ -618,21 +670,73 @@ body{
   </div>
 </div>
 
-<!-- 13. REVIEWS — real UGC photos from Judge.me -->
+<!-- 13. REVIEWS — auto-scrolling real UGC strip + review cards -->
+<style>
+/* Photo scroll strip */
+.photo-strip-wrap{
+  overflow:hidden;
+  padding:0 0 2px;
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+  mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
+}
+.photo-strip{
+  display:flex;
+  gap:8px;
+  animation:stripScroll 28s linear infinite;
+  will-change:transform;
+  padding:4px 0;
+}
+.photo-strip:hover{animation-play-state:paused}
+@keyframes stripScroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+</style>
+
 <div class="reviews rv" id="reviews">
   <div style="padding:0 16px 14px">
     <span class="sec-eye">Customer Reviews</span>
     <h2 style="font-family:'Nunito',sans-serif;font-size:20px;font-weight:800;color:#1C1C1C;line-height:1.2">Real People. Real Results.</h2>
   </div>
 
-  <!-- Rating summary -->
+  <!-- Rating bar -->
   <div class="revhead">
     <div class="bnum">4.9</div>
     <div class="rmeta">
-      <div class="stars-svg" style="gap:2px"><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
+      <div style="display:flex;gap:2px;margin-bottom:3px"><svg style="width:13px;height:13px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:13px;height:13px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:13px;height:13px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:13px;height:13px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:13px;height:13px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
       <div class="rcnt">1,085 verified reviews</div>
     </div>
   </div>
+
+  <!-- AUTO-SCROLLING PHOTO STRIP (left to right, infinite) -->
+  <div style="padding:4px 0 18px">
+    <p style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7B7B7B;margin-bottom:10px;padding:0 16px">Customer Photos</p>
+    <div class="photo-strip-wrap">
+      <div class="photo-strip" id="photoStrip">
+        <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1779225747__img_3849__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1776791607__img_3515__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1773852046__6a62a9d0-ae45-42b0-b1d8-5b1d99c23e5b__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1772408590__1772408579873-img_8256__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1770476586__img_5224__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1770321328__1770321323788-img_4200__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1769190417__img_2075__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1768955271__img_2044__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1767467166__img_1752__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1779225747__img_3849__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1776791607__img_3515__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1773852046__6a62a9d0-ae45-42b0-b1d8-5b1d99c23e5b__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1772408590__1772408579873-img_8256__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1770476586__img_5224__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1770321328__1770321323788-img_4200__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1769190417__img_2075__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1768955271__img_2044__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      <div style="flex-shrink:0;width:120px;height:120px;border-radius:10px;overflow:hidden;cursor:pointer"><img src="https://judgeme.imgix.net/vivi-labs/1767467166__img_1752__original.jpeg?auto=format&w=600" alt="Customer review photo" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy"></div>
+      
+      </div>
+    </div>
+  </div>
+
+  <!-- Rating bars -->
   <div class="rbars">
     <div class="rbar-row"><span class="rbl">5&#9733;</span><div class="rbt"><div class="rbf" style="width:87%"></div></div><span class="rbp">87%</span></div>
     <div class="rbar-row"><span class="rbl">4&#9733;</span><div class="rbt"><div class="rbf" style="width:9%"></div></div><span class="rbp">9%</span></div>
@@ -641,73 +745,36 @@ body{
     <div class="rbar-row"><span class="rbl">1&#9733;</span><div class="rbt"><div class="rbf" style="width:0%"></div></div><span class="rbp">0%</span></div>
   </div>
 
-  <!-- PHOTO MOSAIC: 9 real Judge.me customer photos -->
-  <div style="padding:0 16px 18px">
-    <p style="font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7B7B7B;margin-bottom:10px">Customer Photos</p>
-    <!-- 3x3 masonry-style grid -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto auto;gap:3px;border-radius:12px;overflow:hidden">
-      <!-- Row 1: full width + 2 squares -->
-      <img src="https://judgeme.imgix.net/vivi-labs/1779225747__img_3849__original.jpeg?auto=format&w=600" alt="Customer photo" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;cursor:pointer" loading="lazy" onclick="openPhoto(0)">
-      <img src="https://judgeme.imgix.net/vivi-labs/1776791607__img_3515__original.jpeg?auto=format&w=600" alt="Customer photo" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;cursor:pointer" loading="lazy" onclick="openPhoto(1)">
-      <img src="https://judgeme.imgix.net/vivi-labs/1773852046__6a62a9d0-ae45-42b0-b1d8-5b1d99c23e5b__original.jpeg?auto=format&w=600" alt="Customer photo" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;cursor:pointer" loading="lazy" onclick="openPhoto(2)">
-      <!-- Row 2 -->
-      <img src="https://judgeme.imgix.net/vivi-labs/1772408590__1772408579873-img_8256__original.jpeg?auto=format&w=600" alt="Customer photo" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;cursor:pointer" loading="lazy" onclick="openPhoto(3)">
-      <img src="https://judgeme.imgix.net/vivi-labs/1770476586__img_5224__original.jpeg?auto=format&w=600" alt="Customer photo" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;cursor:pointer" loading="lazy" onclick="openPhoto(4)">
-      <img src="https://judgeme.imgix.net/vivi-labs/1770321328__1770321323788-img_4200__original.jpeg?auto=format&w=600" alt="Customer photo" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;cursor:pointer" loading="lazy" onclick="openPhoto(5)">
-      <!-- Row 3 -->
-      <img src="https://judgeme.imgix.net/vivi-labs/1769190417__img_2075__original.jpeg?auto=format&w=600" alt="Customer photo" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;cursor:pointer" loading="lazy" onclick="openPhoto(6)">
-      <img src="https://judgeme.imgix.net/vivi-labs/1768955271__img_2044__original.jpeg?auto=format&w=600" alt="Customer photo" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;cursor:pointer" loading="lazy" onclick="openPhoto(7)">
-      <!-- Last slot: "View all" overlay -->
-      <div style="position:relative;cursor:pointer;overflow:hidden" onclick="openPhoto(8)">
-        <img src="https://judgeme.imgix.net/vivi-labs/1767467166__img_1752__original.jpeg?auto=format&w=600" alt="Customer photo" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block" loading="lazy">
-        <div style="position:absolute;inset:0;background:rgba(0,43,105,.65);display:flex;flex-direction:column;align-items:center;justify-content:center">
-          <span style="color:#fff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:900">+900</span>
-          <span style="color:rgba(255,255,255,.8);font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-top:2px">Reviews</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Lightbox for photo tap -->
-  <div id="photoLb" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9998;align-items:center;justify-content:center" onclick="this.style.display='none'">
-    <img id="photoLbImg" src="" alt="" style="max-width:94%;max-height:86vh;object-fit:contain;border-radius:8px">
-  </div>
-
   <!-- Written review cards -->
   <div class="rvcards">
-    <!-- Dylan K — from Replo testimonial section -->
     <div class="rvcard">
       <div class="rvtop"><span class="rvname">Dylan K.</span><span class="rvdate">Verified Customer</span></div>
-      <div class="rvstars"><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
+      <div class="rvstars"><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
       <p class="rvbody">&ldquo;I&rsquo;ve tried every functional coffee on the market. Vivi is the first one I actually love the taste of. I feel this really amazing energy, with no crash, and less brain fog day to day.&rdquo;</p>
       <span class="rvver"><svg viewBox="0 0 24 24" style="width:10px;height:10px;stroke:#16A34A;stroke-width:2.5;fill:none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span>
     </div>
-    <!-- Dani R -->
     <div class="rvcard">
       <div class="rvtop"><span class="rvname">Dani R.</span><span class="rvdate">03/02/2026</span></div>
-      <div class="rvstars"><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
-      <p class="rvbody">&ldquo;I was offered a free sample at Equinox — tastes amazing, no jitters, no crash. Completed my workout feeling great and had balanced energy all day. Started a subscription on the spot.&rdquo;</p>
+      <div class="rvstars"><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
+      <p class="rvbody">&ldquo;Tastes amazing &mdash; no jitters, no crash. I completed my workout feeling great and had balanced energy all day. Started a subscription on the spot.&rdquo;</p>
       <span class="rvver"><svg viewBox="0 0 24 24" style="width:10px;height:10px;stroke:#16A34A;stroke-width:2.5;fill:none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span>
     </div>
-    <!-- Anonymous NAD -->
     <div class="rvcard">
       <div class="rvtop"><span class="rvname">Anonymous</span><span class="rvdate">05/19/2026</span></div>
-      <div class="rvstars"><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
-      <p class="rvbody">&ldquo;Tested my NAD levels before and after 4 months of Vivi. Went up 35%. Wild.&rdquo;</p>
+      <div class="rvstars"><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
+      <p class="rvbody">&ldquo;Tested my NAD levels before and after 4 months. Went up 35%. Wild.&rdquo;</p>
       <span class="rvver"><svg viewBox="0 0 24 24" style="width:10px;height:10px;stroke:#16A34A;stroke-width:2.5;fill:none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span>
     </div>
-    <!-- Tomas L -->
-    <div class="rvcard">
-      <div class="rvtop"><span class="rvname">Tomas L.</span><span class="rvdate">05/20/2026</span></div>
-      <div class="rvstars"><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
-      <p class="rvbody">&ldquo;Loving my Vivi! Such a good flavor. Kudos.&rdquo;</p>
-      <span class="rvver"><svg viewBox="0 0 24 24" style="width:10px;height:10px;stroke:#16A34A;stroke-width:2.5;fill:none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span>
-    </div>
-    <!-- Lindsay G -->
     <div class="rvcard">
       <div class="rvtop"><span class="rvname">Lindsay G.</span><span class="rvdate">05/10/2026</span></div>
-      <div class="rvstars"><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
+      <div class="rvstars"><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
       <p class="rvbody">&ldquo;VIVI is my favourite new morning ritual. 3 weeks in and I already feel a huge difference.&rdquo;</p>
+      <span class="rvver"><svg viewBox="0 0 24 24" style="width:10px;height:10px;stroke:#16A34A;stroke-width:2.5;fill:none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span>
+    </div>
+    <div class="rvcard">
+      <div class="rvtop"><span class="rvname">Tomas L.</span><span class="rvdate">05/20/2026</span></div>
+      <div class="rvstars"><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg style="width:12px;height:12px;fill:#FC620D;flex-shrink:0" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
+      <p class="rvbody">&ldquo;Loving my Vivi! Such a good flavor. Kudos to the team.&rdquo;</p>
       <span class="rvver"><svg viewBox="0 0 24 24" style="width:10px;height:10px;stroke:#16A34A;stroke-width:2.5;fill:none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span>
     </div>
   </div>
@@ -850,26 +917,51 @@ function showSp(){var d=spd[spi%spd.length];spi++;document.getElementById('spavt
 setTimeout(function(){showSp();setInterval(showSp,7200);},3500);
 
 
-// HOWTO CAROUSEL
-var hi=0;
-function howtoGo(n){
-  hi=n;
-  document.getElementById('howtoSlides').style.transform='translateX(-'+(n*100)+'%)';
-  document.querySelectorAll('#howtoWrap .sdot').forEach(function(d,i){d.classList.toggle('on',i===n);});
+
+// HOW TO ENJOY — card carousel with auto-advance
+var htIdx = 0;
+var htTotal = 3;
+var htAutoTimer;
+
+function htGo(n) {
+  htIdx = n;
+  // Card width = (container width - 2 * 8px gap) / 3 + 8px gap
+  var outer = document.getElementById('hteOuter');
+  if (!outer) return;
+  var cardW = (outer.offsetWidth - 16) / 3;
+  var offset = n * (cardW + 8);
+  document.getElementById('hteTrack').style.transform = 'translateX(-' + offset + 'px)';
+  // Dots
+  document.querySelectorAll('.hte-dot').forEach(function(d, i) { d.classList.toggle('on', i === n); });
+  // Active card highlight
+  for (var i = 0; i < htTotal; i++) {
+    var card = document.getElementById('hteCard' + i);
+    if (card) card.classList.toggle('hte-active', i === n);
+  }
+  // Reset auto-timer
+  clearInterval(htAutoTimer);
+  htAutoTimer = setInterval(function() { htGo((htIdx + 1) % htTotal); }, 3200);
 }
-var htx=0;
-var hwrap=document.getElementById('howtoSlides');
-if(hwrap){
-  hwrap.addEventListener('touchstart',function(e){htx=e.touches[0].clientX;},{passive:true});
-  hwrap.addEventListener('touchend',function(e){var diff=htx-e.changedTouches[0].clientX;if(Math.abs(diff)>40)howtoGo((hi+(diff>0?1:-1)+3)%3);});
+
+// Touch swipe on how to enjoy
+var htTx = 0;
+var hteTrack = document.getElementById('hteTrack');
+if (hteTrack) {
+  hteTrack.addEventListener('touchstart', function(e) { htTx = e.touches[0].clientX; clearInterval(htAutoTimer); }, {passive: true});
+  hteTrack.addEventListener('touchend', function(e) {
+    var diff = htTx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 30) htGo((htIdx + (diff > 0 ? 1 : -1) + htTotal) % htTotal);
+  });
 }
+
+// Start auto-advance after page loads
+setTimeout(function() {
+  htGo(0);
+  htAutoTimer = setInterval(function() { htGo((htIdx + 1) % htTotal); }, 3200);
+}, 2500);
+
 // PHOTO LIGHTBOX
-var photoUrls=['https://judgeme.imgix.net/vivi-labs/1779225747__img_3849__original.jpeg?auto=format&w=600', 'https://judgeme.imgix.net/vivi-labs/1776791607__img_3515__original.jpeg?auto=format&w=600', 'https://judgeme.imgix.net/vivi-labs/1773852046__6a62a9d0-ae45-42b0-b1d8-5b1d99c23e5b__original.jpeg?auto=format&w=600', 'https://judgeme.imgix.net/vivi-labs/1772408590__1772408579873-img_8256__original.jpeg?auto=format&w=600', 'https://judgeme.imgix.net/vivi-labs/1770476586__img_5224__original.jpeg?auto=format&w=600', 'https://judgeme.imgix.net/vivi-labs/1770321328__1770321323788-img_4200__original.jpeg?auto=format&w=600', 'https://judgeme.imgix.net/vivi-labs/1769190417__img_2075__original.jpeg?auto=format&w=600', 'https://judgeme.imgix.net/vivi-labs/1768955271__img_2044__original.jpeg?auto=format&w=600', 'https://judgeme.imgix.net/vivi-labs/1767467166__img_1752__original.jpeg?auto=format&w=600'];
-function openPhoto(idx){
-  var lb=document.getElementById('photoLb');
-  document.getElementById('photoLbImg').src=photoUrls[idx];
-  lb.style.display='flex';
-}
+
 
 // LOGO FALLBACK
 (function(){var img=document.getElementById('hdrimg');if(img){img.addEventListener('error',function(){img.style.display='none';var fb=document.getElementById('hdrfb');if(fb)fb.style.display='block';});}})(  );
