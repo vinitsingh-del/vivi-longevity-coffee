@@ -323,19 +323,98 @@ body{
 .fdisc{font-size:9.5px;color:rgba(255,255,255,.2);line-height:1.6;margin-top:9px}
 
 /* ── STICKY ATC glassmorphism ── */
-.satc{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(110%);width:100%;max-width:430px;background:rgba(0,32,80,.75);backdrop-filter:blur(22px) saturate(190%);-webkit-backdrop-filter:blur(22px) saturate(190%);border-top:1.5px solid rgba(252,98,13,.5);box-shadow:0 -6px 28px rgba(0,0,0,.28);padding:8px 12px 14px;z-index:400;transition:transform .38s cubic-bezier(.22,1,.36,1)}
+/* ── STICKY ATC — Glassmorphism, compact, fully rounded ── */
+.satc{
+  position:fixed;bottom:0;left:50%;
+  transform:translateX(-50%) translateY(110%);
+  width:calc(100% - 24px);
+  max-width:400px;
+  /* glass card — floats above page, not edge-to-edge */
+  background:rgba(0,27,74,.78);
+  backdrop-filter:blur(24px) saturate(200%);
+  -webkit-backdrop-filter:blur(24px) saturate(200%);
+  border:1px solid rgba(252,98,13,.35);
+  border-radius:20px;
+  box-shadow:
+    0 -2px 0 rgba(252,98,13,.25),
+    0 8px 32px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.08);
+  padding:10px 12px 12px;
+  margin-bottom:10px;
+  z-index:400;
+  transition:transform .42s cubic-bezier(.22,1,.36,1),opacity .3s ease;
+}
 .satc.show{transform:translateX(-50%) translateY(0)}
-.satc-row{display:flex;align-items:center;gap:7px;margin-bottom:6px}
-.satc-thumb{width:29px;height:29px;border-radius:6px;overflow:hidden;flex-shrink:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14)}
+
+/* top info row */
+.satc-row{
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:8px;
+  padding-bottom:8px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+/* product thumb */
+.satc-thumb{
+  width:32px;height:32px;
+  border-radius:8px;overflow:hidden;flex-shrink:0;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 1px 4px rgba(0,0,0,.2);
+}
 .satc-thumb img{width:100%;height:100%;object-fit:cover}
+/* product name + price */
 .satc-info{flex:1;min-width:0}
-.satc-name{font-size:9.5px;font-weight:700;color:#fff;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.satc-price{font-size:9px;color:rgba(255,255,255,.5);display:block;margin-top:1px}
-.satc-qty{display:flex;align-items:center;border:1px solid rgba(255,255,255,.18);border-radius:6px;overflow:hidden;background:rgba(255,255,255,.07)}
-.sqbtn{width:23px;height:23px;border:none;background:none;font-size:12px;cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center}
-.sqnum{width:20px;text-align:center;font-size:10px;font-weight:700;color:#fff}
-.satc-btn{width:100%;height:36px;background:var(--n);color:#fff;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:var(--sans);font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;position:relative;overflow:hidden;text-transform:uppercase;letter-spacing:.04em}
-.satc-btn::after{content:'';position:absolute;top:0;left:-80%;width:55%;height:100%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.2) 50%,transparent 60%);animation:shim 3.5s ease 3s infinite}
+.satc-name{
+  font-size:10px;font-weight:700;
+  color:#fff;display:block;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  letter-spacing:.02em;
+}
+.satc-price{
+  font-size:9px;color:rgba(255,255,255,.45);
+  display:block;margin-top:1px;
+}
+/* qty pill */
+.satc-qty{
+  display:flex;align-items:center;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:20px;
+  overflow:hidden;
+  background:rgba(255,255,255,.06);
+}
+.sqbtn{
+  width:26px;height:26px;border:none;background:none;
+  font-size:13px;cursor:pointer;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  -webkit-tap-highlight-color:transparent;
+}
+.sqnum{width:22px;text-align:center;font-size:11px;font-weight:700;color:#fff}
+
+/* CTA button — compact, fully rounded pill */
+.satc-btn{
+  width:100%;
+  height:38px;
+  background:linear-gradient(135deg,#FC620D 0%,#e04d00 100%);
+  color:#fff;
+  border:none;
+  border-radius:999px;
+  font-family:var(--sans);
+  font-size:12px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  position:relative;overflow:hidden;
+  box-shadow:0 2px 12px rgba(252,98,13,.45),inset 0 1px 0 rgba(255,255,255,.2);
+  transition:transform .1s,box-shadow .15s;
+}
+.satc-btn:active{transform:scale(.97);box-shadow:0 1px 6px rgba(252,98,13,.35)}
+/* shimmer sweep */
+.satc-btn::after{
+  content:'';position:absolute;
+  top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.22) 50%,transparent 65%);
+  animation:shim 3.5s ease 3s infinite;
+}
 
 /* copy toast */
 .ctst{position:fixed;top:62px;left:50%;transform:translateX(-50%) translateY(-4px);background:var(--ink);color:#fff;padding:8px 16px;border-radius:22px;font-size:12.5px;font-weight:600;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;z-index:9999;white-space:nowrap}
@@ -829,14 +908,34 @@ body{
 </footer>
 
 <!-- 17. STICKY ATC -->
+<!-- 17. STICKY ATC — glass pill card -->
 <div class="satc" id="satc">
+  <!-- Row: thumb · name+price · qty -->
   <div class="satc-row">
-    <div class="satc-thumb"><img src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T202331.135.png?v=1779852222&width=120" alt=""></div>
-    <div class="satc-info"><span class="satc-name">Longevity Coffee+</span><span class="satc-price" id="satcprice">$145.00 &mdash; 2 Bags</span></div>
-    <div class="satc-qty"><button class="sqbtn" onclick="chQty(-1)">&#8722;</button><span class="sqnum" id="sqnum">1</span><button class="sqbtn" onclick="chQty(1)">+</button></div>
+    <div class="satc-thumb">
+      <img src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T202331.135.png?v=1779852222&width=120" alt="Vivi">
+    </div>
+    <div class="satc-info">
+      <span class="satc-name">Longevity Coffee+</span>
+      <span class="satc-price" id="satcprice">$145.00 &mdash; Best Value</span>
+    </div>
+    <div class="satc-qty">
+      <button class="sqbtn" onclick="chQty(-1)" aria-label="Decrease">
+        <svg width="10" height="2" viewBox="0 0 10 2" fill="white"><rect width="10" height="2" rx="1"/></svg>
+      </button>
+      <span class="sqnum" id="sqnum">1</span>
+      <button class="sqbtn" onclick="chQty(1)" aria-label="Increase">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="white"><rect x="4" width="2" height="10" rx="1"/><rect y="4" width="10" height="2" rx="1"/></svg>
+      </button>
+    </div>
   </div>
+  <!-- Orange pill CTA -->
   <button class="satc-btn" id="satcbtn" onclick="addToCart()">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <path d="M16 10a4 4 0 0 1-8 0"/>
+    </svg>
     <span id="satcbtnlbl">Add to Cart &mdash; $145.00</span>
   </button>
 </div>
