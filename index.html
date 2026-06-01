@@ -3,556 +3,351 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
-<title>Longevity Coffee+ | Vivi — Sustained Energy & Focus</title>
+<title>Longevity Coffee+ | Vivi</title>
+<link rel="icon" href="https://vivilabs.com/cdn/shop/files/V_ICON_ORANGE_4x-8_5d41c646-c277-4017-a3f4-0647752d46fa.png?v=1752773419&width=96">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ─── RESET ─── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{overflow-x:hidden;max-width:100%}
 html{scroll-behavior:smooth}
 img,svg{max-width:100%}
-
-/* ─── BRAND TOKENS (source-extracted) ─── */
-:root{
-  --orange:#FC620D;
-  --navy:#002B69;
-  --white:#FFFFFF;
-  --ink:#1C1C1C;
-  --ink2:#212529;
-  --gray:#7B7B7B;
-  --bg:#F5F5F5;
-  --border:#E8E8E8;
-  --green:#16A34A;
-  --sans:'Instrument Sans',sans-serif;
-  --display:'Nunito',sans-serif;
-  --r:12px;
-}
 body{
-  font-family:var(--sans);
+  font-family:'Instrument Sans',sans-serif;
   font-size:15px;line-height:1.5;
-  color:var(--ink);background:#fff;
+  color:#1C1C1C;background:#fff;
   -webkit-font-smoothing:antialiased;
   max-width:430px;margin:0 auto;
-  overflow-x:hidden;
+}
+:root{
+  --o:#FC620D;
+  --n:#002B69;
+  --w:#fff;
+  --ink:#1C1C1C;
+  --g:#7B7B7B;
+  --bg:#F5F5F5;
+  --bd:#E8E8E8;
+  --gr:#16A34A;
+  --sans:'Instrument Sans',sans-serif;
+  --disp:'Nunito',sans-serif;
 }
 
-/* ─── PRELOADER ─── */
-#pl{
-  position:fixed;inset:0;z-index:9999;
-  background:#fff;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  transition:opacity .55s ease .15s,visibility .55s ease .15s;
-}
+/* ── PRELOADER ── */
+#pl{position:fixed;inset:0;z-index:9999;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease .1s,visibility .6s ease .1s}
 #pl.out{opacity:0;visibility:hidden;pointer-events:none}
-.pl-logo{height:38px;width:auto;opacity:0;transform:scale(.88);animation:plIn .65s cubic-bezier(.22,1,.36,1) .2s forwards}
-.pl-txt{display:none;font-family:var(--display);font-size:30px;font-weight:900;letter-spacing:.08em;color:var(--navy)}
-.pl-sub{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gray);margin-top:8px;opacity:0;animation:plIn .5s ease .7s forwards}
-.pl-track{width:56px;height:2px;background:#eee;border-radius:2px;margin-top:20px;overflow:hidden}
-.pl-fill{height:100%;background:var(--orange);border-radius:2px;width:0;animation:plFill 1.2s ease .4s forwards}
+.pl-logo{height:36px;width:auto;opacity:0;transform:scale(.88);animation:plIn .65s cubic-bezier(.22,1,.36,1) .2s forwards}
+.pl-sub{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--g);margin-top:8px;opacity:0;animation:plIn .5s ease .7s forwards}
+.pl-track{width:52px;height:2px;background:#eee;border-radius:2px;margin-top:18px;overflow:hidden}
+.pl-fill{height:100%;background:var(--o);border-radius:2px;width:0;animation:plFill 1.1s ease .4s forwards}
 @keyframes plIn{to{opacity:1;transform:none}}
 @keyframes plFill{to{width:100%}}
 
-/* ─── 1. ANNOUNCE BAR ─── */
-.ann{background:var(--navy);overflow:hidden;padding:10px 0;width:100%;max-width:100%}
-.ann-track{display:flex;animation:mq 24s linear infinite;white-space:nowrap;will-change:transform}
-.ann-item{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:0 20px;
-  font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  color:#fff;flex-shrink:0;
-}
-
+/* ── ANNOUNCE BAR ── */
+.ann{background:var(--n);overflow:hidden;padding:9px 0;width:100%}
+.ann-track{display:flex;animation:mq 22s linear infinite;white-space:nowrap;will-change:transform}
+.ann-item{display:inline-flex;align-items:center;gap:7px;padding:0 18px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;flex-shrink:0}
 @keyframes mq{to{transform:translateX(-50%)}}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.65)}}
 
-/* ─── HEADER ─── */
-.hdr{
-  position:sticky;top:0;z-index:300;
-  background:rgba(255,255,255,.97);backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);
-  height:56px;display:flex;align-items:center;justify-content:space-between;
-  padding:0 18px;
-}
-.hdr-logo img{height:30px;width:auto;display:block}
-.hdr-logo-fb{display:none;font-family:var(--display);font-size:20px;font-weight:900;letter-spacing:.06em;color:var(--navy)}
-.hdr-actions{display:flex;align-items:center;gap:14px}
-.hdr-btn{background:none;border:none;cursor:pointer;padding:6px;color:var(--ink);display:flex;align-items:center;justify-content:center;position:relative}
-.hdr-btn svg{width:22px;height:22px;stroke-width:1.8;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
-.cart-pip{
-  position:absolute;top:-1px;right:-1px;
-  width:15px;height:15px;border-radius:50%;
-  background:var(--orange);color:#fff;
-  font-size:8px;font-weight:800;
-  display:flex;align-items:center;justify-content:center;
-}
+/* ── HEADER ── */
+.hdr{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+.hdr-logo{height:26px;width:auto;display:block}
+.hdr-r{display:flex;align-items:center;gap:12px}
+.hdr-btn{background:none;border:none;cursor:pointer;padding:5px;color:var(--ink);display:flex;align-items:center;justify-content:center;position:relative}
+.hdr-btn svg{width:20px;height:20px;stroke-width:1.8;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.cpip{position:absolute;top:-1px;right:-1px;width:14px;height:14px;border-radius:50%;background:var(--o);color:#fff;font-size:7px;font-weight:800;display:flex;align-items:center;justify-content:center}
 
-/* ─── 2. GALLERY ─── */
-.gal{position:relative;background:var(--bg);user-select:none;-webkit-user-select:none;overflow:hidden;width:100%}
-.gal-slides{display:flex;width:100%;transition:transform .38s cubic-bezier(.25,.46,.45,.94);will-change:transform}
-.gal-slide{min-width:100%;max-width:100%;flex-shrink:0;aspect-ratio:1/1;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg)}
-.gal-slide img{width:100%;height:100%;object-fit:cover;display:block}
-.gbadge{
-  position:absolute;
-  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  padding:5px 11px;border-radius:20px;pointer-events:none;
-}
-.gbadge-save{top:14px;left:14px;background:var(--orange);color:#fff}
-.gbadge-rating{
-  top:14px;right:14px;
-  background:rgba(0,0,0,.72);color:#fff;
-  display:flex;align-items:center;gap:4px;
-}
-.gbadge-rating svg{width:10px;height:10px;fill:var(--orange)}
-.garr{
-  position:absolute;top:50%;transform:translateY(-50%);
-  width:36px;height:36px;border-radius:50%;
-  background:rgba(255,255,255,.9);border:none;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-}
-.garr.prev{left:10px}.garr.next{right:10px}
-.garr svg{width:16px;height:16px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round}
-.gdots{position:absolute;bottom:11px;left:50%;transform:translateX(-50%);display:flex;gap:5px}
-.gdot{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.18);cursor:pointer;transition:background .2s,width .25s}
-.gdot.on{background:var(--orange);width:18px;border-radius:3px}
-.thumbs{display:flex;gap:7px;padding:10px 14px;overflow-x:auto;scrollbar-width:none;background:#fff;max-width:100%;width:100%}
+/* ── HERO HOOK ── */
+.hero-hook{background:var(--n);padding:11px 16px 10px;text-align:center;overflow:hidden}
+.hero-eye{font-size:8.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(252,98,13,.85);margin-bottom:5px}
+.hero-hl{font-family:var(--disp);font-size:17px;font-weight:900;color:#fff;line-height:1.2;margin:0;overflow:hidden}
+.hero-word{display:inline-block;opacity:0;transform:translateY(26px);animation:heW .5s cubic-bezier(.22,1,.36,1) forwards}
+.hero-div{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;opacity:0;animation:heFU .5s ease 1.4s forwards}
+.hero-ln{flex:1;height:1px;background:rgba(252,98,13,.3);transform:scaleX(0);transform-origin:center;animation:heLn .6s ease 1.5s forwards}
+.hero-un{font-size:10.5px;color:rgba(255,255,255,.5);letter-spacing:.06em;white-space:nowrap}
+@keyframes heFU{to{opacity:1;transform:none}}
+@keyframes heW{to{opacity:1;transform:none}}
+@keyframes heLn{to{transform:scaleX(1)}}
+
+/* ── GALLERY ── */
+.gal{position:relative;background:var(--bg);overflow:hidden;width:100%}
+.gsl{display:flex;width:100%;transition:transform .38s cubic-bezier(.25,.46,.45,.94);will-change:transform}
+.gs{min-width:100%;max-width:100%;flex-shrink:0;aspect-ratio:1/1;overflow:hidden;background:var(--bg)}
+.gs img{width:100%;height:100%;object-fit:cover;display:block}
+.gbg-s{position:absolute;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:20px;pointer-events:none}
+.gbg-save{top:12px;left:12px;background:var(--o);color:#fff}
+.gbg-rat{top:12px;right:12px;background:rgba(0,0,0,.7);color:#fff;display:flex;align-items:center;gap:4px}
+.gbg-rat svg{width:10px;height:10px;fill:var(--o)}
+.garr{position:absolute;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.88);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.garr.prev{left:8px}.garr.next{right:8px}
+.garr svg{width:15px;height:15px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round}
+.gdots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px}
+.gdot{width:5px;height:5px;border-radius:50%;background:rgba(0,0,0,.2);cursor:pointer;transition:background .2s,width .2s}
+.gdot.on{background:var(--o);width:16px;border-radius:3px}
+.thumbs{display:flex;gap:6px;padding:8px 12px;overflow-x:auto;scrollbar-width:none;background:#fff;width:100%}
 .thumbs::-webkit-scrollbar{display:none}
-.thumb{flex-shrink:0;width:64px;height:64px;border-radius:8px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:border-color .18s;background:var(--bg)}
-.thumb.on{border-color:var(--orange)}
+.thumb{flex-shrink:0;width:58px;height:58px;border-radius:7px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:border-color .18s;background:var(--bg)}
+.thumb.on{border-color:var(--o)}
 .thumb img{width:100%;height:100%;object-fit:cover}
 
-/* ─── 3. PRODUCT INFO ─── */
-.pinfo{padding:16px 16px 0}
-.stars-row{display:flex;align-items:center;gap:7px;margin-bottom:9px}
+/* ── PRODUCT INFO ── */
+.pinfo{padding:14px 16px 0}
+.stars-row{display:flex;align-items:center;gap:6px;margin-bottom:8px}
 .stars-svg{display:flex;gap:1px}
-.s{width:14px;height:14px;fill:var(--orange)}
-.rtxt{font-size:13px;color:var(--ink);text-decoration:underline;text-underline-offset:2px;cursor:pointer}
-.plabel{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);display:block;margin-bottom:5px}
-.ptitle{font-family:var(--display);font-size:26px;font-weight:900;line-height:1.18;color:var(--ink);margin-bottom:8px}
-.pdesc{font-size:14px;color:#444;line-height:1.55;margin-bottom:14px}
+.star{width:13px;height:13px;fill:var(--o)}
+.rtxt{font-size:12.5px;color:var(--ink);text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.plbl{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g);display:block;margin-bottom:4px}
+.ptitle{font-family:var(--disp);font-size:24px;font-weight:900;line-height:1.18;color:var(--ink);margin-bottom:0}
 
-/* ─── 4. PRICE BLOCK ─── */
-.pblock{
-  margin:0 16px 14px;padding:15px 16px;
-  background:var(--bg);border-radius:var(--r);
-}
-.save-chip{
-  display:inline-flex;align-items:center;gap:5px;
-  background:var(--orange);color:#fff;
-  font-size:11px;font-weight:700;letter-spacing:.04em;
-  padding:4px 11px;border-radius:20px;margin-bottom:10px;
-}
-.price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:5px}
-.price-was{font-size:15px;color:var(--gray);text-decoration:line-through}
-.price-now{font-family:var(--display);font-size:32px;font-weight:900;color:var(--ink);line-height:1}
-.price-per{font-size:12px;color:var(--gray);margin-bottom:8px}
-.trust-micro{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--gray)}
-.trust-micro svg{width:13px;height:13px;stroke:var(--green);stroke-width:2;fill:none;flex-shrink:0}
+/* ── PRICE BLOCK ── */
+.pblock{margin:12px 16px;padding:13px 14px;background:var(--bg);border-radius:12px}
+.save-chip{display:inline-flex;align-items:center;gap:5px;background:var(--o);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:8px}
+.price-row{display:flex;align-items:baseline;gap:9px;margin-bottom:4px}
+.price-was{font-size:14px;color:var(--g);text-decoration:line-through}
+.price-now{font-family:var(--disp);font-size:30px;font-weight:900;color:var(--ink);line-height:1}
+.price-per{font-size:11.5px;color:var(--g);margin-bottom:7px}
+.tmicro{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--g)}
+.tmicro svg{width:12px;height:12px;stroke:var(--gr);stroke-width:2;fill:none;flex-shrink:0}
 
-/* ─── 5. URGENCY ─── */
-.viewer-pill{
-  display:inline-flex;align-items:center;gap:7px;
-  margin:0 16px 12px;
-  background:rgba(252,98,13,.07);border:1px solid rgba(252,98,13,.2);
-  border-radius:20px;padding:5px 12px;
-  font-size:12px;font-weight:600;color:var(--orange);
-}
-.pdot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:pulse 1.4s ease infinite}
-.urg{
-  margin:0 16px 14px;padding:13px 14px;
-  border:1.5px solid var(--orange);border-radius:var(--r);
-  background:#FFF6F2;
-}
-.urg-row{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+/* ── URGENCY ── */
+.vpill{display:inline-flex;align-items:center;gap:6px;margin:0 16px 10px;background:rgba(252,98,13,.07);border:1px solid rgba(252,98,13,.2);border-radius:20px;padding:5px 11px;font-size:11.5px;font-weight:600;color:var(--o)}
+.pdot{width:7px;height:7px;border-radius:50%;background:var(--o);animation:pls 1.4s ease infinite}
+@keyframes pls{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.65)}}
+.urg{margin:0 16px 12px;padding:11px 13px;border:1.5px solid var(--o);border-radius:12px;background:#FFF6F2}
+.urg-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .urg-row:last-child{margin-bottom:0}
-.uico{width:16px;height:16px;stroke:var(--orange);stroke-width:2;fill:none;flex-shrink:0}
-.utxt{font-size:12.5px;font-weight:600;color:var(--ink)}
-.utxt span{color:var(--orange)}
+.uico{width:15px;height:15px;stroke:var(--o);stroke-width:2;fill:none;flex-shrink:0}
+.utxt{font-size:12px;font-weight:600;color:var(--ink)}
+.utxt span{color:var(--o)}
 .sbar-wrap{flex:1}
-.sbar-lbl{font-size:11px;color:var(--gray);margin-bottom:4px}
-.sbar{height:5px;background:#eee;border-radius:3px;overflow:hidden}
-.sbar-fill{height:100%;width:18%;background:var(--orange);border-radius:3px;animation:sbarIn 1.3s ease .6s both}
-@keyframes sbarIn{from{width:0}to{width:18%}}
+.sbar-lbl{font-size:10.5px;color:var(--g);margin-bottom:3px}
+.sbar{height:4px;background:#eee;border-radius:3px;overflow:hidden}
+.sbar-fill{height:100%;width:18%;background:var(--o);border-radius:3px;animation:sbIn 1.3s ease .6s both}
+@keyframes sbIn{from{width:0}to{width:18%}}
 
-/* ─── 6. BENEFITS STRIP ─── */
-.bstrip{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 16px 16px}
-.bpill{
-  display:flex;align-items:center;gap:8px;
-  padding:10px 12px;
-  border:1px solid var(--border);border-radius:var(--r);background:#fff;
-}
-.bico{width:18px;height:18px;stroke:var(--navy);stroke-width:2;fill:none;flex-shrink:0}
-.btxt{font-size:12px;font-weight:600;color:var(--ink);line-height:1.3}
+/* ── BENEFITS STRIP ── */
+.bstrip{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:0 16px 14px}
+.bpill{display:flex;align-items:center;gap:7px;padding:9px 11px;border:1px solid var(--bd);border-radius:11px;background:#fff}
+.bico{width:17px;height:17px;stroke:var(--n);stroke-width:2;fill:none;flex-shrink:0}
+.btxt{font-size:11.5px;font-weight:600;color:var(--ink);line-height:1.3}
 
-/* ─── 7. PACK SELECTOR ─── */
-.sec-lbl{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);display:block;margin-bottom:10px}
-.packs{padding:0 16px 16px}
-.popts{display:flex;flex-direction:column;gap:8px}
-.popt{
-  display:flex;align-items:center;gap:12px;
-  padding:13px 14px;
-  border:1.5px solid var(--border);border-radius:var(--r);
-  background:#fff;cursor:pointer;
-  transition:border-color .18s,background .18s;
-  position:relative;
-}
-.popt.sel{border-color:var(--orange);background:#FFF6F2}
-.prad{
-  width:18px;height:18px;border-radius:50%;
-  border:1.5px solid var(--border);
-  flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  transition:border-color .18s,background .18s;
-}
-.popt.sel .prad{border-color:var(--orange);background:var(--orange)}
-.prad-dot{width:7px;height:7px;border-radius:50%;background:#fff}
+/* ── PACK SELECTOR ── */
+.packs{padding:0 16px 14px}
+.sec-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);display:block;margin-bottom:9px}
+.popts{display:flex;flex-direction:column;gap:7px}
+.popt{display:flex;align-items:center;gap:11px;padding:12px 13px;border:1.5px solid var(--bd);border-radius:12px;background:#fff;cursor:pointer;transition:border-color .18s,background .18s;position:relative}
+.popt.sel{border-color:var(--o);background:#FFF6F2}
+.prad{width:17px;height:17px;border-radius:50%;border:1.5px solid var(--bd);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:border-color .18s,background .18s}
+.popt.sel .prad{border-color:var(--o);background:var(--o)}
+.prad-dot{width:6px;height:6px;border-radius:50%;background:#fff}
 .pi{flex:1}
-.pname{font-size:14px;font-weight:600;color:var(--ink);display:block}
-.psub{font-size:11.5px;color:var(--gray);display:block;margin-top:2px}
+.pname{font-size:13.5px;font-weight:600;color:var(--ink);display:block}
+.psub{font-size:11px;color:var(--g);display:block;margin-top:1px}
 .pprice{text-align:right}
-.ppnow{font-size:15px;font-weight:700;color:var(--ink);display:block}
-.ppwas{font-size:12px;color:var(--gray);text-decoration:line-through;display:block}
-.pbadge{
-  position:absolute;top:-9px;right:10px;
-  font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  padding:3px 9px;border-radius:20px;
-}
-.pbadge-pop{background:var(--orange);color:#fff}
-.pbadge-nav{background:var(--navy);color:#fff}
+.ppnow{font-size:14px;font-weight:700;color:var(--ink);display:block}
+.ppwas{font-size:11px;color:var(--g);text-decoration:line-through;display:block}
+.pbadge{position:absolute;top:-8px;right:9px;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:20px}
+.pbp{background:var(--o);color:#fff}
+.pbn{background:var(--n);color:#fff}
 
-/* ─── 8. COUPON ─── */
-.coup{padding:0 16px 16px}
-.coup-row{display:flex;gap:8px}
-.cchip{
-  flex:1;display:flex;align-items:center;justify-content:space-between;
-  padding:11px 12px;
-  border:1.5px dashed var(--orange);border-radius:10px;
-  background:#FFF6F2;cursor:pointer;
-  transition:background .15s,transform .1s;
-  -webkit-tap-highlight-color:transparent;
-}
+/* ── COUPON ── */
+.coup{padding:0 16px 14px}
+.coup-row{display:flex;gap:7px}
+.cchip{flex:1;display:flex;align-items:center;justify-content:space-between;padding:10px 11px;border:1.5px dashed var(--o);border-radius:9px;background:#FFF6F2;cursor:pointer;transition:background .15s,transform .1s;-webkit-tap-highlight-color:transparent}
 .cchip:active{background:#FFE0CC;transform:scale(.97)}
-.ccode{font-size:13px;font-weight:700;color:var(--orange);letter-spacing:.06em}
-.cdesc{font-size:11px;color:var(--gray);margin-top:2px;display:block}
-.ccopy{font-size:10px;font-weight:700;color:var(--orange);letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.ccode{font-size:12.5px;font-weight:700;color:var(--o);letter-spacing:.06em}
+.cdesc{font-size:10.5px;color:var(--g);margin-top:2px;display:block}
+.ccopy{font-size:9.5px;font-weight:700;color:var(--o);letter-spacing:.08em;text-transform:uppercase;opacity:.7}
 
-/* ─── 9. EMOTIONAL BLOCK ─── */
-.emo{
-  margin:0 16px 16px;padding:22px 18px;
-  background:var(--navy);border-radius:var(--r);
-}
-.emo-eye{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(252,98,13,.9);display:block;margin-bottom:8px}
-.emo-t{font-family:var(--display);font-size:20px;font-weight:800;line-height:1.25;color:#fff;margin-bottom:10px}
-.emo-b{font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.6}
+/* ── HOW TO ENJOY ── */
+.howto{background:var(--bg);padding:20px 16px 18px}
+.sec-eye{font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--o);display:block;margin-bottom:4px}
+.sec-h2{font-family:var(--disp);font-size:20px;font-weight:800;color:var(--ink);margin-bottom:14px;line-height:1.2}
+.steps{display:flex;flex-direction:column;gap:10px}
+.step-card{background:#fff;border-radius:13px;border:1px solid var(--bd);overflow:hidden;display:flex;align-items:stretch}
+.step-img{width:88px;flex-shrink:0;object-fit:cover;display:block}
+.step-body{padding:12px 13px;flex:1;display:flex;flex-direction:column;justify-content:center}
+.step-num-wrap{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.step-num{width:20px;height:20px;border-radius:50%;background:var(--o);color:#fff;font-family:var(--disp);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-title{font-family:var(--disp);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--ink)}
+.step-text{font-size:11.5px;color:var(--g);line-height:1.5;margin:0}
 
-/* ─── HOW TO ENJOY ─── */
-.howto{background:var(--bg);padding:28px 16px}
-.sec-hdr{margin-bottom:20px}
-.eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:5px}
-.sec-h2{font-family:var(--display);font-size:22px;font-weight:800;color:var(--ink);line-height:1.2}
-.steps-wrap{position:relative;overflow:hidden;width:100%}
-.steps-slides{display:flex;width:100%;transition:transform .38s ease}
-.step-slide{min-width:100%;max-width:100%;flex-shrink:0}
-.step-card{background:#fff;border-radius:var(--r);padding:22px 20px;border:1px solid var(--border)}
-.step-n{
-  width:34px;height:34px;border-radius:50%;
-  background:var(--orange);color:#fff;
-  font-family:var(--display);font-size:15px;font-weight:800;
-  display:flex;align-items:center;justify-content:center;margin-bottom:12px;
-}
-.step-t{font-family:var(--display);font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);margin-bottom:8px}
-.step-b{font-size:14px;color:var(--gray);line-height:1.6}
-.step-dots{display:flex;gap:6px;justify-content:center;margin-top:14px}
-.sdot{width:7px;height:7px;border-radius:50%;background:var(--border);cursor:pointer;transition:background .2s}
-.sdot.on{background:var(--orange)}
+/* ── EMOTIONAL BLOCK ── */
+.emo-wrap{position:relative;overflow:hidden;min-height:180px}
+.emo-img{width:100%;height:180px;object-fit:cover;display:block}
+.emo-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,27,80,.92) 55%,rgba(0,27,80,.35))}
+.emo-content{position:absolute;inset:0;padding:24px 20px;display:flex;flex-direction:column;justify-content:center}
+.emo-eye2{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(252,98,13,.9);margin-bottom:7px}
+.emo-t{font-family:var(--disp);font-size:19px;font-weight:900;line-height:1.2;color:#fff;margin-bottom:8px}
+.emo-b{font-size:12px;color:rgba(255,255,255,.68);line-height:1.55;max-width:200px}
 
-/* ─── 10. ATC ZONE ─── */
+/* ── ATC ZONE ── */
 .atczone{padding:0 16px 6px}
-.qty-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.qty-lbl{font-size:13px;font-weight:500;color:var(--gray)}
-.qty-ctrl{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:10px;overflow:hidden}
-.qbtn{width:42px;height:44px;border:none;background:none;font-size:19px;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center}
-.qnum{width:36px;text-align:center;font-size:15px;font-weight:600}
-.atc-total{margin-left:auto;font-size:16px;font-weight:700;color:var(--ink)}
-/* ATC button */
-.btnatc{
-  width:100%;height:54px;
-  background:var(--navy);color:#fff;
-  border:none;border-radius:var(--r);
-  font-family:var(--sans);font-size:16px;font-weight:700;letter-spacing:.03em;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;
-  margin-bottom:10px;
-  position:relative;overflow:hidden;
-  transition:background .15s,transform .1s;
-}
+.qty-row{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.qty-lbl{font-size:12.5px;font-weight:500;color:var(--g)}
+.qty-ctrl{display:flex;align-items:center;border:1.5px solid var(--bd);border-radius:9px;overflow:hidden}
+.qbtn{width:40px;height:42px;border:none;background:none;font-size:18px;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center}
+.qnum{width:34px;text-align:center;font-size:14px;font-weight:600}
+.atc-total{margin-left:auto;font-size:15px;font-weight:700;color:var(--ink)}
+.btnatc{width:100%;height:52px;background:var(--n);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:.03em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:9px;position:relative;overflow:hidden;transition:background .15s,transform .1s}
 .btnatc:active{transform:scale(.985)}
-.btnatc::after{
-  content:'';position:absolute;
-  top:0;left:-80%;width:55%;height:100%;
-  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.2) 50%,transparent 60%);
-  animation:shimmer 3.2s ease 2s infinite;
-}
-@keyframes shimmer{0%{left:-80%}100%{left:130%}}
-.btnatc.ok{background:var(--green)}
-.btnatc.ok::after{display:none}
-.btnsec{
-  width:100%;height:48px;
-  background:transparent;color:var(--navy);
-  border:1.5px solid var(--navy);border-radius:var(--r);
-  font-family:var(--sans);font-size:14px;font-weight:600;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;
-  margin-bottom:8px;
-  transition:background .15s;
-}
-.btnsec:active{background:rgba(0,43,105,.06)}
-.sub-nudge{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:var(--gray);padding-bottom:6px}
-.sub-nudge svg{width:13px;height:13px;stroke:var(--green);stroke-width:2;fill:none}
+.btnatc::after{content:'';position:absolute;top:0;left:-80%;width:55%;height:100%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.2) 50%,transparent 60%);animation:shim 3.2s ease 2s infinite}
+@keyframes shim{0%{left:-80%}100%{left:130%}}
+.btnatc.ok{background:var(--gr)}
+.btnsec{width:100%;height:46px;background:transparent;color:var(--n);border:1.5px solid var(--n);border-radius:12px;font-family:var(--sans);font-size:13.5px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:7px}
+.sub-nudge{display:flex;align-items:center;justify-content:center;gap:5px;font-size:11.5px;color:var(--g);padding-bottom:5px}
+.sub-nudge svg{width:12px;height:12px;stroke:var(--gr);stroke-width:2;fill:none}
 
-/* ─── 11. TRUST BADGES ─── */
-.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px}
-.tcard{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:6px;padding:14px 8px;
-  border:1px solid var(--border);border-radius:var(--r);text-align:center;
-  position:relative;overflow:hidden;background:#fff;
-}
-.tcard::after{
-  content:'';position:absolute;top:0;left:-120%;width:55%;height:100%;
-  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);
-  animation:shimmer 4.5s ease calc(var(--i,.4s)) infinite;
-}
-.tico{width:22px;height:22px;stroke:var(--navy);stroke-width:1.8;fill:none}
-.ttxt{font-size:11.5px;font-weight:600;color:var(--ink);line-height:1.3}
-.tsub{font-size:10.5px;color:var(--gray)}
-.pay-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;padding:6px 16px 16px;max-width:100%}
-.pbadge2{padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:10.5px;font-weight:700;color:var(--gray);letter-spacing:.04em}
+/* ── TRUST BADGES ── */
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:10px 16px}
+.tcard{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:12px 7px;border:1px solid var(--bd);border-radius:11px;text-align:center;background:#fff;position:relative;overflow:hidden}
+.tcard::after{content:'';position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);animation:shim 4.5s ease calc(var(--i,.4s)) infinite}
+.tico{width:20px;height:20px;stroke:var(--n);stroke-width:1.8;fill:none}
+.ttxt{font-size:11px;font-weight:600;color:var(--ink);line-height:1.3}
+.tsub{font-size:10px;color:var(--g)}
+.pay-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:7px;padding:5px 16px 14px}
+.pbadge2{padding:3px 9px;border:1px solid var(--bd);border-radius:5px;font-size:10px;font-weight:700;color:var(--g);letter-spacing:.04em}
 
-/* ─── 12. INGREDIENT STORY ─── */
-.story{background:var(--navy);padding:32px 16px;color:#fff}
-.story .eyebrow{color:var(--orange)}
-.story .sec-h2{color:#fff}
-.story-lead{font-size:13.5px;color:rgba(255,255,255,.65);line-height:1.6;margin:8px 0 24px}
-.icards{display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
-.icard{
-  display:flex;align-items:flex-start;gap:14px;
-  padding:14px;border:1px solid rgba(255,255,255,.1);
-  border-radius:var(--r);background:rgba(255,255,255,.05);
-}
-.inum{
-  width:36px;height:36px;border-radius:50%;
-  background:var(--orange);
-  font-family:var(--display);font-size:12px;font-weight:800;
-  color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  text-align:center;line-height:1.2;
-}
-.iname{font-size:13.5px;font-weight:700;color:#fff;display:block;margin-bottom:3px}
-.idose{
-  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;
-  background:rgba(252,98,13,.2);color:var(--orange);
-  padding:2px 8px;border-radius:10px;margin-bottom:5px;
-}
-.idesc{font-size:12px;color:rgba(255,255,255,.55);line-height:1.5}
-.vstable{border-radius:var(--r);overflow:hidden;overflow-x:auto;border:1px solid rgba(255,255,255,.1);width:100%}
-.vshead{display:grid;grid-template-columns:2fr 1fr 1fr;padding:10px 14px;background:rgba(255,255,255,.07)}
-.vshead span{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45)}
-.vshead .vc{color:var(--orange)}
-.vsrow{display:grid;grid-template-columns:2fr 1fr 1fr;padding:12px 14px;border-top:1px solid rgba(255,255,255,.07);align-items:center}
-.vsrow .feat{font-size:13px;color:rgba(255,255,255,.8)}
-.chk{text-align:center;color:var(--orange);font-size:15px}
-.crs{text-align:center;color:rgba(255,255,255,.2);font-size:15px}
+/* ── INGREDIENT STORY ── */
+.story{background:var(--n);padding:0 0 28px;color:#fff;overflow:hidden}
+/* Big lifestyle image at top of story */
+.story-hero-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;margin-bottom:0}
+.story-content{padding:20px 16px 0}
+.story-eye{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--o);margin-bottom:6px;display:block}
+.story-h2{font-family:var(--disp);font-size:21px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:6px}
+.story-sub{font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.5;margin-bottom:18px}
+/* Ingredient cards — image-forward */
+.icards{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
+.icard{display:flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.05);overflow:hidden}
+.icard-icon{width:56px;flex-shrink:0;background:rgba(252,98,13,.12);display:flex;align-items:center;justify-content:center;padding:14px 0;align-self:stretch}
+.icard-body{padding:11px 13px;flex:1}
+.icard-name{font-size:12.5px;font-weight:700;color:#fff;display:block;margin-bottom:2px}
+.icard-dose{display:inline-block;font-size:9.5px;font-weight:700;background:rgba(252,98,13,.2);color:var(--o);padding:1.5px 7px;border-radius:10px;margin-bottom:4px}
+.icard-desc{font-size:11.5px;color:rgba(255,255,255,.5);line-height:1.45}
+/* VS table compact */
+.vstable{border-radius:11px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.vshead{display:grid;grid-template-columns:2fr 1fr 1fr;padding:9px 13px;background:rgba(255,255,255,.07)}
+.vshead span{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.vshead .vc{color:var(--o)}
+.vsrow{display:grid;grid-template-columns:2fr 1fr 1fr;padding:11px 13px;border-top:1px solid rgba(255,255,255,.07);align-items:center}
+.vsrow .feat{font-size:12px;color:rgba(255,255,255,.78)}
+.chk{text-align:center;color:var(--o);font-size:14px}
+.crs{text-align:center;color:rgba(255,255,255,.18);font-size:14px}
 
-/* ─── 13. REVIEWS ─── */
-.reviews{background:#fff;padding-top:28px}
-.revhead{display:flex;align-items:center;gap:14px;padding:0 16px 18px}
-.bnum{font-family:var(--display);font-size:54px;font-weight:900;color:var(--ink);line-height:1}
-.rmeta .stars-svg{margin-bottom:4px}
-.rcnt{font-size:13px;color:var(--gray)}
-.rbars{padding:0 16px 18px}
-.rbar-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
-.rbl{font-size:12px;color:var(--gray);width:18px;text-align:right;flex-shrink:0}
-.rbt{flex:1;height:6px;background:#eee;border-radius:3px;overflow:hidden}
-.rbf{height:100%;border-radius:3px;background:var(--orange)}
-.rbp{font-size:11px;color:var(--gray);width:28px;text-align:right;flex-shrink:0}
-.aisum{
-  margin:0 16px 18px;padding:14px;
-  background:var(--bg);border:1px solid var(--border);border-radius:var(--r);
-}
-.ai-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);display:block;margin-bottom:6px}
-.ai-txt{font-size:13px;color:var(--ink2);line-height:1.6}
-.rvcards{padding:0 16px;display:flex;flex-direction:column;gap:12px}
-.rvcard{border:1px solid var(--border);border-radius:var(--r);padding:16px;background:#fff}
-.rvtop{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.rvname{font-size:14px;font-weight:700;color:var(--ink)}
-.rvdate{font-size:11.5px;color:var(--gray)}
-.rvstars{display:flex;gap:1px;margin-bottom:8px}
-.rvs{width:12px;height:12px;fill:var(--orange)}
-.rvbody{font-size:13.5px;color:var(--ink2);line-height:1.55}
-.rvver{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--green);font-weight:600;margin-top:8px}
-.rvver svg{width:11px;height:11px;stroke:var(--green);stroke-width:2.5;fill:none}
+/* ── CROSS-SELL ── */
+.xsell{background:#fff;padding:22px 0}
+.sec-hdr{padding:0 16px;margin-bottom:14px}
+.xscroll{display:flex;gap:9px;overflow-x:auto;padding:0 16px;scrollbar-width:none;width:100%}
+.xscroll::-webkit-scrollbar{display:none}
+.xcard{flex-shrink:0;width:140px;border:1px solid var(--bd);border-radius:12px;overflow:hidden}
+.ximg{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--bg);display:block}
+.xbody{padding:9px 10px}
+.xname{font-size:11.5px;font-weight:600;color:var(--ink);display:block;margin-bottom:2px;line-height:1.3}
+.xprice{font-size:12.5px;font-weight:700;color:var(--ink);display:block;margin-bottom:6px}
+.xbtn{width:100%;height:30px;background:var(--n);color:#fff;border:none;border-radius:7px;font-size:11.5px;font-weight:600;cursor:pointer}
+
+/* ── REVIEWS ── */
+.reviews{background:#fff;padding-top:24px}
+.revhead{display:flex;align-items:center;gap:12px;padding:0 16px 14px}
+.bnum{font-family:var(--disp);font-size:50px;font-weight:900;color:var(--ink);line-height:1}
+.rmeta .stars-svg{margin-bottom:3px}
+.rcnt{font-size:12.5px;color:var(--g)}
+.rbars{padding:0 16px 14px}
+.rbar-row{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.rbl{font-size:11px;color:var(--g);width:17px;text-align:right;flex-shrink:0}
+.rbt{flex:1;height:5px;background:#eee;border-radius:3px;overflow:hidden}
+.rbf{height:100%;border-radius:3px;background:var(--o)}
+.rbp{font-size:10.5px;color:var(--g);width:26px;text-align:right;flex-shrink:0}
+.aisum{margin:0 16px 14px;padding:12px;background:var(--bg);border:1px solid var(--bd);border-radius:11px}
+.ai-lbl{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);display:block;margin-bottom:5px}
+.ai-txt{font-size:12.5px;color:#444;line-height:1.55}
+.rvcards{padding:0 16px;display:flex;flex-direction:column;gap:10px}
+.rvcard{border:1px solid var(--bd);border-radius:12px;padding:14px;background:#fff}
+.rvtop{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
+.rvname{font-size:13.5px;font-weight:700;color:var(--ink)}
+.rvdate{font-size:11px;color:var(--g)}
+.rvstars{display:flex;gap:1px;margin-bottom:7px}
+.rvs{width:11px;height:11px;fill:var(--o)}
+.rvbody{font-size:12.5px;color:#333;line-height:1.55}
+.rvver{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;color:var(--gr);font-weight:600;margin-top:6px}
+.rvver svg{width:10px;height:10px;stroke:var(--gr);stroke-width:2.5;fill:none}
 
 /* SP toast */
-.sptst{
-  position:fixed;bottom:92px;left:16px;max-width:260px;
-  background:#fff;border:1px solid var(--border);border-radius:10px;
-  padding:10px 13px;display:flex;align-items:center;gap:10px;
-  box-shadow:0 4px 20px rgba(0,0,0,.1);
-  transform:translateY(16px);opacity:0;
-  transition:transform .4s ease,opacity .4s ease;
-  z-index:500;pointer-events:none;
-}
+.sptst{position:fixed;bottom:90px;left:14px;max-width:248px;background:#fff;border:1px solid var(--bd);border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:9px;box-shadow:0 4px 18px rgba(0,0,0,.1);transform:translateY(16px);opacity:0;transition:transform .4s ease,opacity .4s ease;z-index:500;pointer-events:none}
 .sptst.show{transform:none;opacity:1}
-.spavt{
-  width:34px;height:34px;border-radius:50%;
-  background:var(--navy);color:#fff;
-  font-family:var(--display);font-size:13px;font-weight:800;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.spmsg{font-size:12px;color:var(--ink);line-height:1.4}
+.spavt{width:32px;height:32px;border-radius:50%;background:var(--n);color:#fff;font-family:var(--disp);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.spmsg{font-size:11.5px;color:var(--ink);line-height:1.35}
 .spmsg strong{font-weight:700}
-.sptime{font-size:10.5px;color:var(--gray);margin-top:2px}
+.sptime{font-size:10px;color:var(--g);margin-top:1px}
 
-/* ─── 14. FAQ ─── */
-.faq{background:var(--bg);padding:28px 16px}
-.faq-wrap{border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
-.faqit{border-bottom:1px solid var(--border)}
+/* ── FAQ ── */
+.faq{background:var(--bg);padding:22px 16px}
+.faq-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--bd)}
+.faqit{border-bottom:1px solid var(--bd)}
 .faqit:last-child{border-bottom:none}
-.faqbtn{
-  width:100%;display:flex;align-items:center;justify-content:space-between;
-  padding:16px;background:#fff;border:none;
-  font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink);
-  text-align:left;cursor:pointer;gap:12px;
-  -webkit-tap-highlight-color:transparent;
-}
-.faqchev{width:18px;height:18px;stroke:var(--gray);stroke-width:2;fill:none;flex-shrink:0;transition:transform .28s}
+.faqbtn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 15px;background:#fff;border:none;font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--ink);text-align:left;cursor:pointer;gap:11px;-webkit-tap-highlight-color:transparent}
+.faqchev{width:17px;height:17px;stroke:var(--g);stroke-width:2;fill:none;flex-shrink:0;transition:transform .28s}
 .faqit.open .faqchev{transform:rotate(180deg)}
-.faqbody{
-  max-height:0;overflow:hidden;
-  transition:max-height .32s ease,padding .28s;
-  font-size:13.5px;color:var(--gray);line-height:1.6;
-  padding:0 16px;background:#fff;
-}
-.faqit.open .faqbody{max-height:600px;padding:0 16px 16px}
+.faqbody{max-height:0;overflow:hidden;transition:max-height .32s ease,padding .28s;font-size:12.5px;color:var(--g);line-height:1.6;padding:0 15px;background:#fff}
+.faqit.open .faqbody{max-height:400px;padding:0 15px 14px}
 
-/* ─── 15. CROSS-SELL ─── */
-.xsell{background:#fff;padding:28px 0}
-.xscroll{display:flex;gap:10px;overflow-x:auto;padding:0 16px;scrollbar-width:none;max-width:100%;width:100%}
-.xscroll::-webkit-scrollbar{display:none}
-.xcard{flex-shrink:0;width:150px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.ximg{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--bg);display:block}
-.xbody{padding:10px}
-.xname{font-size:12px;font-weight:600;color:var(--ink);display:block;margin-bottom:3px;line-height:1.3}
-.xprice{font-size:13px;font-weight:700;color:var(--ink);display:block;margin-bottom:7px}
-.xbtn{
-  width:100%;height:32px;
-  background:var(--navy);color:#fff;
-  border:none;border-radius:8px;
-  font-size:12px;font-weight:600;cursor:pointer;
-}
+/* ── GUARANTEE ── */
+.guar{background:var(--n);padding:0 0 28px;text-align:center;overflow:hidden}
+.guar-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;opacity:.4}
+.guar-content{padding:20px 16px 0}
+.guar-eye{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--o);display:block;margin-bottom:8px}
+.gu-sh{width:44px;height:44px;stroke:var(--o);stroke-width:1.5;fill:none;margin:0 auto 12px;display:block}
+.gu-t{font-family:var(--disp);font-size:21px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:8px}
+.gu-b{font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:18px}
+.gu-list{display:flex;flex-direction:column;gap:8px;text-align:left;margin-bottom:22px}
+.gu-item{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:#fff}
+.gu-ico{width:15px;height:15px;stroke:var(--o);stroke-width:2.5;fill:none;flex-shrink:0;margin-top:2px}
 
-/* ─── 16. GUARANTEE ─── */
-.guar{background:var(--navy);padding:32px 16px;text-align:center}
-.guar .eyebrow{color:var(--orange)}
-.gu-sh{width:48px;height:48px;stroke:var(--orange);stroke-width:1.5;fill:none;margin:0 auto 14px;display:block}
-.gu-t{font-family:var(--display);font-size:23px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:10px}
-.gu-b{font-size:13.5px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:22px}
-.gu-list{display:flex;flex-direction:column;gap:9px;text-align:left;margin-bottom:26px}
-.gu-item{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:#fff}
-.gu-ico{width:16px;height:16px;stroke:var(--orange);stroke-width:2.5;fill:none;flex-shrink:0;margin-top:2px}
+/* ── FOOTER ── */
+.footer{background:var(--n);padding:28px 16px 56px;border-top:1px solid rgba(255,255,255,.08)}
+.fl img{height:26px;width:auto;filter:brightness(0) invert(1);display:block;margin-bottom:14px}
+.fl-fb{display:none;font-family:var(--disp);font-size:18px;font-weight:900;letter-spacing:.08em;color:#fff;margin-bottom:14px}
+.fem-row{display:flex;gap:7px;margin-bottom:18px}
+.fem{flex:1;height:40px;border:1px solid rgba(255,255,255,.16);border-radius:11px;background:rgba(255,255,255,.07);color:#fff;padding:0 12px;font-family:var(--sans);font-size:13px;outline:none}
+.fem::placeholder{color:rgba(255,255,255,.38)}
+.fsub{height:40px;padding:0 14px;background:var(--o);color:#fff;border:none;border-radius:11px;font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer}
+.flinks{display:flex;flex-wrap:wrap;gap:9px 16px;margin-bottom:18px}
+.flinks a{color:rgba(255,255,255,.45);text-decoration:none;font-size:12px}
+.fdiv{height:1px;background:rgba(255,255,255,.08);margin:14px 0}
+.fcopy{font-size:10.5px;color:rgba(255,255,255,.28)}
+.fdisc{font-size:9.5px;color:rgba(255,255,255,.2);line-height:1.6;margin-top:9px}
 
-/* ─── FOOTER ─── */
-.footer{background:var(--navy);padding:32px 16px 60px;color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.1)}
-.fl img{height:28px;width:auto;filter:brightness(0) invert(1);display:block;margin-bottom:16px}
-.fl-fb{display:none;font-family:var(--display);font-size:20px;font-weight:900;letter-spacing:.08em;color:#fff;margin-bottom:16px}
-.fem-row{display:flex;gap:8px;margin-bottom:20px}
-.fem{flex:1;height:42px;border:1px solid rgba(255,255,255,.18);border-radius:var(--r);background:rgba(255,255,255,.07);color:#fff;padding:0 13px;font-family:var(--sans);font-size:13.5px;outline:none}
-.fem::placeholder{color:rgba(255,255,255,.4)}
-.fsub{height:42px;padding:0 15px;background:var(--orange);color:#fff;border:none;border-radius:var(--r);font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer}
-.flinks{display:flex;flex-wrap:wrap;gap:10px 18px;margin-bottom:20px}
-.flinks a{color:rgba(255,255,255,.5);text-decoration:none;font-size:12.5px}
-.fdiv{height:1px;background:rgba(255,255,255,.1);margin:16px 0}
-.fcopy{font-size:11px;color:rgba(255,255,255,.3)}
-.fdisc{font-size:10px;color:rgba(255,255,255,.2);line-height:1.6;margin-top:10px}
-
-/* ─── 17. STICKY ATC ─── */
-/* ── STICKY ATC — Glassmorphism ── */
-.satc{
-  position:fixed;bottom:0;left:50%;
-  transform:translateX(-50%) translateY(110%);
-  width:100%;max-width:430px;
-  /* glassmorphism: semi-transparent navy + heavy blur */
-  background:rgba(0,32,80,.72);
-  backdrop-filter:blur(20px) saturate(180%);
-  -webkit-backdrop-filter:blur(20px) saturate(180%);
-  /* orange glow line on top */
-  border-top:1.5px solid rgba(252,98,13,.55);
-  box-shadow:0 -4px 24px rgba(0,0,0,.22), 0 -1px 0 rgba(252,98,13,.18);
-  padding:10px 14px 18px;
-  z-index:400;
-  transition:transform .38s cubic-bezier(.22,1,.36,1);
-}
+/* ── STICKY ATC glassmorphism ── */
+.satc{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(110%);width:100%;max-width:430px;background:rgba(0,32,80,.75);backdrop-filter:blur(22px) saturate(190%);-webkit-backdrop-filter:blur(22px) saturate(190%);border-top:1.5px solid rgba(252,98,13,.5);box-shadow:0 -6px 28px rgba(0,0,0,.28);padding:8px 12px 14px;z-index:400;transition:transform .38s cubic-bezier(.22,1,.36,1)}
 .satc.show{transform:translateX(-50%) translateY(0)}
-.satc-row{display:flex;align-items:center;gap:9px;margin-bottom:8px}
-/* thumb */
-.satc-thumb{width:36px;height:36px;border-radius:8px;overflow:hidden;flex-shrink:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15)}
+.satc-row{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.satc-thumb{width:29px;height:29px;border-radius:6px;overflow:hidden;flex-shrink:0;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14)}
 .satc-thumb img{width:100%;height:100%;object-fit:cover}
-/* info */
 .satc-info{flex:1;min-width:0}
-.satc-name{font-size:11.5px;font-weight:700;color:#fff;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.satc-price{font-size:11px;color:rgba(255,255,255,.55);display:block}
-/* qty controls — glass style */
-.satc-qty{display:flex;align-items:center;border:1px solid rgba(255,255,255,.2);border-radius:8px;overflow:hidden;background:rgba(255,255,255,.08)}
-.sqbtn{width:29px;height:29px;border:none;background:none;font-size:15px;cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center}
-.sqnum{width:25px;text-align:center;font-size:13px;font-weight:700;color:#fff}
-/* CTA button — 10% smaller, navy solid inside glass card */
-.satc-btn{
-  width:100%;height:45px;
-  background:var(--navy);color:#fff;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:10px;
-  font-family:var(--sans);font-size:13.5px;font-weight:700;
-  cursor:pointer;
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  position:relative;overflow:hidden;
-  letter-spacing:.02em;
-}
-.satc-btn::after{
-  content:'';position:absolute;top:0;left:-80%;width:55%;height:100%;
-  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);
-  animation:shimmer 3.5s ease 3s infinite;
-}
+.satc-name{font-size:9.5px;font-weight:700;color:#fff;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.satc-price{font-size:9px;color:rgba(255,255,255,.5);display:block;margin-top:1px}
+.satc-qty{display:flex;align-items:center;border:1px solid rgba(255,255,255,.18);border-radius:6px;overflow:hidden;background:rgba(255,255,255,.07)}
+.sqbtn{width:23px;height:23px;border:none;background:none;font-size:12px;cursor:pointer;color:#fff;display:flex;align-items:center;justify-content:center}
+.sqnum{width:20px;text-align:center;font-size:10px;font-weight:700;color:#fff}
+.satc-btn{width:100%;height:36px;background:var(--n);color:#fff;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:var(--sans);font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;position:relative;overflow:hidden;text-transform:uppercase;letter-spacing:.04em}
+.satc-btn::after{content:'';position:absolute;top:0;left:-80%;width:55%;height:100%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.2) 50%,transparent 60%);animation:shim 3.5s ease 3s infinite}
 
 /* copy toast */
-.ctst{
-  position:fixed;top:66px;left:50%;
-  transform:translateX(-50%) translateY(-4px);
-  background:var(--ink);color:#fff;
-  padding:9px 18px;border-radius:24px;
-  font-size:13px;font-weight:600;
-  opacity:0;transition:opacity .25s,transform .25s;
-  pointer-events:none;z-index:9999;white-space:nowrap;
-}
+.ctst{position:fixed;top:62px;left:50%;transform:translateX(-50%) translateY(-4px);background:var(--ink);color:#fff;padding:8px 16px;border-radius:22px;font-size:12.5px;font-weight:600;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;z-index:9999;white-space:nowrap}
 .ctst.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* scroll reveal */
-.rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.rv{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
 .rv.in{opacity:1;transform:none}
-
-
 </style>
 </head>
 <body>
 
 <!-- PRELOADER -->
 <div id="pl">
-  <div style="display:flex;flex-direction:column;align-items:center">
-    <img class="pl-logo" src="https://vivilabs.com/cdn/shop/files/logo.png?v=1767172770&width=134"
-         onerror="this.style.display='none';var f=document.querySelector('.pl-txt');if(f)f.style.display='block'" alt="Vivi"
-         onerror="this.style.display='none';document.querySelector('.pl-txt').style.display='block'">
-    <span class="pl-txt">VIVI</span>
-    <span class="pl-sub">Longevity Coffee+</span>
-    <div class="pl-track"><div class="pl-fill"></div></div>
-  </div>
+  <img class="pl-logo" src="https://vivilabs.com/cdn/shop/files/logo.png?v=1767172770&width=134" alt="Vivi" onerror="this.style.display='none';document.querySelector('.pl-sub').previousElementSibling&&(document.querySelector('.pl-sub').insertAdjacentHTML('beforebegin','<span style=\'font-family:Nunito,sans-serif;font-size:28px;font-weight:900;color:#002B69\'>VIVI</span>'))">
+  <div class="pl-sub">Longevity Coffee+</div>
+  <div class="pl-track"><div class="pl-fill"></div></div>
 </div>
 
 <!-- COPY TOAST -->
@@ -561,138 +356,62 @@ body{
 <!-- SP TOAST -->
 <div class="sptst" id="sptst">
   <div class="spavt" id="spavt">D</div>
-  <div>
-    <div class="spmsg" id="spmsg"><strong>Dylan K.</strong> from Los Angeles just ordered</div>
-    <div class="sptime">2 minutes ago</div>
-  </div>
+  <div><div class="spmsg" id="spmsg"><strong>Dylan K.</strong> from LA just ordered</div><div class="sptime">2 min ago</div></div>
 </div>
 
-<!-- ====================================================
-     1. ANNOUNCEMENT BAR
-==================================================== -->
+<!-- 1. ANNOUNCE BAR -->
 <div class="ann">
   <div class="ann-track">
-    <span class="ann-item">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      Free 3-Day Shipping
-    </span>
-    <span class="ann-item">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      30-Day Risk-Free Trial
-    </span>
-    <span class="ann-item">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      Trusted by 50,000+ Customers
-    </span>
-    <span class="ann-item">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      Free Leather Travel Kit
-    </span>
-    <span class="ann-item">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      Free 3-Day Shipping
-    </span>
-    <span class="ann-item">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      30-Day Risk-Free Trial
-    </span>
-    <span class="ann-item">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      Trusted by 50,000+ Customers
-    </span>
-    <span class="ann-item">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      Free Leather Travel Kit
-    </span>
-    </div>
+    <span class="ann-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Free 3-Day Shipping</span>
+    <span class="ann-item" style="color:rgba(252,98,13,.7)">&#9632;</span>
+    <span class="ann-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 30-Day Risk-Free Trial</span>
+    <span class="ann-item" style="color:rgba(252,98,13,.7)">&#9632;</span>
+    <span class="ann-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 50,000+ Customers</span>
+    <span class="ann-item" style="color:rgba(252,98,13,.7)">&#9632;</span>
+    <span class="ann-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Free Leather Travel Kit</span>
+    <span class="ann-item" style="color:rgba(252,98,13,.7)">&#9632;</span>
+    <span class="ann-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Free 3-Day Shipping</span>
+    <span class="ann-item" style="color:rgba(252,98,13,.7)">&#9632;</span>
+    <span class="ann-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 30-Day Risk-Free Trial</span>
+    <span class="ann-item" style="color:rgba(252,98,13,.7)">&#9632;</span>
+    <span class="ann-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> 50,000+ Customers</span>
+    <span class="ann-item" style="color:rgba(252,98,13,.7)">&#9632;</span>
+    <span class="ann-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Free Leather Travel Kit</span>
+    <span class="ann-item" style="color:rgba(252,98,13,.7)">&#9632;</span>
+  </div>
 </div>
 
 <!-- HEADER -->
 <header class="hdr">
-  <a href="#" style="text-decoration:none;display:flex;align-items:center">
-    <img id="hdrimg" src="https://vivilabs.com/cdn/shop/files/logo.png?v=1767172770&width=134" alt="Vivi Labs"
-         style="height:30px;width:auto;display:block">
-    <span id="hdrfb" style="display:none;font-family:'Nunito',sans-serif;font-size:20px;font-weight:900;letter-spacing:.06em;color:#002B69">VIVI</span>
+  <a href="#" style="text-decoration:none">
+    <img class="hdr-logo" id="hdrimg" src="https://vivilabs.com/cdn/shop/files/logo.png?v=1767172770&width=134" alt="Vivi Labs" onerror="this.style.display='none';document.getElementById('hdrfb').style.display='block'">
+    <span id="hdrfb" style="display:none;font-family:'Nunito',sans-serif;font-size:19px;font-weight:900;color:#002B69">VIVI</span>
   </a>
-  <div class="hdr-actions">
-    <button class="hdr-btn" aria-label="Account">
-      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    </button>
-    <button class="hdr-btn" aria-label="Cart" onclick="addToCart()">
-      <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      <span class="cart-pip" id="cpip">0</span>
-    </button>
+  <div class="hdr-r">
+    <button class="hdr-btn" aria-label="Account"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+    <button class="hdr-btn" aria-label="Cart" onclick="addToCart()"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="cpip" id="cpip">0</span></button>
   </div>
 </header>
 
-<!-- ====================================================
-     HERO EMOTIONAL HOOK — above gallery
-==================================================== -->
-<style>
-.hero-hook{background:#002B69;padding:16px 20px 14px;text-align:center;overflow:hidden;position:relative}
-.hero-eyebrow{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(252,98,13,.85);margin-bottom:8px;opacity:0;animation:heFadeUp .5s ease .2s forwards}
-.hero-headline{font-family:'Nunito',sans-serif;font-size:20px;font-weight:900;color:#fff;line-height:1.25;margin:0;overflow:hidden;display:block}
-.hero-word{display:inline-block;opacity:0;transform:translateY(28px);animation:heWord .5s cubic-bezier(.22,1,.36,1) forwards}
-.hero-divider{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;opacity:0;animation:heFadeUp .5s ease 1.4s forwards}
-.hero-line{flex:1;height:1px;background:rgba(252,98,13,.3);transform:scaleX(0);transform-origin:center;animation:heLine .6s ease 1.5s forwards}
-.hero-until{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.06em;white-space:nowrap}
-/* cursor blink on last word */
-
-@keyframes heFadeUp{to{opacity:1;transform:none}}
-@keyframes heWord{to{opacity:1;transform:none}}
-@keyframes heLine{to{transform:scaleX(1)}}
-
-</style>
-
+<!-- HERO HOOK -->
 <div class="hero-hook" id="heroHook">
-  <p class="hero-eyebrow">Sound Familiar?</p>
-  <h2 class="hero-headline" id="heroHeadline" aria-label="I Have Tried Everything. Nothing Worked."></h2>
-  <div class="hero-divider">
-    <div class="hero-line"></div>
-    <span class="hero-until">Until now.</span>
-    <div class="hero-line"></div>
-  </div>
+  <p class="hero-eye">Sound Familiar?</p>
+  <h2 class="hero-hl" id="heroHl" aria-label="I Have Tried Everything. Nothing Worked."></h2>
+  <div class="hero-div"><div class="hero-ln"></div><span class="hero-un">Until now.</span><div class="hero-ln"></div></div>
 </div>
 
-<script>
-(function(){
-  var words = [
-    {text:'“I Have Tried', delay:400},
-    {text:'Everything.', delay:620},
-    {text:'Nothing', delay:860},
-    {text:'Worked.”', delay:1080, cursor:true}
-  ];
-  var headline = document.getElementById('heroHeadline');
-  if(!headline) return;
-  words.forEach(function(w,i){
-    var span = document.createElement('span');
-    span.className = 'hero-word';
-    span.style.animationDelay = w.delay + 'ms';
-    span.textContent = w.text;
-    if(i < words.length-1) span.style.marginRight = '6px';
-    headline.appendChild(span);
-
-  });
-})();
-</script>
-
-<!-- ====================================================
-     2. PRODUCT GALLERY
-==================================================== -->
+<!-- 2. GALLERY -->
 <div class="gal">
-  <div class="gal-slides" id="gslides">
-    <div class="gal-slide"><img loading="eager" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T202331.135.png?v=1779852222&width=800" alt="Vivi Longevity Coffee" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Crect fill=%22%23f5f5f5%22 width=%22400%22 height=%22400%22/%3E%3C/svg%3E'"></div>
-    <div class="gal-slide"><img loading="lazy" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T214758.296.png?v=1779857293&width=800" alt="Vivi Lifestyle"></div>
-    <div class="gal-slide"><img loading="lazy" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T215729.533.png?v=1779857857&width=800" alt="Vivi Ingredients"></div>
-    <div class="gal-slide"><img loading="lazy" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T215400.105.png?v=1779857651&width=800" alt="Vivi Benefits"></div>
-    <div class="gal-slide"><img loading="lazy" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-24T144724.254.png?v=1779659329&width=800" alt="Vivi Packaging"></div>
-    <div class="gal-slide"><img loading="lazy" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T224025.478.png?v=1779860452&width=800" alt="Vivi Cup"></div>
+  <div class="gsl" id="gslides">
+    <div class="gs"><img loading="eager" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T202331.135.png?v=1779852222&width=800" alt="Vivi Longevity Coffee"></div>
+    <div class="gs"><img loading="lazy" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T214758.296.png?v=1779857293&width=800" alt="Vivi Lifestyle"></div>
+    <div class="gs"><img loading="lazy" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T215729.533.png?v=1779857857&width=800" alt="Vivi Ingredients"></div>
+    <div class="gs"><img loading="lazy" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T215400.105.png?v=1779857651&width=800" alt="Vivi Benefits"></div>
+    <div class="gs"><img loading="lazy" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-24T144724.254.png?v=1779659329&width=800" alt="Vivi Packaging"></div>
+    <div class="gs"><img loading="lazy" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T224025.478.png?v=1779860452&width=800" alt="Vivi Cup"></div>
   </div>
-  <div class="gbadge gbadge-save">SAVE 28%</div>
-  <div class="gbadge gbadge-rating">
-    <svg viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
-    4.9 (1,085)
-  </div>
+  <div class="gbg-s gbg-save">SAVE 28%</div>
+  <div class="gbg-s gbg-rat"><svg viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>4.9 (1,085)</div>
   <button class="garr prev" onclick="gsl(-1)" aria-label="Prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
   <button class="garr next" onclick="gsl(1)" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
   <div class="gdots" id="gdots"></div>
@@ -706,418 +425,193 @@ body{
   <div class="thumb" onclick="ggo(5)"><img src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T224025.478.png?v=1779860452&width=150" alt=""></div>
 </div>
 
-<!-- ====================================================
-     3. PRODUCT TITLE + SOCIAL PROOF
-==================================================== -->
+<!-- 3. PRODUCT INFO -->
 <div class="pinfo">
   <div class="stars-row">
     <div class="stars-svg">
-      <svg class="s" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
-      <svg class="s" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
-      <svg class="s" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
-      <svg class="s" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
-      <svg class="s" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
+      <svg class="star" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
+      <svg class="star" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
+      <svg class="star" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
+      <svg class="star" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
+      <svg class="star" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
     </div>
     <a class="rtxt" href="#reviews">4.9 &middot; 1,085 reviews</a>
   </div>
-  <span class="plabel">Longevity Coffee+</span>
+  <span class="plbl">Longevity Coffee+</span>
   <h1 class="ptitle">The Coffee That Works While You Drink It</h1>
-  <p class="pdesc">Vivi is a functional coffee with collagen &amp; NAD+ precursors that supports smooth all-day energy, sharper focus, gut health and glowing skin.</p>
 </div>
 
-<!-- ====================================================
-     4. PRICE BLOCK
-==================================================== -->
+<!-- 4. PRICE -->
 <div class="pblock rv">
-  <div class="save-chip">
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-    Saving 28% + Free Gifts
-  </div>
-  <div class="price-row">
-    <span class="price-was">$109.00</span>
-    <span class="price-now" id="pnow">$79.00</span>
-  </div>
-  <div class="price-per" id="pper">Just $2.63/serving &mdash; less than a caf&eacute; coffee</div>
-  <div class="trust-micro">
-    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-    Free 3-Day Shipping &middot; 30-Day Risk-Free Trial
-  </div>
+  <div class="save-chip"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Saving 28% + Free Gifts</div>
+  <div class="price-row"><span class="price-was">$109.00</span><span class="price-now" id="pnow">$79.00</span></div>
+  <div class="price-per" id="pper">Just $2.63/serving</div>
+  <div class="tmicro"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Free 3-Day Shipping &middot; 30-Day Trial</div>
 </div>
 
-<!-- ====================================================
-     5. URGENCY + SCARCITY
-==================================================== -->
-<div class="viewer-pill rv">
-  <span class="pdot"></span>
-  <span><strong id="vcnt">312</strong> people viewing this right now</span>
-</div>
+<!-- 5. URGENCY -->
+<div class="vpill rv"><span class="pdot"></span><span><strong id="vcnt">312</strong> people viewing now</span></div>
 <div class="urg rv">
-  <div class="urg-row">
-    <svg class="uico" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-    <span class="utxt">Order within <span id="stimer">2h 47m</span> for <span>same-day dispatch</span></span>
-  </div>
-  <div class="urg-row">
-    <svg class="uico" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-    <div class="sbar-wrap">
-      <div class="sbar-lbl">Only <strong>9 units</strong> left at this price</div>
-      <div class="sbar"><div class="sbar-fill"></div></div>
-    </div>
-  </div>
+  <div class="urg-row"><svg class="uico" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span class="utxt">Order within <span id="stimer">2h 47m</span> for <span>same-day dispatch</span></span></div>
+  <div class="urg-row"><svg class="uico" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg><div class="sbar-wrap"><div class="sbar-lbl">Only <strong>9 units</strong> left</div><div class="sbar"><div class="sbar-fill"></div></div></div></div>
 </div>
 
-<!-- ====================================================
-     6. BENEFITS STRIP
-==================================================== -->
+<!-- 6. BENEFITS -->
 <div class="bstrip rv">
-  <div class="bpill">
-    <svg class="bico" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-    <span class="btxt">All-Day Energy</span>
-  </div>
-  <div class="bpill">
-    <svg class="bico" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-    <span class="btxt">NAD+ Precursors</span>
-  </div>
-  <div class="bpill">
-    <svg class="bico" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-    <span class="btxt">Collagen Boost</span>
-  </div>
-  <div class="bpill">
-    <svg class="bico" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    <span class="btxt">3rd-Party Tested</span>
-  </div>
+  <div class="bpill"><svg class="bico" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span class="btxt">All-Day Energy</span></div>
+  <div class="bpill"><svg class="bico" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span class="btxt">NAD+ Precursors</span></div>
+  <div class="bpill"><svg class="bico" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="btxt">Collagen Boost</span></div>
+  <div class="bpill"><svg class="bico" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="btxt">3rd-Party Tested</span></div>
 </div>
 
-<!-- ====================================================
-     7. PACK SELECTOR
-==================================================== -->
+<!-- 7. PACK SELECTOR -->
 <div class="packs rv">
   <span class="sec-lbl">Select Your Pack</span>
   <div class="popts" id="popts">
-    <div class="popt" data-price="79" data-per="$2.63/serving" onclick="selPack(this)">
-      <div class="prad"><div class="prad-dot"></div></div>
-      <div class="pi">
-        <span class="pname">1 Bag &mdash; 30 Servings</span>
-        <span class="psub">One-time purchase</span>
-      </div>
-      <div class="pprice">
-        <span class="ppnow">$79.00</span>
-        <span class="ppwas">$109.00</span>
-      </div>
-    </div>
-    <div class="popt sel" data-price="145" data-per="$2.42/serving &mdash; save extra $8" onclick="selPack(this)">
-      <span class="pbadge pbadge-pop">Best Value</span>
-      <div class="prad"><div class="prad-dot"></div></div>
-      <div class="pi">
-        <span class="pname">2 Bags &mdash; 60 Servings</span>
-        <span class="psub">Save extra $8 &middot; $2.42/serving</span>
-      </div>
-      <div class="pprice">
-        <span class="ppnow">$145.00</span>
-        <span class="ppwas">$218.00</span>
-      </div>
-    </div>
-    <div class="popt" data-price="199" data-per="$2.21/serving &mdash; biggest saving" onclick="selPack(this)">
-      <span class="pbadge pbadge-nav">Most Popular</span>
-      <div class="prad"><div class="prad-dot"></div></div>
-      <div class="pi">
-        <span class="pname">3 Bags &mdash; 90 Servings</span>
-        <span class="psub">Best saving &middot; $2.21/serving</span>
-      </div>
-      <div class="pprice">
-        <span class="ppnow">$199.00</span>
-        <span class="ppwas">$327.00</span>
-      </div>
-    </div>
+    <div class="popt" data-price="79" data-per="$2.63/serving" onclick="selPack(this)"><div class="prad"><div class="prad-dot"></div></div><div class="pi"><span class="pname">1 Bag &mdash; 30 Servings</span><span class="psub">One-time purchase</span></div><div class="pprice"><span class="ppnow">$79.00</span><span class="ppwas">$109.00</span></div></div>
+    <div class="popt sel" data-price="145" data-per="$2.42/serving &mdash; save extra $8" onclick="selPack(this)"><span class="pbadge pbp">Best Value</span><div class="prad"><div class="prad-dot"></div></div><div class="pi"><span class="pname">2 Bags &mdash; 60 Servings</span><span class="psub">Save extra $8 &middot; $2.42/serving</span></div><div class="pprice"><span class="ppnow">$145.00</span><span class="ppwas">$218.00</span></div></div>
+    <div class="popt" data-price="199" data-per="$2.21/serving &mdash; biggest saving" onclick="selPack(this)"><span class="pbadge pbn">Most Popular</span><div class="prad"><div class="prad-dot"></div></div><div class="pi"><span class="pname">3 Bags &mdash; 90 Servings</span><span class="psub">Best saving &middot; $2.21/serving</span></div><div class="pprice"><span class="ppnow">$199.00</span><span class="ppwas">$327.00</span></div></div>
   </div>
 </div>
 
-<!-- ====================================================
-     8. COUPON BLOCK
-==================================================== -->
+<!-- 8. COUPON -->
 <div class="coup rv">
   <span class="sec-lbl">Apply a Coupon</span>
   <div class="coup-row">
-    <div class="cchip" onclick="copyCoup('VIVI10',this)">
-      <div>
-        <span class="ccode">VIVI10</span>
-        <span class="cdesc">Save 10% on your order</span>
+    <div class="cchip" onclick="copyCoup('VIVI10',this)"><div><span class="ccode">VIVI10</span><span class="cdesc">Save 10%</span></div><span class="ccopy">TAP</span></div>
+    <div class="cchip" onclick="copyCoup('FIRST20',this)"><div><span class="ccode">FIRST20</span><span class="cdesc">New customer &mdash; 20% off</span></div><span class="ccopy">TAP</span></div>
+  </div>
+</div>
+
+<!-- EMOTIONAL — full bleed image with overlay -->
+<div class="emo-wrap rv">
+  <img class="emo-img" src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/12bd350d-de26-48da-bb07-6640e83e4ca4&width=800" alt="Vivi lifestyle" onerror="this.style.background='#002B69'">
+  <div class="emo-overlay"></div>
+  <div class="emo-content">
+    <p class="emo-eye2">Sound Familiar?</p>
+    <div class="emo-t">If you&rsquo;ve tried everything&nbsp;&mdash; this is why.</div>
+    <p class="emo-b">Vivi lives in the ritual you already keep. Same cup. Upgraded.</p>
+  </div>
+</div>
+
+<!-- HOW TO ENJOY — image cards -->
+<div class="howto rv">
+  <span class="sec-eye">Instructions</span>
+  <h2 class="sec-h2">How To Enjoy Vivi</h2>
+  <div class="steps">
+    <div class="step-card">
+      <img class="step-img" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-24T144724.254.png?v=1779659329&width=200" alt="Pour Vivi">
+      <div class="step-body">
+        <div class="step-num-wrap"><div class="step-num">1</div><span class="step-title">Pour It</span></div>
+        <p class="step-text">Tear open a stick, pour into your mug.</p>
       </div>
-      <span class="ccopy" id="cc0">COPY</span>
     </div>
-    <div class="cchip" onclick="copyCoup('FIRST20',this)">
-      <div>
-        <span class="ccode">FIRST20</span>
-        <span class="cdesc">New customer &mdash; 20% off</span>
+    <div class="step-card">
+      <img class="step-img" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T224025.478.png?v=1779860452&width=200" alt="Mix Vivi">
+      <div class="step-body">
+        <div class="step-num-wrap"><div class="step-num">2</div><span class="step-title">Mix It</span></div>
+        <p class="step-text"><strong>Black:</strong> 5&ndash;7oz hot water &nbsp;<strong>Latte:</strong> 4&ndash;6oz steamed milk</p>
       </div>
-      <span class="ccopy" id="cc1">COPY</span>
+    </div>
+    <div class="step-card">
+      <img class="step-img" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T214758.296.png?v=1779857293&width=200" alt="Enjoy Vivi">
+      <div class="step-body">
+        <div class="step-num-wrap"><div class="step-num">3</div><span class="step-title">Finish It</span></div>
+        <p class="step-text">Stir, sip, feel the difference. Iced: dissolve in cold milk + ice.</p>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ====================================================
-     9. EMOTIONAL POSITIONING
-==================================================== -->
-<div class="emo rv">
-  <span class="emo-eye">Sound Familiar?</span>
-  <div class="emo-t">If you&rsquo;ve tried everything and nothing stuck &mdash; this is why.</div>
-  <div class="emo-b">Most wellness products fail because they demand a completely new habit. Vivi doesn&rsquo;t. It lives inside the ritual you already keep every single morning &mdash; your coffee. Same cup. Same routine. Upgraded ingredients.</div>
-</div>
-
-<!-- HOW TO ENJOY VIVI -->
-<div style="background:#F5F5F5;padding:24px 16px 20px">
-  <p style="font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#FC620D;display:block;margin-bottom:5px">Instructions</p>
-  <h2 style="font-family:'Nunito',sans-serif;font-size:22px;font-weight:800;color:#1C1C1C;margin-bottom:18px;line-height:1.2">How To Enjoy Vivi</h2>
-  <div style="display:flex;flex-direction:column;gap:12px">
-
-    <!-- STEP 1 -->
-    <div style="background:#fff;border-radius:14px;border:1px solid #E8E8E8;padding:15px 14px;display:flex;align-items:center;gap:13px;position:relative;overflow:hidden">
-      <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#FC620D;border-radius:3px 0 0 3px"></div>
-      <div style="flex-shrink:0;width:52px;height:52px;border-radius:12px;background:#FFF4EE;display:flex;align-items:center;justify-content:center">
-        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-          <!-- Packet body -->
-          <rect x="9" y="8" width="16" height="20" rx="2.5" fill="#002B69"/>
-          <rect x="9" y="8" width="16" height="6" rx="2" fill="#001A4A"/>
-          <!-- Notch / tear line at top -->
-          <path d="M15 8 L15 5 M19 8 L19 5" stroke="#FC620D" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- V mark on packet -->
-          <path d="M14 16 L17 21 L20 16" stroke="#FC620D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <!-- Pour stream -->
-          <path d="M25 12 Q29 14 28 19 Q27 22 25 23" stroke="#FC620D" stroke-width="1.4" stroke-linecap="round" fill="none" stroke-dasharray="2 1.5"/>
-          <!-- Step badge -->
-          <circle cx="9" cy="8" r="5" fill="#FC620D"/>
-          <text x="9" y="11" text-anchor="middle" font-family="Nunito,sans-serif" font-size="6" font-weight="900" fill="white">1</text>
-        </svg>
-      </div>
-      <div style="flex:1">
-        <p style="font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#1C1C1C;margin-bottom:3px">Pour It</p>
-        <p style="font-size:12.5px;color:#7B7B7B;line-height:1.55;margin:0">Tear open a Vivi stick and pour directly into your mug.</p>
-      </div>
-    </div>
-
-    <!-- STEP 2 -->
-    <div style="background:#fff;border-radius:14px;border:1px solid #E8E8E8;padding:15px 14px;display:flex;align-items:center;gap:13px;position:relative;overflow:hidden">
-      <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#002B69;border-radius:3px 0 0 3px"></div>
-      <div style="flex-shrink:0;width:52px;height:52px;border-radius:12px;background:#EEF2FA;display:flex;align-items:center;justify-content:center">
-        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-          <!-- Mug body -->
-          <path d="M7 13 L7 27 Q7 29 9 29 L21 29 Q23 29 23 27 L23 13 Z" fill="#002B69"/>
-          <!-- Steam lines -->
-          <path d="M11 10 Q12.5 7.5 11 5" stroke="#FC620D" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-          <path d="M15 10 Q16.5 7 15 4.5" stroke="#FC620D" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-          <path d="M19 10 Q20.5 7.5 19 5" stroke="#FC620D" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-          <!-- Handle -->
-          <path d="M23 17 Q29 17 29 21 Q29 25 23 25" stroke="#002B69" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-          <!-- Liquid shimmer in mug -->
-          <ellipse cx="15" cy="20" rx="5" ry="2" fill="#FC620D" opacity=".2"/>
-          <!-- Stir ripple -->
-          <path d="M12 22 Q15 24 18 22" stroke="white" stroke-width="1" stroke-linecap="round" fill="none" opacity=".3"/>
-          <!-- Step badge -->
-          <circle cx="9" cy="8" r="5" fill="#002B69"/>
-          <text x="9" y="11" text-anchor="middle" font-family="Nunito,sans-serif" font-size="6" font-weight="900" fill="white">2</text>
-        </svg>
-      </div>
-      <div style="flex:1">
-        <p style="font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#1C1C1C;margin-bottom:3px">Mix It</p>
-        <p style="font-size:12.5px;color:#7B7B7B;line-height:1.55;margin:0"><span style="font-weight:600;color:#1C1C1C">Black:</span> 5&#8211;7 oz hot water &nbsp;&#183;&nbsp; <span style="font-weight:600;color:#1C1C1C">Latte:</span> 4&#8211;6 oz steamed milk</p>
-      </div>
-    </div>
-
-    <!-- STEP 3 -->
-    <div style="background:#fff;border-radius:14px;border:1px solid #E8E8E8;padding:15px 14px;display:flex;align-items:center;gap:13px;position:relative;overflow:hidden">
-      <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#16A34A;border-radius:3px 0 0 3px"></div>
-      <div style="flex-shrink:0;width:52px;height:52px;border-radius:12px;background:#EAF5EF;display:flex;align-items:center;justify-content:center">
-        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
-          <!-- Iced cup body -->
-          <path d="M10 15 L11.5 29 Q11.5 30 12.5 30 L21.5 30 Q22.5 30 22.5 29 L24 15 Z" fill="#002B69"/>
-          <!-- Cup rim -->
-          <rect x="9" y="13" width="16" height="3" rx="1.5" fill="#001A4A"/>
-          <!-- Straw (orange) -->
-          <rect x="19" y="6" width="2.5" height="22" rx="1.25" fill="#FC620D"/>
-          <!-- Ice cubes -->
-          <rect x="12" y="20" width="4.5" height="4.5" rx="1" fill="white" opacity=".22"/>
-          <rect x="16.5" y="23" width="4" height="4" rx="1" fill="white" opacity=".16"/>
-          <!-- Check badge — done -->
-          <circle cx="26" cy="8" r="5.5" fill="#16A34A"/>
-          <path d="M23.5 8 L25.5 10 L28.5 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Step badge -->
-          <circle cx="9" cy="8" r="5" fill="#FC620D"/>
-          <text x="9" y="11" text-anchor="middle" font-family="Nunito,sans-serif" font-size="6" font-weight="900" fill="white">3</text>
-        </svg>
-      </div>
-      <div style="flex:1">
-        <p style="font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#1C1C1C;margin-bottom:3px">Finish It</p>
-        <p style="font-size:12.5px;color:#7B7B7B;line-height:1.55;margin:0">Stir and sip. Add a pinch of cinnamon if you like. <em>Iced: dissolve in cold milk, add ice.</em></p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
+<!-- 10. ATC ZONE -->
 <div class="atczone" id="atczone">
   <div class="qty-row">
     <span class="qty-lbl">Qty</span>
-    <div class="qty-ctrl">
-      <button class="qbtn" onclick="chQty(-1)" aria-label="Less">&#8722;</button>
-      <span class="qnum" id="qnum">1</span>
-      <button class="qbtn" onclick="chQty(1)" aria-label="More">+</button>
-    </div>
+    <div class="qty-ctrl"><button class="qbtn" onclick="chQty(-1)">&#8722;</button><span class="qnum" id="qnum">1</span><button class="qbtn" onclick="chQty(1)">+</button></div>
     <span class="atc-total" id="atctot">$145.00</span>
   </div>
   <button class="btnatc" id="atcbtn" onclick="addToCart()">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
     <span id="atcbtnlbl">Add to Cart &mdash; $145.00</span>
   </button>
-  <button class="btnsec" onclick="addToCart()">
-    Try Vivi Today &mdash; $79.00 One-Time
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </button>
-  <div class="sub-nudge">
-    <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-    Subscribe &amp; Save 15% &mdash; Ships Every 30 Days
-  </div>
+  <button class="btnsec" onclick="addToCart()">Try Vivi Today &mdash; $79.00 One-Time <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+  <div class="sub-nudge"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Subscribe &amp; Save 15% &mdash; Ships Every 30 Days</div>
 </div>
 
-<!-- ====================================================
-     11. TRUST BADGES
-==================================================== -->
+<!-- 11. TRUST BADGES -->
 <div class="tgrid">
-  <div class="tcard" style="--i:0s">
-    <svg class="tico" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    <span class="ttxt">Secure Checkout</span><span class="tsub">SSL Encrypted</span>
-  </div>
-  <div class="tcard" style="--i:.5s">
-    <svg class="tico" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-    <span class="ttxt">Free 3-Day Shipping</span><span class="tsub">On all orders</span>
-  </div>
-  <div class="tcard" style="--i:1s">
-    <svg class="tico" viewBox="0 0 24 24"><polyline points="3 15 3 19 7 19"/><polyline points="21 9 21 5 17 5"/><path d="M21 5 12 14l-4-4L3 15"/></svg>
-    <span class="ttxt">Easy Returns</span><span class="tsub">30-day guarantee</span>
-  </div>
-  <div class="tcard" style="--i:1.5s">
-    <svg class="tico" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0H5a2 2 0 0 1-2-2V9m6 5h10a2 2 0 0 0 2-2V9m0 0H3"/></svg>
-    <span class="ttxt">Physician Formulated</span><span class="tsub">Medical advisory board</span>
-  </div>
+  <div class="tcard" style="--i:0s"><svg class="tico" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span class="ttxt">Secure Checkout</span><span class="tsub">SSL Encrypted</span></div>
+  <div class="tcard" style="--i:.5s"><svg class="tico" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span class="ttxt">Free 3-Day Shipping</span><span class="tsub">All orders</span></div>
+  <div class="tcard" style="--i:1s"><svg class="tico" viewBox="0 0 24 24"><polyline points="3 15 3 19 7 19"/><polyline points="21 9 21 5 17 5"/><path d="M21 5 12 14l-4-4L3 15"/></svg><span class="ttxt">Easy Returns</span><span class="tsub">30-day guarantee</span></div>
+  <div class="tcard" style="--i:1.5s"><svg class="tico" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0H5a2 2 0 0 1-2-2V9m6 5h10a2 2 0 0 0 2-2V9m0 0H3"/></svg><span class="ttxt">Physician Formulated</span><span class="tsub">Medical board</span></div>
 </div>
-<div class="pay-row">
-  <span class="pbadge2">VISA</span>
-  <span class="pbadge2">MASTERCARD</span>
-  <span class="pbadge2">AMEX</span>
-  <span class="pbadge2">SHOP PAY</span>
-  <span class="pbadge2">GOOGLE PAY</span>
-</div>
+<div class="pay-row"><span class="pbadge2">VISA</span><span class="pbadge2">MASTERCARD</span><span class="pbadge2">AMEX</span><span class="pbadge2">SHOP PAY</span><span class="pbadge2">GOOGLE PAY</span></div>
 
-<!-- ====================================================
-     12. INGREDIENT STORY
-==================================================== -->
+<!-- 12. INGREDIENT STORY — full bleed image + compact cards -->
 <div class="story rv">
-  <div class="sec-hdr">
-    <span class="eyebrow">What's Inside</span>
-    <h2 class="sec-h2" style="color:#fff">Traditional coffee gives you a spike. Vivi gives you a system.</h2>
-  </div>
-  <p class="story-lead">Regular coffee relies entirely on caffeine. That quick spike feels great &mdash; then comes the crash. Vivi&rsquo;s formula pairs premium Arabica with ingredients that sustain energy at the cellular level.</p>
-  <div class="icards">
-    <div class="icard">
-      <div class="inum">NR</div>
-      <div>
-        <span class="iname">Nicotinamide Riboside (NR)</span>
-        <span class="idose">330mg per serving</span>
-        <p class="idesc">Clinically studied NAD+ precursor. Supports cellular energy metabolism &mdash; the foundation of healthy aging and sustained mental clarity.</p>
+  <img class="story-hero-img" src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/8d6c3de9-9aaa-48d6-b63f-ec01138e71b8&width=800" alt="Vivi ingredients" onerror="this.style.display='none'">
+  <div class="story-content">
+    <span class="story-eye">What&rsquo;s Inside</span>
+    <h2 class="story-h2">A Spike vs. A System.</h2>
+    <p class="story-sub">Four ingredients. One daily habit. Designed to last.</p>
+    <div class="icards">
+      <div class="icard">
+        <div class="icard-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FC620D" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a10 10 0 0 1 0 20M12 2a10 10 0 0 0 0 20M2 12h20"/><path d="M12 2c2.5 2.5 4 6 4 10s-1.5 7.5-4 10"/><path d="M12 2c-2.5 2.5-4 6-4 10s1.5 7.5 4 10"/></svg></div>
+        <div class="icard-body"><span class="icard-name">Nicotinamide Riboside (NR)</span><span class="icard-dose">330mg</span><p class="icard-desc">NAD+ precursor for cellular energy &amp; healthy aging.</p></div>
+      </div>
+      <div class="icard">
+        <div class="icard-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FC620D" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="icard-body"><span class="icard-name">Grass-Fed Collagen Peptides</span><span class="icard-dose">5g</span><p class="icard-desc">Skin, nails &amp; joint support from within.</p></div>
+      </div>
+      <div class="icard">
+        <div class="icard-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FC620D" stroke-width="1.8" stroke-linecap="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="icard-body"><span class="icard-name">Rutin (Plant Antioxidant)</span><span class="icard-dose">50mg</span><p class="icard-desc">Supports NAD+ recycling &amp; reduces oxidative stress.</p></div>
+      </div>
+      <div class="icard">
+        <div class="icard-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FC620D" stroke-width="1.8" stroke-linecap="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <div class="icard-body"><span class="icard-name">Premium Single-Origin Arabica</span><span class="icard-dose">~150mg caffeine</span><p class="icard-desc">Clean, smooth energy. No crash. No filler.</p></div>
       </div>
     </div>
-    <div class="icard">
-      <div class="inum">CP</div>
-      <div>
-        <span class="iname">Grass-Fed Collagen Peptides</span>
-        <span class="idose">5g per serving</span>
-        <p class="idesc">Bioavailable Type I &amp; III collagen. Supports skin elasticity, nail strength, and joint health from within. Fully dissolves in hot or cold liquid.</p>
-      </div>
+    <div class="vstable">
+      <div class="vshead"><span>Feature</span><span class="vc" style="text-align:center">Vivi</span><span style="text-align:center">Others</span></div>
+      <div class="vsrow"><span class="feat">Daily habit compliance</span><span class="chk">&#10003;</span><span class="crs">&#10007;</span></div>
+      <div class="vsrow"><span class="feat">NAD+ precursors</span><span class="chk">&#10003;</span><span class="crs">&#10007;</span></div>
+      <div class="vsrow"><span class="feat">Collagen peptides</span><span class="chk">&#10003;</span><span class="crs">&#10007;</span></div>
+      <div class="vsrow"><span class="feat">No crash or jitters</span><span class="chk">&#10003;</span><span class="crs">&#10007;</span></div>
+      <div class="vsrow"><span class="feat">3rd-party tested</span><span class="chk">&#10003;</span><span class="crs">&#10007;</span></div>
     </div>
-    <div class="icard">
-      <div class="inum">RU</div>
-      <div>
-        <span class="iname">Rutin (Plant Antioxidant)</span>
-        <span class="idose">50mg per serving</span>
-        <p class="idesc">Quercetin glycoside. Supports NAD+ recycling, reduces oxidative stress, and protects cellular integrity.</p>
-      </div>
-    </div>
-    <div class="icard">
-      <div class="inum" style="font-size:18px">&#9749;</div>
-      <div>
-        <span class="iname">Premium Single-Origin Arabica</span>
-        <span class="idose">~150mg caffeine</span>
-        <p class="idesc">Slow-roasted for clean, smooth flavour. No filler. No chicory. No compromise.</p>
-      </div>
-    </div>
-  </div>
-  <div class="vstable">
-    <div class="vshead">
-      <span>Feature</span>
-      <span class="vc" style="text-align:center">Vivi</span>
-      <span style="text-align:center">Others</span>
-    </div>
-    <div class="vsrow"><span class="feat">Daily habit compliance</span><span class="chk">&#10003;</span><span class="crs">&#10007;</span></div>
-    <div class="vsrow"><span class="feat">NAD+ precursors (330mg)</span><span class="chk">&#10003;</span><span class="crs">&#10007;</span></div>
-    <div class="vsrow"><span class="feat">Collagen peptides (5g)</span><span class="chk">&#10003;</span><span class="crs">&#10007;</span></div>
-    <div class="vsrow"><span class="feat">No crash or jitters</span><span class="chk">&#10003;</span><span class="crs">&#10007;</span></div>
-    <div class="vsrow"><span class="feat">3rd-party batch tested</span><span class="chk">&#10003;</span><span class="crs">&#10007;</span></div>
-    <div class="vsrow"><span class="feat">Physician formulated</span><span class="chk">&#10003;</span><span class="crs">&#10007;</span></div>
   </div>
 </div>
 
-<!-- ====================================================
-     15. CROSS-SELL
-==================================================== -->
+<!-- 15. CROSS-SELL — image-forward -->
 <div class="xsell rv">
-  <div style="padding:0 16px" class="sec-hdr">
-    <span class="eyebrow">Complete Your Ritual</span>
-    <h2 class="sec-h2">Frequently Bought Together</h2>
+  <div class="sec-hdr">
+    <span class="sec-eye">Complete Your Ritual</span>
+    <h2 class="sec-h2" style="font-family:'Nunito',sans-serif;font-size:20px;font-weight:800;color:#1C1C1C;margin-bottom:0">Frequently Bought Together</h2>
   </div>
   <div class="xscroll">
-    <div class="xcard">
-      <img class="ximg" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T214758.296.png?v=1779857293&width=300" alt="Latte Blend">
-      <div class="xbody">
-        <span class="xname">Longevity Latte Blend</span>
-        <span class="xprice">$79.00</span>
-        <button class="xbtn" onclick="addToCart()">+ Add</button>
-      </div>
-    </div>
-    <div class="xcard">
-      <img class="ximg" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T215729.533.png?v=1779857857&width=300" alt="3-Pack Bundle">
-      <div class="xbody">
-        <span class="xname">3-Month Supply Bundle</span>
-        <span class="xprice">$199.00</span>
-        <button class="xbtn" onclick="addToCart()">+ Add</button>
-      </div>
-    </div>
-    <div class="xcard">
-      <img class="ximg" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T215400.105.png?v=1779857651&width=300" alt="Travel Kit">
-      <div class="xbody">
-        <span class="xname">Leather Travel Kit</span>
-        <span class="xprice">Free with order</span>
-        <button class="xbtn" onclick="addToCart()">+ Add</button>
-      </div>
-    </div>
+    <div class="xcard"><img class="ximg" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T214758.296.png?v=1779857293&width=300" alt="Latte Blend"><div class="xbody"><span class="xname">Longevity Latte</span><span class="xprice">$79.00</span><button class="xbtn" onclick="addToCart()">+ Add</button></div></div>
+    <div class="xcard"><img class="ximg" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T215729.533.png?v=1779857857&width=300" alt="3-Pack Bundle"><div class="xbody"><span class="xname">3-Month Bundle</span><span class="xprice">$199.00</span><button class="xbtn" onclick="addToCart()">+ Add</button></div></div>
+    <div class="xcard"><img class="ximg" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T215400.105.png?v=1779857651&width=300" alt="Travel Kit"><div class="xbody"><span class="xname">Leather Travel Kit</span><span class="xprice">Free with order</span><button class="xbtn" onclick="addToCart()">+ Add</button></div></div>
+    <div class="xcard"><img class="ximg" src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/54e39ab3-3c27-4209-81f1-fb1c332be8f7&width=300" alt="Vivi Bundle"><div class="xbody"><span class="xname">Starter Bundle</span><span class="xprice">$89.00</span><button class="xbtn" onclick="addToCart()">+ Add</button></div></div>
   </div>
 </div>
-<!-- ====================================================
-     13. REVIEWS
-==================================================== -->
+
+<!-- 13. REVIEWS -->
 <div class="reviews rv" id="reviews">
-  <div style="padding:0 16px 16px">
-    <span class="eyebrow">Customer Reviews</span>
-    <h2 class="sec-h2">What Others Are Saying</h2>
+  <div style="padding:0 16px 14px">
+    <span class="sec-eye">Customer Reviews</span>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:20px;font-weight:800;color:#1C1C1C;line-height:1.2">What Others Are Saying</h2>
+  </div>
+  <!-- Review mosaic — 2-col image grid -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:16px">
+    <img src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/da662245-4ffa-43f8-8518-39f2642e984d&width=400" alt="Customer review" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block" onerror="this.style.display='none'">
+    <img src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/667d90ed-538b-4257-8096-018bf931cb92&width=400" alt="Customer review" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block" onerror="this.style.display='none'">
   </div>
   <div class="revhead">
     <div class="bnum">4.9</div>
     <div class="rmeta">
-      <div class="stars-svg" style="gap:2px">
-        <svg class="s" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
-        <svg class="s" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
-        <svg class="s" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
-        <svg class="s" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
-        <svg class="s" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
-      </div>
+      <div class="stars-svg" style="gap:2px"><svg class="star" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="star" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="star" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="star" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="star" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
       <div class="rcnt">1,085 verified reviews</div>
     </div>
   </div>
@@ -1128,306 +622,147 @@ body{
     <div class="rbar-row"><span class="rbl">2&#9733;</span><div class="rbt"><div class="rbf" style="width:1%"></div></div><span class="rbp">1%</span></div>
     <div class="rbar-row"><span class="rbl">1&#9733;</span><div class="rbt"><div class="rbf" style="width:0%"></div></div><span class="rbp">0%</span></div>
   </div>
-  <div class="aisum">
-    <span class="ai-lbl">AI-Powered Review Summary</span>
-    <p class="ai-txt">Customers praised Vivi for its "world class" flavour and convenience. Many reported improvements in skin, nails, and energy levels within weeks. One customer noted their "NAD levels went up 35%" after 4 months. The all-in-one formula is widely celebrated for replacing multiple supplements.</p>
-  </div>
   <div class="rvcards">
-    <div class="rvcard">
-      <div class="rvtop"><span class="rvname">Dani R.</span><span class="rvdate">03/02/2026</span></div>
-      <div class="rvstars"><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
-      <p class="rvbody">I was offered a free sample at Equinox. It tastes amazing &mdash; no jitters, no crash. I completed my workout feeling great, had balanced energy all day, and it didn&rsquo;t interfere with my sleep. Started a subscription on the spot.</p>
-      <span class="rvver"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span>
-    </div>
-    <div class="rvcard">
-      <div class="rvtop"><span class="rvname">Anonymous</span><span class="rvdate">05/19/2026</span></div>
-      <div class="rvstars"><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
-      <p class="rvbody">I ordered a kit to test my NAD levels before drinking Vivi and after 4 months. Went up 35%. Wild.</p>
-      <span class="rvver"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span>
-    </div>
-    <div class="rvcard">
-      <div class="rvtop"><span class="rvname">Tomas L.</span><span class="rvdate">05/20/2026</span></div>
-      <div class="rvstars"><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
-      <p class="rvbody">Loving my Vivi! Such a good flavor. Kudos to the team.</p>
-      <span class="rvver"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span>
-    </div>
-    <div class="rvcard">
-      <div class="rvtop"><span class="rvname">Lindsay G.</span><span class="rvdate">05/10/2026</span></div>
-      <div class="rvstars"><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
-      <p class="rvbody">VIVI is my favourite new morning ritual. Have been drinking for 3 weeks now and I already feel a huge difference.</p>
-      <span class="rvver"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span>
-    </div>
+    <div class="rvcard"><div class="rvtop"><span class="rvname">Dani R.</span><span class="rvdate">03/02/2026</span></div><div class="rvstars"><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="rvbody">&ldquo;Tastes amazing &mdash; no jitters, no crash. I completed my workout feeling great and had balanced energy all day. Started a subscription on the spot.&rdquo;</p><span class="rvver"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span></div>
+    <div class="rvcard"><div class="rvtop"><span class="rvname">Anonymous</span><span class="rvdate">05/19/2026</span></div><div class="rvstars"><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="rvbody">&ldquo;Tested NAD levels before and after 4 months. Went up 35%. Wild.&rdquo;</p><span class="rvver"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span></div>
+    <div class="rvcard"><div class="rvtop"><span class="rvname">Lindsay G.</span><span class="rvdate">05/10/2026</span></div><div class="rvstars"><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><svg class="rvs" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div><p class="rvbody">&ldquo;VIVI is my favourite new morning ritual. 3 weeks in and I already feel a huge difference.&rdquo;</p><span class="rvver"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Verified Purchase</span></div>
   </div>
-  <div style="padding:20px 16px 4px">
-    <button class="btnatc" style="background:var(--navy)" onclick="addToCart()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      Try Vivi Today &mdash; $79.00
-    </button>
-  </div>
+  <div style="padding:18px 16px 4px"><button class="btnatc" style="background:#002B69" onclick="addToCart()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Try Vivi Today &mdash; $79.00</button></div>
 </div>
-<!-- ====================================================
-     14. FAQ
-==================================================== -->
+
+<!-- 14. FAQ -->
 <div class="faq rv">
-  <div class="sec-hdr">
-    <span class="eyebrow">Questions</span>
-    <h2 class="sec-h2">Ask Us Anything</h2>
-  </div>
+  <div style="margin-bottom:14px"><span class="sec-eye">Questions</span><h2 style="font-family:'Nunito',sans-serif;font-size:20px;font-weight:800;color:#1C1C1C">Ask Us Anything</h2></div>
   <div class="faq-wrap" id="faqwrap">
-    <div class="faqit">
-      <button class="faqbtn" onclick="tfaq(this)">Is Vivi safe to drink every day?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="faqbody">Yes. Physician formulated and third-party tested. Ingredients are at clinically studied doses and well-tolerated by healthy adults. Consult your doctor if you have underlying health conditions or take medications.</div>
-    </div>
-    <div class="faqit">
-      <button class="faqbtn" onclick="tfaq(this)">What exactly is in Vivi?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="faqbody">Premium single-origin Arabica coffee + Nicotinamide Riboside (330mg NAD+ precursor) + Grass-Fed Collagen Peptides (5g) + Rutin plant antioxidant (50mg). No fillers. No additives. Third-party batch tested.</div>
-    </div>
-    <div class="faqit">
-      <button class="faqbtn" onclick="tfaq(this)">When will I start noticing results?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="faqbody">Most customers notice cleaner, sustained energy within the first week. For longevity benefits &mdash; cellular energy, skin, joints &mdash; consistent daily use over 4&ndash;8 weeks yields the best results.</div>
-    </div>
-    <div class="faqit">
-      <button class="faqbtn" onclick="tfaq(this)">How is Vivi different from NAD+ capsules?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="faqbody">Capsules work &mdash; but most people forget to take them. Vivi delivers the same ingredients inside the habit you already have every morning. Compliance is the key variable in any wellness routine.</div>
-    </div>
-    <div class="faqit">
-      <button class="faqbtn" onclick="tfaq(this)">Is Vivi stable in hot water or milk?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="faqbody">Yes. The formulation is designed to remain stable and bioavailable in both hot and cold liquids. The collagen peptides dissolve fully without clumping.</div>
-    </div>
-    <div class="faqit">
-      <button class="faqbtn" onclick="tfaq(this)">What is the return policy?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
-      <div class="faqbody">30-day risk-free trial. Contact us within 30 days of purchase for a full refund &mdash; no questions asked, even on opened bags.</div>
-    </div>
+    <div class="faqit"><button class="faqbtn" onclick="tfaq(this)">Is Vivi safe to drink daily?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faqbody">Yes. Physician formulated, third-party tested. Consult your doctor if you have underlying conditions.</div></div>
+    <div class="faqit"><button class="faqbtn" onclick="tfaq(this)">What&rsquo;s inside Vivi?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faqbody">Premium Arabica + NR 330mg + Collagen 5g + Rutin 50mg. No fillers, no additives.</div></div>
+    <div class="faqit"><button class="faqbtn" onclick="tfaq(this)">When will I see results?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faqbody">Cleaner energy within the first week. Full benefits in 4&ndash;8 weeks of daily use.</div></div>
+    <div class="faqit"><button class="faqbtn" onclick="tfaq(this)">How is it different from NAD+ capsules?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faqbody">Capsules work &mdash; but people forget. Vivi is in a habit you already have every morning.</div></div>
+    <div class="faqit"><button class="faqbtn" onclick="tfaq(this)">What&rsquo;s the return policy?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faqbody">30-day risk-free trial. Full refund even on opened bags. No questions asked.</div></div>
   </div>
 </div>
 
-<!-- ====================================================
-     16. GUARANTEE
-==================================================== -->
+<!-- 16. GUARANTEE — full bleed image + overlay -->
 <div class="guar rv">
-  <span class="eyebrow">30 Day Risk Free Trial</span>
-  <svg class="gu-sh" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-  <h2 class="gu-t">Upgrade Your Coffee. Risk-Free.</h2>
-  <p class="gu-b">Drink Vivi daily for 30 days. Experience the difference a cleaner, more thoughtful coffee ritual makes. If it&rsquo;s not right for you &mdash; we&rsquo;ll make it right.</p>
-  <div class="gu-list">
-    <div class="gu-item"><svg class="gu-ico" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Full refund, no questions asked</div>
-    <div class="gu-item"><svg class="gu-ico" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Works even on opened bags</div>
-    <div class="gu-item"><svg class="gu-ico" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Cancel subscription anytime</div>
-    <div class="gu-item"><svg class="gu-ico" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Free 3-day shipping on all orders</div>
+  <img class="guar-img" src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/667d90ed-538b-4257-8096-018bf931cb92&width=800" alt="Vivi guarantee" onerror="this.style.display='none'">
+  <div class="guar-content">
+    <span class="guar-eye">30 Day Risk Free Trial</span>
+    <svg class="gu-sh" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <h2 class="gu-t">Risk-Free.<br>Every Time.</h2>
+    <p class="gu-b">Drink Vivi for 30 days. If it&rsquo;s not right &mdash; full refund, no questions.</p>
+    <div class="gu-list">
+      <div class="gu-item"><svg class="gu-ico" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Full refund, even on opened bags</div>
+      <div class="gu-item"><svg class="gu-ico" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Cancel subscription anytime</div>
+      <div class="gu-item"><svg class="gu-ico" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Free 3-day shipping always</div>
+    </div>
+    <button class="btnatc" onclick="addToCart()" style="background:#FC620D"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Try Vivi Today &mdash; $79.00</button>
   </div>
-  <button class="btnatc" onclick="addToCart()" style="background:var(--orange)">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-    Try Vivi Today &mdash; $79.00
-  </button>
 </div>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div>
-    <img class="fl" src="https://vivilabs.com/cdn/shop/files/logo.png?v=1767172770&width=134" alt="Vivi Labs"
-         onerror="this.style.display='none';document.querySelector('.fl-fb').style.display='block'">
-    <span class="fl-fb">VIVI</span>
-  </div>
-  <p style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:14px">Let&rsquo;s Stay Connected</p>
-  <div class="fem-row">
-    <input class="fem" type="email" placeholder="E-mail" aria-label="Email">
-    <button class="fsub">Subscribe</button>
-  </div>
-  <div class="flinks">
-    <a href="#">Shop Now</a><a href="#">Login</a>
-    <a href="#">Terms of Service</a><a href="#">Privacy Policy</a>
-    <a href="#">Refund &amp; Return Policy</a>
-  </div>
+  <div class="fl"><img src="https://vivilabs.com/cdn/shop/files/logo.png?v=1767172770&width=134" alt="Vivi Labs" onerror="this.style.display='none';document.querySelector('.fl-fb').style.display='block'"><span class="fl-fb">VIVI</span></div>
+  <p style="font-size:12.5px;color:rgba(255,255,255,.5);margin-bottom:12px">Let&rsquo;s Stay Connected</p>
+  <div class="fem-row"><input class="fem" type="email" placeholder="E-mail" aria-label="Email"><button class="fsub">Subscribe</button></div>
+  <div class="flinks"><a href="#">Shop Now</a><a href="#">Login</a><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Refund Policy</a></div>
   <div class="fdiv"></div>
   <div class="fcopy">&copy; 2026 Vivi Labs, Inc. &middot; Los Angeles, CA</div>
   <p class="fdisc">*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.*</p>
 </footer>
 
-<!-- ====================================================
-     17. STICKY ATC BAR
-==================================================== -->
+<!-- 17. STICKY ATC -->
 <div class="satc" id="satc">
   <div class="satc-row">
-    <div class="satc-thumb">
-      <img src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T202331.135.png?v=1779852222&width=120" alt="">
-    </div>
-    <div class="satc-info">
-      <span class="satc-name">Longevity Coffee+</span>
-      <span class="satc-price" id="satcprice">$145.00 &mdash; 2 Bags</span>
-    </div>
-    <div class="satc-qty">
-      <button class="sqbtn" onclick="chQty(-1)">&#8722;</button>
-      <span class="sqnum" id="sqnum">1</span>
-      <button class="sqbtn" onclick="chQty(1)">+</button>
-    </div>
+    <div class="satc-thumb"><img src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T202331.135.png?v=1779852222&width=120" alt=""></div>
+    <div class="satc-info"><span class="satc-name">Longevity Coffee+</span><span class="satc-price" id="satcprice">$145.00 &mdash; 2 Bags</span></div>
+    <div class="satc-qty"><button class="sqbtn" onclick="chQty(-1)">&#8722;</button><span class="sqnum" id="sqnum">1</span><button class="sqbtn" onclick="chQty(1)">+</button></div>
   </div>
   <button class="satc-btn" id="satcbtn" onclick="addToCart()">
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
     <span id="satcbtnlbl">Add to Cart &mdash; $145.00</span>
   </button>
 </div>
 
 <script>
-// ── PRELOADER ──
-window.addEventListener('load',function(){setTimeout(function(){document.getElementById('pl').classList.add('out');initRv();},2100);});
+// PRELOADER
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('pl').classList.add('out');initRv();},2000);});
 
-// ── GALLERY ──
+// HERO WORD ANIMATION
+(function(){
+  var words=[{t:'“I Have Tried',d:400},{t:'Everything.',d:620},{t:'Nothing',d:860},{t:'Worked.”',d:1080}];
+  var hl=document.getElementById('heroHl');
+  if(!hl)return;
+  words.forEach(function(w,i){
+    var s=document.createElement('span');
+    s.className='hero-word';
+    s.style.animationDelay=w.d+'ms';
+    s.textContent=w.t;
+    if(i<words.length-1)s.style.marginRight='5px';
+    hl.appendChild(s);
+  });
+})();
+
+// GALLERY
 var gi=0,gt=6;
-(function(){var c=document.getElementById('gdots');for(var i=0;i<gt;i++){var d=document.createElement('div');d.className='gdot'+(i===0?' on':'');(function(n){d.addEventListener('click',function(){ggo(n);});})(i);c.appendChild(d);}})();
-function syncG(){
-  document.getElementById('gslides').style.transform='translateX(-'+(gi*100)+'%)';
-  document.querySelectorAll('.gdot').forEach(function(d,i){d.classList.toggle('on',i===gi);});
-  document.querySelectorAll('#thumbs .thumb').forEach(function(t,i){t.classList.toggle('on',i===gi);});
-}
+(function(){var c=document.getElementById('gdots');for(var i=0;i<gt;i++){var d=document.createElement('div');d.className='gdot'+(i===0?' on':'');(function(n){d.addEventListener('click',function(){ggo(n);});})( i);c.appendChild(d);}})();
+function syncG(){document.getElementById('gslides').style.transform='translateX(-'+(gi*100)+'%)';document.querySelectorAll('.gdot').forEach(function(d,i){d.classList.toggle('on',i===gi);});document.querySelectorAll('#thumbs .thumb').forEach(function(t,i){t.classList.toggle('on',i===gi);});}
 function gsl(d){gi=(gi+d+gt)%gt;syncG();}
 function ggo(n){gi=n;syncG();}
 var tx=0;
 document.getElementById('gslides').addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
 document.getElementById('gslides').addEventListener('touchend',function(e){var diff=tx-e.changedTouches[0].clientX;if(Math.abs(diff)>40)gsl(diff>0?1:-1);});
 
-// ── STEP CAROUSEL ──
-var si=0;
-function gostep(n){
-  si=n;
-  document.getElementById('stslides').style.transform='translateX(-'+(n*100)+'%)';
-  document.querySelectorAll('.sdot').forEach(function(d,i){d.classList.toggle('on',i===n);});
-}
-var stx=0;
-var stslides=document.getElementById('stslides');
-if(stslides){
-  stslides.addEventListener('touchstart',function(e){stx=e.touches[0].clientX;},{passive:true});
-  stslides.addEventListener('touchend',function(e){var diff=stx-e.changedTouches[0].clientX;if(Math.abs(diff)>40)gostep((si+(diff>0?1:-1)+3)%3);});
-}
-
-// ── PACK SELECTOR ──
-var packPrice=145;var packLabel='2 Bags';
+// PACK
+var packPrice=145,packLabel='2 Bags';
 function selPack(el){
-  document.querySelectorAll('.popt').forEach(function(o){
-    o.classList.remove('sel');
-    var r=o.querySelector('.prad');
-    r.style.borderColor='';r.style.background='';
-  });
+  document.querySelectorAll('.popt').forEach(function(o){o.classList.remove('sel');var r=o.querySelector('.prad');r.style.borderColor='';r.style.background='';});
   el.classList.add('sel');
-  var r=el.querySelector('.prad');
-  r.style.borderColor='var(--orange)';r.style.background='var(--orange)';
+  var r=el.querySelector('.prad');r.style.borderColor='var(--o)';r.style.background='var(--o)';
   packPrice=parseInt(el.dataset.price);
   packLabel=el.querySelector('.pname').textContent;
   document.getElementById('pper').textContent='Just '+el.dataset.per;
   document.getElementById('pnow').textContent='$'+packPrice+'.00';
   updateAll();
 }
-// init selected pack on load
-(function(){
-  var sel=document.querySelector('.popt.sel');
-  if(sel){var r=sel.querySelector('.prad');r.style.borderColor='var(--orange)';r.style.background='var(--orange)';}
-})();
+(function(){var s=document.querySelector('.popt.sel');if(s){var r=s.querySelector('.prad');r.style.borderColor='var(--o)';r.style.background='var(--o)';}})();
 
-// ── QTY + PRICE SYNC ──
+// QTY
 var qty=1;
 function chQty(d){qty=Math.max(1,qty+d);document.getElementById('qnum').textContent=qty;document.getElementById('sqnum').textContent=qty;updateAll();}
-function updateAll(){
-  var total=(packPrice*qty).toFixed(0);
-  var tot='$'+total+'.00';
-  document.getElementById('atctot').textContent=tot;
-  document.getElementById('atcbtnlbl').textContent='Add to Cart — '+tot;
-  document.getElementById('satcprice').textContent=tot+' — '+packLabel;
-  document.getElementById('satcbtnlbl').textContent='Add to Cart — '+tot;
-}
+function updateAll(){var t=(packPrice*qty).toFixed(0);var tot='$'+t+'.00';document.getElementById('atctot').textContent=tot;document.getElementById('atcbtnlbl').textContent='Add to Cart — '+tot;document.getElementById('satcprice').textContent=tot+' — '+packLabel;document.getElementById('satcbtnlbl').textContent='Add to Cart — '+tot;}
 
-// ── ADD TO CART ──
+// ATC
 var cartN=0;
-function addToCart(){
-  cartN++;
-  document.getElementById('cpip').textContent=cartN;
-  var btn=document.getElementById('atcbtn');
-  btn.classList.add('ok');
-  document.getElementById('atcbtnlbl').textContent='✓ Added to Cart!';
-  setTimeout(function(){btn.classList.remove('ok');updateAll();},2200);
-}
+function addToCart(){cartN++;document.getElementById('cpip').textContent=cartN;var btn=document.getElementById('atcbtn');btn.classList.add('ok');document.getElementById('atcbtnlbl').textContent='✓ Added!';setTimeout(function(){btn.classList.remove('ok');updateAll();},2200);}
 
-// ── COUPON COPY ──
-function copyCoup(code,el){
-  try{navigator.clipboard.writeText(code);}catch(e){}
-  var copySpan=el.querySelector('.ccopy');
-  copySpan.textContent='COPIED!';
-  setTimeout(function(){copySpan.textContent='COPY';},2000);
-  var t=document.getElementById('ctst');
-  t.textContent='"'+code+'" Copied — apply at checkout';
-  t.classList.add('show');
-  setTimeout(function(){t.classList.remove('show');},2200);
-}
+// COUPON
+function copyCoup(code,el){try{navigator.clipboard.writeText(code);}catch(e){}el.querySelector('.ccopy').textContent='DONE';setTimeout(function(){el.querySelector('.ccopy').textContent='TAP';},2000);var t=document.getElementById('ctst');t.textContent='"'+code+'" Copied';t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
 
-// ── FAQ ──
-function tfaq(btn){
-  var item=btn.closest('.faqit');
-  var wasOpen=item.classList.contains('open');
-  document.querySelectorAll('.faqit').forEach(function(i){i.classList.remove('open');});
-  if(!wasOpen)item.classList.add('open');
-}
+// FAQ
+function tfaq(btn){var item=btn.closest('.faqit');var was=item.classList.contains('open');document.querySelectorAll('.faqit').forEach(function(i){i.classList.remove('open');});if(!was)item.classList.add('open');}
 
-// ── STICKY ATC (IntersectionObserver) ──
+// STICKY
 var satc=document.getElementById('satc');
 var atczone=document.getElementById('atczone');
-if(atczone&&satc){
-  var sio=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){satc.classList.toggle('show',!e.isIntersecting);});
-  },{threshold:0,rootMargin:'0px 0px -10px 0px'});
-  sio.observe(atczone);
-}
+if(atczone&&satc){var sio=new IntersectionObserver(function(entries){entries.forEach(function(e){satc.classList.toggle('show',!e.isIntersecting);});},{threshold:0,rootMargin:'0px 0px -10px 0px'});sio.observe(atczone);}
 
-// ── SCROLL REVEAL ──
-function initRv(){
-  var els=document.querySelectorAll('.rv');
-  var ro=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});
-  },{threshold:.06,rootMargin:'0px 0px -20px 0px'});
-  els.forEach(function(el){ro.observe(el);});
-}
+// REVEAL
+function initRv(){var els=document.querySelectorAll('.rv');var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{threshold:.05});els.forEach(function(el){ro.observe(el);});}
 
-// ── LIVE VIEWER COUNT ──
-var vv=312;
-setInterval(function(){
-  vv+=Math.floor(Math.random()*5)-2;
-  vv=Math.max(285,Math.min(375,vv));
-  var el=document.getElementById('vcnt');
-  if(el)el.textContent=vv;
-},4200);
+// VIEWER COUNT
+var vv=312;setInterval(function(){vv+=Math.floor(Math.random()*5)-2;vv=Math.max(285,Math.min(375,vv));var el=document.getElementById('vcnt');if(el)el.textContent=vv;},4200);
 
-// ── SHIP TIMER ──
-(function(){
-  var m=167,s=0,el=document.getElementById('stimer');
-  if(!el)return;
-  setInterval(function(){
-    s--;if(s<0){s=59;m--;}if(m<0){m=0;s=0;}
-    el.textContent=m+'m '+(s<10?'0':'')+s+'s';
-  },1000);
-})();
+// SHIP TIMER
+(function(){var m=167,s=0,el=document.getElementById('stimer');if(!el)return;setInterval(function(){s--;if(s<0){s=59;m--;}if(m<0){m=0;s=0;}el.textContent=m+'m '+(s<10?'0':'')+s+'s';},1000);})();
 
-// ── SOCIAL PROOF TOASTS ──
-var spd=[
-  {n:'Dylan K.',loc:'Los Angeles',t:'ordered 2 min ago'},
-  {n:'Lindsay G.',loc:'New York',t:'ordered 5 min ago'},
-  {n:'Sarah M.',loc:'Miami',t:'subscribed 8 min ago'},
-  {n:'Marcus T.',loc:'Chicago',t:'ordered 12 min ago'},
-  {n:'Emma L.',loc:'Seattle',t:'subscribed 16 min ago'},
-  {n:'Priya R.',loc:'Austin',t:'ordered 20 min ago'},
-];
+// SP TOASTS
+var spd=[{n:'Dylan K.',loc:'Los Angeles',t:'ordered 2 min ago'},{n:'Lindsay G.',loc:'New York',t:'subscribed 4 min ago'},{n:'Sarah M.',loc:'Miami',t:'ordered 7 min ago'},{n:'Marcus T.',loc:'Chicago',t:'subscribed 11 min ago'},{n:'Emma L.',loc:'Seattle',t:'ordered 15 min ago'}];
 var spi=0;
-function showSp(){
-  var d=spd[spi%spd.length];spi++;
-  document.getElementById('spavt').textContent=d.n[0];
-  document.getElementById('spmsg').innerHTML='<strong>'+d.n+'</strong> from '+d.loc+' '+d.t;
-  var t=document.getElementById('sptst');
-  t.classList.add('show');
-  setTimeout(function(){t.classList.remove('show');},3800);
-}
+function showSp(){var d=spd[spi%spd.length];spi++;document.getElementById('spavt').textContent=d.n[0];document.getElementById('spmsg').innerHTML='<strong>'+d.n+'</strong> from '+d.loc+' '+d.t;var t=document.getElementById('sptst');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},3800);}
 setTimeout(function(){showSp();setInterval(showSp,7200);},3500);
 
-// ── LOGO FALLBACK ──
-(function(){
-  var img=document.getElementById('hdrimg');
-  if(img){img.addEventListener('error',function(){img.style.display='none';var fb=document.getElementById('hdrfb');if(fb)fb.style.display='block';});}
-})();
+// LOGO FALLBACK
+(function(){var img=document.getElementById('hdrimg');if(img){img.addEventListener('error',function(){img.style.display='none';var fb=document.getElementById('hdrfb');if(fb)fb.style.display='block';});}})(  );
 </script>
 </body>
 </html>
