@@ -1058,7 +1058,22 @@ function updateAll(){var t=(packPrice*qty).toFixed(0);var tot='$'+t+'.00';docume
 
 // ATC
 var cartN=0;
-function addToCart(){cartN++;document.getElementById('cpip').textContent=cartN;var btn=document.getElementById('atcbtn');btn.classList.add('ok');document.getElementById('atcbtnlbl').textContent='✓ Added!';setTimeout(function(){btn.classList.remove('ok');updateAll();},2200);}
+function addToCart(){
+  cartN++;
+  document.getElementById('cpip').textContent=cartN;
+  // Main ATC button — green confirm
+  var btn=document.getElementById('atcbtn');
+  if(btn){btn.classList.add('ok');document.getElementById('atcbtnlbl').textContent='✓ Added!';}
+  // Sticky ATC button — also flash
+  var sbtn=document.getElementById('satcbtn');
+  var slbl=document.getElementById('satcbtnlbl');
+  if(sbtn&&slbl){var prevBg=sbtn.style.background;sbtn.style.background='#16A34A';slbl.textContent='✓ Added!';}
+  setTimeout(function(){
+    if(btn)btn.classList.remove('ok');
+    if(sbtn)sbtn.style.background='';
+    updateAll();
+  },2200);
+}
 
 // COUPON
 function copyCoup(code,el){try{navigator.clipboard.writeText(code);}catch(e){}el.querySelector('.ccopy').textContent='DONE';setTimeout(function(){el.querySelector('.ccopy').textContent='TAP';},2000);var t=document.getElementById('ctst');t.textContent='"'+code+'" Copied';t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
