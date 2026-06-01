@@ -494,31 +494,52 @@ body{
   </div>
 </div>
 
-<!-- HOW TO ENJOY — image cards -->
+<!-- HOW TO ENJOY — real website images (swipeable) -->
 <div class="howto rv">
   <span class="sec-eye">Instructions</span>
   <h2 class="sec-h2">How To Enjoy Vivi</h2>
-  <div class="steps">
-    <div class="step-card">
-      <img class="step-img" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-24T144724.254.png?v=1779659329&width=200" alt="Pour Vivi">
-      <div class="step-body">
-        <div class="step-num-wrap"><div class="step-num">1</div><span class="step-title">Pour It</span></div>
-        <p class="step-text">Tear open a stick, pour into your mug.</p>
+  <div style="position:relative;overflow:hidden;border-radius:13px;border:1px solid var(--bd)" id="howtoWrap">
+    <div style="display:flex;width:100%;transition:transform .38s cubic-bezier(.25,.46,.45,.94)" id="howtoSlides">
+
+      <div style="min-width:100%;flex-shrink:0">
+        <div style="position:relative">
+          <img src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/12bd350d-de26-48da-bb07-6640e83e4ca4?width=820" alt="Pour Vivi into your mug" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" loading="lazy">
+          <div style="position:absolute;top:12px;left:12px;width:30px;height:30px;border-radius:50%;background:#FC620D;color:#fff;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.25)">1</div>
+        </div>
+        <div style="padding:14px 16px;background:#fff">
+          <p style="font-family:'Nunito',sans-serif;font-size:13.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#1C1C1C;margin-bottom:4px">Pour It</p>
+          <p style="font-size:12.5px;color:#7B7B7B;line-height:1.55;margin:0">Tear open a stick of Vivi and pour directly into your favourite mug.</p>
+        </div>
       </div>
+
+      <div style="min-width:100%;flex-shrink:0">
+        <div style="position:relative">
+          <img src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/8d6c3de9-9aaa-48d6-b63f-ec01138e71b8?width=820" alt="Mix Vivi with hot water or milk" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" loading="lazy">
+          <div style="position:absolute;top:12px;left:12px;width:30px;height:30px;border-radius:50%;background:#FC620D;color:#fff;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.25)">2</div>
+        </div>
+        <div style="padding:14px 16px;background:#fff">
+          <p style="font-family:'Nunito',sans-serif;font-size:13.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#1C1C1C;margin-bottom:4px">Mix It</p>
+          <p style="font-size:12.5px;color:#7B7B7B;line-height:1.55;margin:0"><strong>Black Coffee:</strong> Add 5&ndash;7 oz hot water &nbsp;&middot;&nbsp; <strong>Latte:</strong> Add 4&ndash;6 oz steamed milk</p>
+        </div>
+      </div>
+
+      <div style="min-width:100%;flex-shrink:0">
+        <div style="position:relative">
+          <img src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/da662245-4ffa-43f8-8518-39f2642e984d?width=820" alt="Finish and enjoy Vivi" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block" loading="lazy">
+          <div style="position:absolute;top:12px;left:12px;width:30px;height:30px;border-radius:50%;background:#FC620D;color:#fff;font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.25)">3</div>
+        </div>
+        <div style="padding:14px 16px;background:#fff">
+          <p style="font-family:'Nunito',sans-serif;font-size:13.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#1C1C1C;margin-bottom:4px">Finish It</p>
+          <p style="font-size:12.5px;color:#7B7B7B;line-height:1.55;margin:0">Stir and sip. <em>Iced: dissolve in cold milk, add ice.</em></p>
+        </div>
+      </div>
+
     </div>
-    <div class="step-card">
-      <img class="step-img" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T224025.478.png?v=1779860452&width=200" alt="Mix Vivi">
-      <div class="step-body">
-        <div class="step-num-wrap"><div class="step-num">2</div><span class="step-title">Mix It</span></div>
-        <p class="step-text"><strong>Black:</strong> 5&ndash;7oz hot water &nbsp;<strong>Latte:</strong> 4&ndash;6oz steamed milk</p>
-      </div>
-    </div>
-    <div class="step-card">
-      <img class="step-img" src="https://vivilabs.com/cdn/shop/files/Vivi_Shopify_Product_Images_-_2026-05-26T214758.296.png?v=1779857293&width=200" alt="Enjoy Vivi">
-      <div class="step-body">
-        <div class="step-num-wrap"><div class="step-num">3</div><span class="step-title">Finish It</span></div>
-        <p class="step-text">Stir, sip, feel the difference. Iced: dissolve in cold milk + ice.</p>
-      </div>
+    <!-- nav dots -->
+    <div style="display:flex;justify-content:center;gap:6px;padding:12px 0;background:#fff;border-top:1px solid var(--bd)">
+      <div class="sdot on" onclick="howtoGo(0)"></div>
+      <div class="sdot" onclick="howtoGo(1)"></div>
+      <div class="sdot" onclick="howtoGo(2)"></div>
     </div>
   </div>
 </div>
