@@ -240,16 +240,16 @@ body{
 .crs{text-align:center;color:rgba(255,255,255,.18);font-size:14px}
 
 /* ── CROSS-SELL ── */
-.xsell{background:#fff;padding:22px 0}
+.xsell{background:var(--bg);padding:22px 0}
 .sec-hdr{padding:0 16px;margin-bottom:14px}
-.xscroll{display:flex;gap:9px;overflow-x:auto;padding:0 16px;scrollbar-width:none;width:100%}
+.xscroll{display:flex;gap:10px;overflow-x:auto;padding:0 16px 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;width:100%}.xscroll::-webkit-scrollbar{display:none}
 .xscroll::-webkit-scrollbar{display:none}
-.xcard{flex-shrink:0;width:140px;border:1px solid var(--bd);border-radius:12px;overflow:hidden}
-.ximg{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--bg);display:block}
+.xcard{flex-shrink:0;width:136px;border:1px solid var(--bd);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06)}.ximg-wrap{width:100%;height:130px;overflow:hidden;background:var(--bg);flex-shrink:0}
+.ximg{width:100%;height:100%;object-fit:cover;display:block}
 .xbody{padding:9px 10px}
-.xname{font-size:11.5px;font-weight:600;color:var(--ink);display:block;margin-bottom:2px;line-height:1.3}
-.xprice{font-size:12.5px;font-weight:700;color:var(--ink);display:block;margin-bottom:6px}
-.xbtn{width:100%;height:30px;background:var(--n);color:#fff;border:none;border-radius:7px;font-size:11.5px;font-weight:600;cursor:pointer}
+.xname{font-size:11px;font-weight:600;color:var(--ink);display:block;margin-bottom:3px;line-height:1.35}
+.xprice{font-size:12px;font-weight:700;color:var(--ink);display:block;margin-bottom:7px}
+.xbtn{width:100%;height:28px;background:var(--n);color:#fff;border:none;border-radius:999px;font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
 
 /* ── REVIEWS ── */
 .reviews{background:#fff;padding-top:24px}
