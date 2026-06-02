@@ -523,6 +523,25 @@ body{
   </div>
   <span class="plbl">Longevity Coffee+</span>
   <h1 class="ptitle">The Coffee That Works While You Drink It</h1>
+  <!-- Benefit chips below title -->
+  <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:11px;margin-bottom:2px">
+    <span style="display:inline-flex;align-items:center;gap:5px;background:#FFF4EE;border:1px solid rgba(252,98,13,.25);border-radius:20px;padding:5px 11px;font-size:11.5px;font-weight:600;color:#FC620D">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FC620D" stroke-width="2.5" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      All-Day Energy
+    </span>
+    <span style="display:inline-flex;align-items:center;gap:5px;background:#EEF2FA;border:1px solid rgba(0,43,105,.18);border-radius:20px;padding:5px 11px;font-size:11.5px;font-weight:600;color:#002B69">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#002B69" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      NAD+ Precursors
+    </span>
+    <span style="display:inline-flex;align-items:center;gap:5px;background:#FFF4EE;border:1px solid rgba(252,98,13,.25);border-radius:20px;padding:5px 11px;font-size:11.5px;font-weight:600;color:#FC620D">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FC620D" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      Collagen Boost
+    </span>
+    <span style="display:inline-flex;align-items:center;gap:5px;background:#EEF2FA;border:1px solid rgba(0,43,105,.18);border-radius:20px;padding:5px 11px;font-size:11.5px;font-weight:600;color:#002B69">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#002B69" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      3rd-Party Tested
+    </span>
+  </div>
 </div>
 
 <!-- 4. PRICE -->
@@ -536,7 +555,7 @@ body{
 <!-- 5. URGENCY -->
 <div class="vpill rv"><span class="pdot"></span><span><strong id="vcnt">312</strong> people viewing now</span></div>
 <div class="urg rv">
-  <div class="urg-row"><svg class="uico" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span class="utxt">Order within <span id="stimer">2h 47m</span> for <span>same-day dispatch</span></span></div>
+  <div class="urg-row"><svg class="uico" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span class="utxt">Order within <span id="stimer">2h 35m</span> for <span>same-day dispatch</span></span></div>
   <div class="urg-row"><svg class="uico" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg><div class="sbar-wrap"><div class="sbar-lbl">Only <strong>9 units</strong> left</div><div class="sbar"><div class="sbar-fill"></div></div></div></div>
 </div>
 
@@ -549,8 +568,6 @@ body{
   padding:16px 0 18px;
   margin:0 0 0;
   /* edge fade — white stars on orange bg, mask fades edges */
-  -webkit-mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);
-  mask-image:linear-gradient(to right,transparent 0%,black 10%,black 90%,transparent 100%);
 }
 .mrev-track{
   display:flex;
@@ -824,7 +841,36 @@ body{
   <div class="tcard" style="--i:1s"><svg class="tico" viewBox="0 0 24 24"><polyline points="3 15 3 19 7 19"/><polyline points="21 9 21 5 17 5"/><path d="M21 5 12 14l-4-4L3 15"/></svg><span class="ttxt">Easy Returns</span><span class="tsub">30-day guarantee</span></div>
   <div class="tcard" style="--i:1.5s"><svg class="tico" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v11m0 0H5a2 2 0 0 1-2-2V9m6 5h10a2 2 0 0 0 2-2V9m0 0H3"/></svg><span class="ttxt">Physician Formulated</span><span class="tsub">Medical board</span></div>
 </div>
-<div class="pay-row"><span class="pbadge2">VISA</span><span class="pbadge2">MASTERCARD</span><span class="pbadge2">AMEX</span><span class="pbadge2">SHOP PAY</span><span class="pbadge2">GOOGLE PAY</span></div>
+<div class="pay-row"><span class="pbadge2">VISA</span><span class="pbadge2">MASTERCARD</span><span class="pbadge2">AMEX</span><span class="pbadge2">SHOP PAY</span><span class="pbadge2">GOOGLE PAY</span>
+
+<!-- MINI FAQ — quick objection handlers below trust badges -->
+<div style="padding:16px 16px 0;background:#fff">
+  <p style="font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--o);margin-bottom:12px">Quick Answers</p>
+  <div style="border:1px solid var(--bd);border-radius:12px;overflow:hidden">
+    <div class="faqit">
+      <button class="faqbtn" onclick="tfaq(this)">What is inside Vivi?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="faqbody">Premium Arabica + Nicotinamide Riboside 330mg + Grass-Fed Collagen Peptides 5g + Rutin 50mg. No fillers, no additives.</div>
+    </div>
+    <div class="faqit">
+      <button class="faqbtn" onclick="tfaq(this)">When will I see results?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="faqbody">Cleaner, sustained energy within the first week. Full longevity benefits in 4 to 8 weeks of daily use.</div>
+    </div>
+    <div class="faqit">
+      <button class="faqbtn" onclick="tfaq(this)">What if I do not like Vivi?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="faqbody">30-day risk-free trial. Full refund even on opened bags. No questions asked.</div>
+    </div>
+    <div class="faqit">
+      <button class="faqbtn" onclick="tfaq(this)">Is it safe to drink daily?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="faqbody">Yes. Physician formulated and third-party tested. Consult your doctor if you have underlying health conditions.</div>
+    </div>
+    <div class="faqit">
+      <button class="faqbtn" onclick="tfaq(this)">Can I cancel my subscription?<svg class="faqchev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="faqbody">Absolutely. Cancel anytime from your account dashboard with zero friction, no phone calls needed.</div>
+    </div>
+  </div>
+</div>
+
+</div>
 
 <!-- 12. INGREDIENT STORY - full bleed image + compact cards -->
 <div class="story rv">
@@ -944,8 +990,6 @@ body{
 .photo-strip-wrap{
   overflow:hidden;
   padding:0 0 2px;
-  -webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
-  mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
 }
 .photo-strip{
   display:flex;
@@ -1217,7 +1261,7 @@ function initRv(){var els=document.querySelectorAll('.rv');var ro=new Intersecti
 var vv=312;setInterval(function(){vv+=Math.floor(Math.random()*5)-2;vv=Math.max(285,Math.min(375,vv));var el=document.getElementById('vcnt');if(el)el.textContent=vv;},4200);
 
 // SHIP TIMER
-(function(){var m=167,s=0,el=document.getElementById('stimer');if(!el)return;setInterval(function(){s--;if(s<0){s=59;m--;}if(m<0){m=0;s=0;}el.textContent=m+'m '+(s<10?'0':'')+s+'s';},1000);})();
+(function(){var m=155,s=0,el=document.getElementById('stimer');if(!el)return;setInterval(function(){s--;if(s<0){s=59;m--;}if(m<0){m=0;s=0;}el.textContent=m+'m '+(s<10?'0':'')+s+'s';},1000);})();
 
 // SP TOASTS
 var spd=[{n:'Dylan K.',loc:'Los Angeles',t:'ordered 2 min ago'},{n:'Lindsay G.',loc:'New York',t:'subscribed 4 min ago'},{n:'Sarah M.',loc:'Miami',t:'ordered 7 min ago'},{n:'Marcus T.',loc:'Chicago',t:'subscribed 11 min ago'},{n:'Emma L.',loc:'Seattle',t:'ordered 15 min ago'}];
