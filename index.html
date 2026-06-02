@@ -178,10 +178,10 @@ body{
 .step-text{font-size:11.5px;color:var(--g);line-height:1.5;margin:0}
 
 /* ── EMOTIONAL BLOCK ── */
-.emo-wrap{position:relative;overflow:hidden;min-height:180px}
-.emo-img{width:100%;height:180px;object-fit:cover;display:block}
-.emo-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,27,80,.92) 55%,rgba(0,27,80,.35))}
-.emo-content{position:absolute;inset:0;padding:24px 20px;display:flex;flex-direction:column;justify-content:center}
+.emo-wrap{position:relative;overflow:hidden;background:var(--n)}
+.emo-img{display:none}
+.emo-overlay{display:none}
+.emo-content{position:relative;padding:24px 18px}
 .emo-eye2{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(252,98,13,.9);margin-bottom:7px}
 .emo-t{font-family:var(--disp);font-size:19px;font-weight:900;line-height:1.2;color:#fff;margin-bottom:8px}
 .emo-b{font-size:12px;color:rgba(255,255,255,.68);line-height:1.55;max-width:200px}
@@ -709,50 +709,116 @@ body{
 </div>
 
 <!-- EMOTIONAL - full bleed image with overlay -->
-<div class="emo-wrap rv">
-  <img class="emo-img" src="https://assets.replocdn.com/projects/8ff446f9-9daa-4a62-a903-431ad16cea34/12bd350d-de26-48da-bb07-6640e83e4ca4&width=800" alt="Vivi lifestyle" onerror="this.style.background='#002B69'">
-  <div class="emo-overlay"></div>
-  <div class="emo-content" style="padding:20px 18px">
+<!-- EMOTIONAL BLOCK — navy card, full height, SVG illustrations, no background image -->
+<div style="background:#002B69;padding:24px 18px 26px;position:relative;overflow:hidden">
 
-    <!-- Simple question hook -->
-    <p style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(252,98,13,.9);margin-bottom:10px">Be honest</p>
+  <!-- Decorative SVG circle glow top-right -->
+  <svg style="position:absolute;top:-30px;right:-30px;opacity:.08;pointer-events:none" width="160" height="160" viewBox="0 0 160 160">
+    <circle cx="80" cy="80" r="80" fill="#FC620D"/>
+  </svg>
 
-    <!-- 3 relatable pain points people actually feel -->
-    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
+  <!-- Eyebrow -->
+  <p style="font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#FC620D;margin-bottom:16px">Sound Familiar?</p>
 
-      <div style="display:flex;align-items:flex-start;gap:9px">
-        <div style="width:18px;height:18px;border-radius:50%;background:rgba(252,98,13,.2);border:1px solid rgba(252,98,13,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">
-          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#FC620D" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        </div>
-        <p style="font-size:12.5px;color:#fff;line-height:1.4;margin:0">You buy supplements<br><span style="color:rgba(255,255,255,.5);font-size:11.5px">then forget to take them after 3 days</span></p>
+  <!-- 3 pain point rows — each with custom inline SVG icon -->
+  <div style="display:flex;flex-direction:column;gap:0;margin-bottom:20px">
+
+    <!-- Pain 1: Forget supplements -->
+    <div style="display:flex;align-items:flex-start;gap:13px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07)">
+      <!-- Pill bottle icon -->
+      <div style="flex-shrink:0;width:38px;height:38px;border-radius:10px;background:rgba(252,98,13,.12);display:flex;align-items:center;justify-content:center">
+        <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+          <!-- Pill bottle body -->
+          <rect x="10" y="12" width="12" height="16" rx="2.5" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+          <!-- Cap -->
+          <rect x="8" y="8" width="16" height="5" rx="2" fill="none" stroke="#FC620D" stroke-width="1.5"/>
+          <!-- Pills inside -->
+          <circle cx="14" cy="18" r="2" fill="#FC620D" opacity=".5"/>
+          <circle cx="19" cy="22" r="2" fill="#FC620D" opacity=".5"/>
+          <!-- X cross — forgot -->
+          <path d="M22 4 L27 9 M27 4 L22 9" stroke="#FC620D" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
       </div>
-
-      <div style="display:flex;align-items:flex-start;gap:9px">
-        <div style="width:18px;height:18px;border-radius:50%;background:rgba(252,98,13,.2);border:1px solid rgba(252,98,13,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">
-          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#FC620D" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        </div>
-        <p style="font-size:12.5px;color:#fff;line-height:1.4;margin:0">You drink coffee every morning<br><span style="color:rgba(255,255,255,.5);font-size:11.5px">but crash by noon, feeling tired again</span></p>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#fff;margin:0 0 3px;line-height:1.3">You buy supplements</p>
+        <p style="font-size:12px;color:rgba(255,255,255,.5);margin:0;line-height:1.45">...then forget to take them after 3 days</p>
       </div>
-
-      <div style="display:flex;align-items:flex-start;gap:9px">
-        <div style="width:18px;height:18px;border-radius:50%;background:rgba(252,98,13,.2);border:1px solid rgba(252,98,13,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">
-          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#FC620D" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        </div>
-        <p style="font-size:12.5px;color:#fff;line-height:1.4;margin:0">You want to feel better<br><span style="color:rgba(255,255,255,.5);font-size:11.5px">but adding one more habit feels impossible</span></p>
-      </div>
-
     </div>
 
-    <!-- Divider -->
-    <div style="height:1px;background:rgba(252,98,13,.3);margin-bottom:12px"></div>
+    <!-- Pain 2: Coffee crash -->
+    <div style="display:flex;align-items:flex-start;gap:13px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07)">
+      <!-- Coffee cup with lightning/crash icon -->
+      <div style="flex-shrink:0;width:38px;height:38px;border-radius:10px;background:rgba(252,98,13,.12);display:flex;align-items:center;justify-content:center">
+        <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+          <!-- Mug body -->
+          <path d="M7 11 L7 24 Q7 26 9 26 L21 26 Q23 26 23 24 L23 11 Z" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" fill="none"/>
+          <!-- Handle -->
+          <path d="M23 15 Q28 15 28 19 Q28 23 23 23" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" fill="none"/>
+          <!-- Energy arrow up then crash down -->
+          <path d="M11 19 L14 14 L17 20 L20 16" stroke="#FC620D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Small crash dot -->
+          <circle cx="20" cy="20" r="1.5" fill="#FC620D"/>
+        </svg>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#fff;margin:0 0 3px;line-height:1.3">You drink coffee every morning</p>
+        <p style="font-size:12px;color:rgba(255,255,255,.5);margin:0;line-height:1.45">...but crash by noon, feeling tired again</p>
+      </div>
+    </div>
 
-    <!-- Simple solution statement -->
-    <p style="font-size:13px;font-weight:700;color:#fff;line-height:1.5;margin:0">
-      Vivi is just your morning coffee.<br>
-      <span style="color:rgba(252,98,13,.95)">But now it also gives you NAD+, collagen,<br>and all-day energy. No extra step needed.</span>
-    </p>
+    <!-- Pain 3: Too many habits -->
+    <div style="display:flex;align-items:flex-start;gap:13px;padding:13px 0">
+      <!-- Calendar with X icon -->
+      <div style="flex-shrink:0;width:38px;height:38px;border-radius:10px;background:rgba(252,98,13,.12);display:flex;align-items:center;justify-content:center">
+        <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+          <!-- Calendar body -->
+          <rect x="5" y="9" width="22" height="18" rx="2.5" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" fill="none"/>
+          <!-- Header bar -->
+          <rect x="5" y="9" width="22" height="6" rx="2.5" fill="rgba(255,255,255,.08)"/>
+          <!-- Calendar pins -->
+          <path d="M11 6 L11 12" stroke="#FC620D" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M21 6 L21 12" stroke="#FC620D" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- Big X across calendar body -->
+          <path d="M10 19 L22 27 M22 19 L10 27" stroke="#FC620D" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+        </svg>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:600;color:#fff;margin:0 0 3px;line-height:1.3">You want to feel better</p>
+        <p style="font-size:12px;color:rgba(255,255,255,.5);margin:0;line-height:1.45">...but adding one more habit feels impossible</p>
+      </div>
+    </div>
 
   </div>
+
+  <!-- Divider with label -->
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+    <div style="flex:1;height:1px;background:rgba(252,98,13,.25)"></div>
+    <span style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(252,98,13,.6)">The Fix</span>
+    <div style="flex:1;height:1px;background:rgba(252,98,13,.25)"></div>
+  </div>
+
+  <!-- Solution — with coffee cup SVG inline -->
+  <div style="display:flex;align-items:flex-start;gap:13px">
+    <!-- Coffee cup solution icon -->
+    <div style="flex-shrink:0;width:42px;height:42px;border-radius:12px;background:rgba(252,98,13,.15);border:1px solid rgba(252,98,13,.3);display:flex;align-items:center;justify-content:center">
+      <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+        <!-- Mug -->
+        <path d="M6 10 L6 24 Q6 26 8 26 L22 26 Q24 26 24 24 L24 10 Z" fill="rgba(252,98,13,.15)" stroke="#FC620D" stroke-width="1.5"/>
+        <path d="M24 14 Q30 14 30 18 Q30 22 24 22" stroke="#FC620D" stroke-width="1.5" fill="none"/>
+        <!-- Steam rising -->
+        <path d="M11 6 Q12 4 11 2" stroke="#FC620D" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+        <path d="M16 6 Q17 3.5 16 1.5" stroke="#FC620D" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+        <path d="M21 6 Q22 4 21 2" stroke="#FC620D" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+        <!-- Checkmark inside mug -->
+        <path d="M11 18 L14 21 L21 14" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <p style="font-size:14px;font-weight:700;color:#fff;margin:0 0 5px;line-height:1.35">Vivi is just your morning coffee.</p>
+      <p style="font-size:13px;color:rgba(255,255,255,.65);margin:0;line-height:1.55">It now also gives you <strong style="color:#FC620D">NAD+, collagen,</strong> and all-day energy.<br>No extra step. No new habit. Just better coffee.</p>
+    </div>
+  </div>
+
 </div>
 
 <!-- HOW TO ENJOY - real website images (animated carousel) -->
